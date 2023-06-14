@@ -1,6 +1,6 @@
 <?php
 
-namespace actions;
+namespace appli\actions;
 
 class AbstractAction {
 
