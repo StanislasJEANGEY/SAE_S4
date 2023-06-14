@@ -18,7 +18,6 @@ composer.lock
 
 # Miscellaneous
 *.class
-*.log
 *.pyc
 *.swp
 .DS_Store
@@ -29,7 +28,6 @@ composer.lock
 migrate_working_dir/
 
 # IntelliJ related
-*.iml
 *.ipr
 *.iws
 .idea/
