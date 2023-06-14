@@ -10,13 +10,11 @@ class Article extends Model
     protected $primaryKey = 'id';
     protected $fillable = ['titre', 'resume', 'contenu', 'date_creation', 'image_url', 'categorie_id', 'auteur_id'];
 
-    public function categorie()
-    {
+    public function categorie(): \Illuminate\Database\Eloquent\Relations\BelongsTo {
         return $this->belongsTo(Categorie::class, 'categorie_id');
     }
 
-    public function auteur()
-    {
+    public function auteur(): \Illuminate\Database\Eloquent\Relations\BelongsTo {
         return $this->belongsTo(Auteur::class, 'auteur_id');
     }
 
