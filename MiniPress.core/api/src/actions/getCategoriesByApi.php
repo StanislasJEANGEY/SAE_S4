@@ -1,6 +1,6 @@
 <?php
 
-namespace gift\api\getApi;
+namespace minipress\api\getApi;
 use actions\AbstractAction;
 use CategorieService;
 
