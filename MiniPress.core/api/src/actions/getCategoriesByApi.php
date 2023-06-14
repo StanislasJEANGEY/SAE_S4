@@ -1,7 +1,6 @@
 <?php
 
-namespace minipress\api\getApi;
-use actions\AbstractAction;
+namespace minipress\api\actions;
 use CategorieService;
 
 

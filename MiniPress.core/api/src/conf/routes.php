@@ -2,7 +2,9 @@
 
 
 
-use minipress\api\getApi\getCategoriesByApi;
+;
+
+use minipress\api\actions\getCategoriesByApi;
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
 
