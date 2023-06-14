@@ -1,8 +1,5 @@
 <?php
 
-
-
-
 use minipress\api\models\Categorie;
 use Slim\Exception\HttpBadRequestException;
 
