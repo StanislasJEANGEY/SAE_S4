@@ -12,7 +12,7 @@ class getArticleByIdByApi
     public function __invoke(Request $request, Response $response, array $args): Response
     {
         $service = new ArticleService();
-        $article = $service->getArticlesById('idArticle');
+        $article = $service->getArticlesById(1);
         $data=["type"=>"article",
             "count"=>count($article),
             "article"=>$article

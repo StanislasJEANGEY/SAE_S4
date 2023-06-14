@@ -2,7 +2,6 @@
 
 
 use minipress\api\actions\getArticleByIdByApi;
-use minipress\api\actions\getArticlesByApi;
 use minipress\api\actions\getArticlesByCategorie;
 use minipress\api\actions\getAuteurById;
 use minipress\api\actions\getCategoriesByApi;
@@ -15,10 +14,10 @@ return function (\Slim\App $app): void {
         return $response;
     })->setName('home');
 $app->get('/api/categories[/]', getCategoriesByApi::class)->setName('getCategoriesByApiAction');
-$app->get('/api/articles[/]', getArticlesByApi::class)->setName('getArticlesByApiAction');
-$app->get('/api/categories/{id}/articles', getArticlesByCategorie::class)->setName('getArticlesByCategorieAction');
-$app->get('/api/articles/{id}', getArticleByIdByApi::class)->setName('getArticleByIdAction');
-$app->get('/api/auteur/{id}', getAuteurById::class)->setName('getAuteurByIdAction');
+$app->get('/api/article/{id}[/]', getArticleByIdByApi::class)->setName('getArticlesByIdByApiAction');
+$app->get('/api/categories/{id}/articles[/]', getArticlesByCategorie::class)->setName('getArticlesByCategorieAction');
+$app->get('/api/articles/{id}[/]', getArticleByIdByApi::class)->setName('getArticleByIdAction');
+$app->get('/api/auteur/{id}[/]', getAuteurById::class)->setName('getAuteurByIdAction');
 
 
 
