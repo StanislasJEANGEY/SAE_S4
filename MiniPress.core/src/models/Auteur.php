@@ -4,6 +4,7 @@ use Illuminate\Database\Eloquent\Model;
 class Auteur extends Model
 {
     protected $table = 'auteurs';
+    protected $primaryKey = 'id';
     protected $fillable = ['nom'];
 
     public function articles()
