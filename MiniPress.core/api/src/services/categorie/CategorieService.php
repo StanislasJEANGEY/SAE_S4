@@ -3,15 +3,15 @@
 
 
 
-use models\Categorie;
+use minipress\api\models\Categorie;
 use Slim\Exception\HttpBadRequestException;
 
 class CategorieService{
 
 
-    function getCategories(){
-        $categories = Categorie::all();
-        return $categories;
+    function getCategories(): \Illuminate\Database\Eloquent\Collection
+    {
+        return Categorie::all();
     }
 
     function getCategorieById(int $id){
