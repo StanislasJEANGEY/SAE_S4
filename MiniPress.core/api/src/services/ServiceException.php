@@ -1,10 +1,10 @@
 <?php
 
-namespace minipress\services\categorie;
+namespace minipress\services;
 
 use Exception;
 
-class CategorieServiceException extends Exception
+class ServiceException extends Exception
 {
     public function __construct($message = "", $code = 0, Exception $previous = null) {
         parent::__construct($message, $code, $previous);

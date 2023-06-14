@@ -14,10 +14,6 @@ class getCategoriesByApi extends AbstractAction
     {
         $service = new CategorieService();
         $cat = $service->getCategories();
-        $routeContext = \Slim\Routing\RouteContext::fromRequest($request)->getRouteParser();
-        foreach ($cat as $key => $value) {
-            $cat[$key]['links'] = $routeContext->urlFor('getCategoriesByIdAction', ['id' => $value['id']]);
-        }
         $data=["type"=>"collection",
             "count"=>count($cat),
             "categories"=>$cat
