@@ -1,7 +1,9 @@
 <?php
 
-namespace api\actions;
+namespace actions;
+use Psr\Http\Message\ResponseInterface as Response;
+use Psr\Http\Message\ServerRequestInterface as Request;
 
-class AbstractAction {
-
+abstract class AbstractAction{
+    abstract public function __invoke(Request $request, Response $response, array $args):Response;
 }
