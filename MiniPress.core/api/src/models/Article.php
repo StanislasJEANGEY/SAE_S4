@@ -1,6 +1,6 @@
 <?php
 
-namespace api\models;
+namespace minipress\api\models;
 
 use Illuminate\Database\Eloquent\Model;
 
