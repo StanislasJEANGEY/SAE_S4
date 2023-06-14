@@ -1,7 +1,8 @@
 <?php
 
+namespace models;
+
 use Illuminate\Database\Eloquent\Model;
-use models\Article;
 
 
 class Categorie extends Model
