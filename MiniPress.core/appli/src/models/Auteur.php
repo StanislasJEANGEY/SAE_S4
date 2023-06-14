@@ -1,11 +1,13 @@
 <?php
 
+namespace models;
+
 use Illuminate\Database\Eloquent\Model;
-use models\Article;
 
 class Auteur extends Model
 {
     protected $table = 'auteurs';
+    protected $primaryKey = 'id';
     protected $fillable = ['nom'];
 
     public function articles()

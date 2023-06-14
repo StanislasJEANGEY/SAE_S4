@@ -1,15 +1,19 @@
 <?php
+
+namespace models;
+
 use Illuminate\Database\Eloquent\Model;
 
-class Auteur extends Model
+
+class Categorie extends Model
 {
-    protected $table = 'auteurs';
+    protected $table = 'categories';
     protected $primaryKey = 'id';
     protected $fillable = ['nom'];
 
     public function articles()
     {
-        return $this->hasMany(Article::class, 'auteur_id');
+        return $this->hasMany(Article::class, 'categorie_id');
     }
 
 }
