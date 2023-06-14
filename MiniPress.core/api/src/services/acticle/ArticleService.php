@@ -9,7 +9,10 @@ use Slim\Exception\HttpBadRequestException;
 
 class ArticleService
 {
-    function getArticlesById(int $idArticle)
+	/**
+	 * @throws ServiceException
+	 */
+	function getArticlesById(int $idArticle)
     {
         try{
             return Article::findOrFail($idArticle);
