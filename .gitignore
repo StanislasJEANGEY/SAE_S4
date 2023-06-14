@@ -12,9 +12,10 @@
 .idea/*
 *.idea/
 
-#composer
+#conf
 vendor
 composer.lock
+*.ini
 
 # Miscellaneous
 *.class
