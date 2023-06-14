@@ -1,7 +1,9 @@
 <?php
 
 use minipress\api\models\Categorie;
+use minipress\services\categorie\CategorieServiceException;
 use Slim\Exception\HttpBadRequestException;
+use Illuminate\Database\Eloquent\ModelNotFoundException;
 
 class CategorieService{
 
@@ -14,8 +16,8 @@ class CategorieService{
     function getCategorieById(int $id){
         try {
             return Categorie::findOrFail($id)->toArray();
-        }catch(\minipress\services\categorie\ModelNotFoundException $e) {
-            throw new \minipress\services\categorie\ModelNotFoundException( "L'id de la catégorie n'est pas renseigné", 404, $e);
+        }catch(ModelNotFoundException $e) {
+            throw new CategorieServiceException( "L'id de la catégorie n'est pas renseigné", 404, $e);
         }
     }
 
