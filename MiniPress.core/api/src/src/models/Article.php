@@ -1,6 +1,9 @@
 <?php
 
 use Illuminate\Database\Eloquent\Model;
+use models\Auteur;
+use models\Categorie;
+
 class Article extends Model
 {
     protected $table = 'articles';
