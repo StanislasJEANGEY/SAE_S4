@@ -14,8 +14,8 @@ class CategorieService{
     function getCategorieById(int $id){
         try {
             return Categorie::findOrFail($id)->toArray();
-        }catch(\gift\app\services\categorie\ModelNotFoundException $e) {
-            throw new HttpBadRequestException($request, "L'id de la catégorie n'est pas renseigné");
+        }catch(\minipress\services\categorie\ModelNotFoundException $e) {
+            throw new \minipress\services\categorie\ModelNotFoundException( "L'id de la catégorie n'est pas renseigné", 404, $e);
         }
     }
 
