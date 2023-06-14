@@ -11,7 +11,7 @@ use Psr\Http\Message\ServerRequestInterface as Request;
 
 return function (\Slim\App $app): void {
     $app->get('/', function (Request $request, Response $response, array $args) {
-        $response->getBody()->write('Hello world!');
+        $response->getBody()->write('<center><h1>Minipress</h1></center>');
         return $response;
     })->setName('home');
 $app->get('/api/categories[/]', getCategoriesByApi::class)->setName('getCategoriesByApiAction');
