@@ -13,6 +13,9 @@ class CategorieService{
         return Categorie::all();
     }
 
+    /**
+     * @throws ServiceException
+     */
     function getCategorieById(int $id){
         try {
             return Categorie::findOrFail($id)->toArray();
