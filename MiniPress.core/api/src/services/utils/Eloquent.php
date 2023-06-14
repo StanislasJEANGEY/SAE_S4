@@ -1,6 +1,6 @@
 <?php
 
-namespace services\utils;
+namespace minipress\api\services\utils;
 
 use Illuminate\Database\Capsule\Manager as DB ;
 

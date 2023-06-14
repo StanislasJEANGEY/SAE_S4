@@ -1,6 +1,6 @@
 <?php
 
-namespace appli\actions;
+namespace minipress\appli\actions;
 
 class AbstractAction {
 
