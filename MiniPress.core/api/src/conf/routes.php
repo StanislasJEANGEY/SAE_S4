@@ -1,10 +1,11 @@
 <?php
 
 
-use minipress\api\actions\getArticleByIdByApi;
-use minipress\api\actions\getArticlesByCategorie;
-use minipress\api\actions\getAuteurById;
-use minipress\api\actions\getCategoriesByApi;
+use minipress\api\actions\getArticleApi;
+use minipress\api\actions\getArticleByIdApi;
+use minipress\api\actions\getArticlesByCategorieApi;
+use minipress\api\actions\getArticleByAuteurApi;
+use minipress\api\actions\getCategoriesApi;
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
 
@@ -13,11 +14,11 @@ return function (\Slim\App $app): void {
         $response->getBody()->write('<center><h1>Minipress</h1></center>');
         return $response;
     })->setName('home');
-$app->get('/api/categories[/]', getCategoriesByApi::class)->setName('getCategoriesByApiAction');
-$app->get('/api/article/{id}[/]', getArticleByIdByApi::class)->setName('getArticlesByIdByApiAction');
-$app->get('/api/categories/{id}/articles[/]', getArticlesByCategorie::class)->setName('getArticlesByCategorieAction');
-$app->get('/api/articles/{id}[/]', getArticleByIdByApi::class)->setName('getArticleByIdAction');
-$app->get('/api/auteur/{id}[/]', getAuteurById::class)->setName('getAuteurByIdAction');
+$app->get('/api/categories[/]', getCategoriesApi::class)->setName('getCategoriesByApiAction');
+$app->get('/api/articles[/]', getArticleApi::class)->setName('getArticlesByApiAction');
+$app->get('/api/categories/{id}/articles[/]', getArticlesByCategorieApi::class)->setName('getArticlesByCategorieAction');
+$app->get('/api/article/{id}[/]', getArticleByIdApi::class)->setName('getArticlesByIdByApiAction');
+$app->get('/api/auteur/{id}[/]', getArticleByAuteurApi::class)->setName('getAuteurByIdAction');
 
 
 
