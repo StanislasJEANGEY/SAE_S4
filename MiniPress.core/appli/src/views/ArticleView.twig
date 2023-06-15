@@ -1,0 +1,10 @@
+{% extends 'Squelette.twig' %}
+{%  block content %}
+    <div>
+        <h2>{{ article.titre }}</h2>
+        <p>{{ article.resume }}</p>
+        <p>{{ article.contenu }}</p>
+        <p>Date de création : {{ article.date_creation }}</p>
+        <img src="{{ article.image_url }}" alt="Image de l'article">
+    </div>
+{% endblock %}

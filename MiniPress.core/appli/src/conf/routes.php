@@ -3,6 +3,7 @@
 use minipress\appli\actions\get\ConnexionAction;
 use minipress\appli\actions\get\InscriptionAction;
 use minipress\appli\actions\get\ListeArticlesAction;
+use minipress\appli\actions\get\ArticleAction;
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
 
@@ -11,7 +12,8 @@ return function (\Slim\App $app): void {
         $response->getBody()->write('<center><h1>Minipress</h1></center><a href="/inscription">Inscription</a>');
         return $response;
     })->setName('home');
-    $app->get('/articles[/]', ListeArticlesAction::class)->setName("articles_get");
+    $app->get('/articles[/]', ListeArticlesAction::class)->setName("liste_articles_get");
+    $app->get('/articles/{id}[/]', ArticleAction::class)->setName("article_get");
 	$app->get('/add_articles[/]', AddArticleAction::class)->setName("articles_get");
 	$app->post('/add_articles[/]', AddArticleAction::class)->setName("articles_post");
 

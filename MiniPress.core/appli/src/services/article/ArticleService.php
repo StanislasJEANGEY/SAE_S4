@@ -11,10 +11,10 @@ class ArticleService
     /**
      * @throws ServiceException
      */
-    function getArticlesById(int $idArticle)
+    function getArticlesById(int $idArticle) : array
     {
         try{
-            return Article::findOrFail($idArticle);
+            return Article::findOrFail($idArticle)->toArray();
         } catch (ModelNotFoundException $e) {
             throw new ServiceException("L'id de l'article n'est pas renseigné");
         }
