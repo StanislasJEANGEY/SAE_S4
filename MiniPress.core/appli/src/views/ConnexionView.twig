@@ -7,7 +7,7 @@
         <p>{{ error }}</p>
     {% endif %}
 
-    <form method="POST" action="/connexion">
+    <form method="POST" action="{{ url_for('connexion_post') }}">
         <div>
             <label for="username">Nom d'utilisateur</label>
             <input type="text" id="username" name="username" required>
