@@ -1,9 +1,8 @@
 <?php
 
 
-use minipress\api\services\utils\Eloquent;
+use services\utils\Eloquent;
 use Slim\Factory\AppFactory as Factory;
-use Twig\Loader\FilesystemLoader;
 
 
 $app = Factory::create();

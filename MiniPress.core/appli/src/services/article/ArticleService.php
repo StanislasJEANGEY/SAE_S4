@@ -1,6 +1,6 @@
 <?php
 
-namespace minipress\api\services\article;
+namespace services\article;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use minipress\api\models\Article;
 use services\ServiceException;
