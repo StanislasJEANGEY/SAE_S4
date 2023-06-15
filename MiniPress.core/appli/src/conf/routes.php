@@ -12,13 +12,13 @@ return function (\Slim\App $app): void {
         return $response;
     })->setName('home');
     $app->get('/articles[/]', ListeArticlesAction::class)->setName("articles_get");
-	$app->get('/add_articles[/]', AddArticleAction::class)->setName("articles_get");
-	$app->post('/add_articles[/]', AddArticleAction::class)->setName("articles_post");
+	$app->get('/add_articles[/]', \minipress\appli\actions\get\AddArticleAction::class)->setName("articles_get");
+	$app->post('/add_articles[/]', \minipress\appli\actions\post\AddArticleAction::class)->setName("articles_post");
+	$app->get('/appli/setArticleByCategorie',  minipress\appli\actions\post\setArticleByCategorie::class)->setName('setArticleByCategorie');
 
 	/** Route Authentification */
     $app->get('/inscription[/]', InscriptionAction::class)->setName("inscription_get");
     $app->post('/inscription[/]', InscriptionAction::class)->setName("inscription_post");
     $app->get('/connexion[/]', ConnexionAction::class)->setName("connexion_get");
     $app->post('/connexion[/]', ConnexionAction::class)->setName("connexion_post");
-    $app->get('/appli/setArticleByCategorie',  minipress\appli\actions\post\setArticleByCategorie::class)->setName('setArticleByCategorie');
 };
