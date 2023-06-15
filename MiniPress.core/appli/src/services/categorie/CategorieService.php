@@ -3,14 +3,15 @@
 namespace minipress\appli\services\categorie;
 
 use Illuminate\Database\Eloquent\ModelNotFoundException;
-use minipress\api\models\Categorie;
+use minipress\appli\models\Categorie;
 use minipress\appli\services\ServiceException;
 
 class CategorieService {
 
 
-	function getCategories(): \Illuminate\Database\Eloquent\Collection {
-		return Categorie::all();
+	function getCategories(): array
+    {
+		return Categorie::all()->toArray();
 	}
 
 	/**

@@ -1,0 +1,11 @@
+{% block a %}
+    <form>
+        <label>
+            <select>
+                {% for item in categories %}
+                    <option value="{{ item.id }}">{{ item.nom }}</option>
+                {% endfor %}
+            </select>
+        </label>
+    </form>
+{% endblock %}
