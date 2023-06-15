@@ -2,7 +2,21 @@
 
 namespace minipress\api\actions;
 
-class getArticlesByCategorieApi
+use minipress\api\services\article\ArticleService;
+use Psr\Http\Message\ResponseInterface as Response;
+use Psr\Http\Message\ServerRequestInterface as Request;
+
+class getArticlesByCategorieApi extends AbstractAction
 {
 
+    public function __invoke(Request $request, Response $response, array $args): Response
+    {
+        $service = new ArticleService();
+
+        $cat = $service->getArticlesByCategorie();
+        $data=["type"=>"collection",
+            "count"=>count($cat),
+            "categories"=>$cat
+        ];
+    }
 }
