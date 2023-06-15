@@ -1,7 +1,8 @@
 <?php
 
-namespace minipress\appli\actions;
+namespace minipress\appli\actions\set;
 
+use minipress\appli\actions\AbstractAction;
 use minipress\appli\models\User;
 use minipress\appli\services\auth\AuthentificationService;
 use Psr\Http\Message\ResponseInterface as Response;

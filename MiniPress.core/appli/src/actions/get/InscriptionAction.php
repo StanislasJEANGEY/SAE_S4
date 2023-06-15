@@ -1,6 +1,6 @@
 <?php
 
-namespace minipress\appli\actions;
+namespace minipress\appli\actions\set;
 
 namespace App\Actions;
 
