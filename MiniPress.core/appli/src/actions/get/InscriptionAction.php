@@ -2,8 +2,6 @@
 
 namespace minipress\appli\actions\set;
 
-namespace App\Actions;
-
 use minipress\appli\actions\AbstractAction;
 use minipress\appli\models\User;
 use minipress\appli\services\auth\AuthentificationService;

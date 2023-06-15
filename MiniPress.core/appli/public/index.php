@@ -6,6 +6,7 @@ require_once __DIR__ . '/../src/vendor/autoload.php';
 /* application boostrap */
 $app = (require_once __DIR__ . '/../src/conf/bootstrap.php');
 
+session_start();
 
 /* routes loading */
 (require_once __DIR__ . '/../src/conf/routes.php')($app);
