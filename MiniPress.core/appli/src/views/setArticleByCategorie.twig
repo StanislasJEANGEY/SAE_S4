@@ -1,11 +1,17 @@
+
+
 {% block a %}
+
     <form>
-        <label>
+
+        <label>{% include 'AddArticleView.twig' %}
             <select>
                 {% for item in categories %}
                     <option value="{{ item.id }}">{{ item.nom }}</option>
                 {% endfor %}
+
             </select>
+
         </label>
     </form>
 {% endblock %}
