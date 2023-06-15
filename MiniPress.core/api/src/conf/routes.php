@@ -14,11 +14,11 @@ return function (\Slim\App $app): void {
         $response->getBody()->write('<center><h1>Minipress</h1></center>');
         return $response;
     })->setName('home');
-$app->get('/api/categories[/]', getCategoriesApi::class)->setName('getCategoriesByApiAction');
-$app->get('/api/articles[/]', getArticleApi::class)->setName('getArticlesByApiAction');
-$app->get('/api/categories/{id}/articles[/]', getArticlesByCategorieApi::class)->setName('getArticlesByCategorieAction');
-$app->get('/api/article/{id}[/]', getArticleByIdApi::class)->setName('getArticlesByIdByApiAction');
-$app->get('/api/auteur/{id}[/]', getArticleByAuteurApi::class)->setName('getAuteurByIdAction');
+$app->get('/api/categories[/]', getCategoriesApi::class)->setName('getCategoriesApi');
+$app->get('/api/articles[/]', getArticleApi::class)->setName('getArticleApi');
+$app->get('/api/categories/{id}/articles[/]', getArticlesByCategorieApi::class)->setName('getArticlesByCategorieApi');
+$app->get('/api/article/{id}[/]', getArticleByIdApi::class)->setName('getArticleByIdApi');
+$app->get('/api/auteur/{id}[/]', getArticleByAuteurApi::class)->setName('getArticleByAuteurApi');
 
 
 

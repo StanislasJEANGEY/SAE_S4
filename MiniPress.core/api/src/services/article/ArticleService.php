@@ -24,4 +24,8 @@ class ArticleService
     function getArticles(): array {
         return Article::all()->toArray();
     }
+
+    function getArticlesByCategorie(int $idCategorie): array {
+        return Article::where('categorie_id', $idCategorie)->get()->toArray();
+    }
 }
