@@ -1,6 +1,6 @@
 <?php
 
-namespace minipress\appli\actions\set;
+namespace minipress\appli\actions\get;
 
 use minipress\appli\actions\AbstractAction;
 use minipress\appli\models\User;

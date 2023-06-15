@@ -2,7 +2,7 @@
 
 namespace minipress\appli\services\article;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
-use minipress\api\models\Article;
+use minipress\appli\models\Article;
 use minipress\appli\services\ServiceException;
 
 
@@ -30,5 +30,10 @@ class ArticleService
         $article->categorie_id = $categorie_id;
         $article->auteur_id = $auteur_id;
         $article->save();
+    }
+
+    public function getArticles() :array
+    {
+        return Article::all()->toArray();
     }
 }

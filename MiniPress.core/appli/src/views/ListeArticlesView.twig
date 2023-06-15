@@ -1,0 +1,10 @@
+{% extends 'Squelette.twig' %}
+{% block content %}
+    <h1>Articles</h1>
+    <ul>
+        {% for article in articles %}
+            <li>{{ article.titre }}</li>
+        {% endfor %}
+    </ul>
+{% endblock %}
+

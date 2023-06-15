@@ -1,6 +1,6 @@
 <?php
 
-namespace minipress\appli\actions\set;
+namespace minipress\appli\actions\post;
 
 use minipress\appli\actions\AbstractAction;
 use minipress\appli\services\article\ArticleService;
