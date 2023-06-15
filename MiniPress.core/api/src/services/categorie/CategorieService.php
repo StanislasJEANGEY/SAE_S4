@@ -1,9 +1,8 @@
 <?php
 
-use minipress\api\models\Categorie;
-use minipress\services\ServiceException;
-use Slim\Exception\HttpBadRequestException;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
+use minipress\api\models\Categorie;
+use services\ServiceException;
 
 class CategorieService{
 

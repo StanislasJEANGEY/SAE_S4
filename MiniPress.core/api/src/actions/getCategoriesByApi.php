@@ -1,11 +1,10 @@
 <?php
 
 namespace minipress\api\actions;
-use CategorieService;
-
-
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
+use services\categorie\CategorieService;
+
 
 class getCategoriesByApi extends AbstractAction
 {
