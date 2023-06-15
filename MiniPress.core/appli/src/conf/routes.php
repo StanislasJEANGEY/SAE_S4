@@ -1,5 +1,6 @@
 <?php
 
+use minipress\appli\actions\get\ArticleAction;
 use minipress\appli\actions\get\ConnexionAction;
 use minipress\appli\actions\get\InscriptionAction;
 use minipress\appli\actions\get\ListeArticlesAction;
