@@ -1,18 +1,18 @@
 # SAE_S4
 
-## TODO : Mieux remplir le README.md
-
 Projet d'appli Backend + Frontend + Mobile
 
+Membres :
 BRESSON Jules
 JEANGEY Stanislas
 MELCHIOR Damien
 ROBERT Antonin
+
 Plage de port utilisé : 18080->18090
+
 URL dépôt git : https://github.com/StanislasJEANGEY/SAE_S4.git
 
 Identifiants et mots de passe pour se connecter sur MiniPress:
-
 -   admin : admin
 -   user : user
 
@@ -25,15 +25,18 @@ Liens utiles :
 
 ## Fonctionnalités
 
+Lien vers le sujet :  
+https://arche.univ-lorraine.fr/pluginfile.php/3211556/mod_resource/content/2/Sujet-Architecture-SAE-S4-DWM.01.pdf
+
 | Fonctionnalité                                              | Nom de la personne | Statut |
-| ----------------------------------------------------------- | :----------------: | :----: |
-| 1. Créer un article                                         |        ---         |  ---   |
-| 2. Créer un article en choisissant une catégorie            |        ---         |  ---   |
+|-------------------------------------------------------------|:------------------:|:------:|
+| 1. Créer un article                                         |       Jules        |  ---   |
+| 2. Créer un article en choisissant une catégorie            |      Antonin       |  ---   |
 | 3. Afficher la liste des articles                           |        ---         |  ---   |
 | 4. Afficher la liste des articles en filtrant par catégorie |        ---         |  ---   |
 | 5. Création d’une catégorie                                 |        ---         |  ---   |
-| 6. Formulaire d’authentification                            |        ---         |  ---   |
-| 7. Contrôle d’accès                                         |        ---         |  ---   |
+| 6. Formulaire d’authentification                            |       Damien       |  ---   |
+| 7. Contrôle d’accès                                         |       Damien       |  ---   |
 | 8. Auteurs                                                  |        ---         |  ---   |
 | 9. API : liste des catégories                               |     Stanislas      |   OK   |
 | 10. API : liste des articles                                |     Stanislas      |   OK   |

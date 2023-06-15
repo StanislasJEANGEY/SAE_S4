@@ -3,7 +3,7 @@
 namespace minipress\appli\services\article;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use minipress\api\models\Article;
-use services\ServiceException;
+use minipress\appli\services\ServiceException;
 
 
 class ArticleService

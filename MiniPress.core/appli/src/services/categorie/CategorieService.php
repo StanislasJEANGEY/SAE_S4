@@ -4,7 +4,7 @@ namespace minipress\appli\services\categorie;
 
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use minipress\api\models\Categorie;
-use services\ServiceException;
+use minipress\appli\services\ServiceException;
 
 class CategorieService {
 

@@ -4,7 +4,7 @@ namespace minipress\appli\services\auteurs;
 
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use minipress\api\models\Auteur;
-use services\ServiceException;
+use minipress\appli\services\ServiceException;
 
 class AuteurService {
 
