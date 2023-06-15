@@ -26,10 +26,6 @@ class ArticleService
 		$article->titre = $data['titre'];
 		$article->resume = $data['resume'];
 		$article->contenu = $data['contenu'];
-		$article->date_creation = $data['date_creation'];
-		$article->image_url = $data['image_url'];
-		$article->categorie_id = $data['categorie_id'];
-		$article->auteur_id = $data['auteur_id'];
 		$article->save();
     }
 
