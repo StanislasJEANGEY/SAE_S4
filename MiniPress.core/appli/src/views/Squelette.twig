@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>GiftBox</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+<header>
+    {% include '/HeaderView.twig' %}
+</header>
+
+<section>
+    {% include '/NavView.twig' %}
+</section>
+
+<main>
+    {% block content %} {% endblock %}
+</main>
+
+<footer>
+    {% include '/FooterView.twig' %}
+</footer>
+</body>
+</html>
