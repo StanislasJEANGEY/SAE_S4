@@ -49,6 +49,8 @@ class getAccueilApi extends AbstractAction
 }';
         $data = json_decode($data, true);
         $data = json_encode($data, JSON_PRETTY_PRINT);
+        $data = str_replace('\\', '', $data);
+
         $response->getBody()->write($data);
         return $response->withHeader('Content-Type', 'application/json')->withStatus(200);
 
