@@ -28,4 +28,8 @@ class ArticleService
     function getArticlesByCategorie(int $idCategorie): array {
         return Article::where('categorie_id', $idCategorie)->get()->toArray();
     }
+
+    function getArticlesByAuteur(int $idAuteur): array {
+        return Article::where('auteur_id', $idAuteur)->get()->toArray();
+    }
 }

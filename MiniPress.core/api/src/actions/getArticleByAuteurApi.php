@@ -2,23 +2,26 @@
 
 namespace minipress\api\actions;
 
+use minipress\api\services\article\ArticleService;
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
-use services\auteurs\AuteurService;
 
 class getArticleByAuteurApi extends AbstractAction
 {
 
-	public function __invoke(Request $request, Response $response, array $args): Response {
-		$service = new AuteurService();
-		$auteur = $service->getAuteurById($args['id']);
-		$data = [
-			"type" => "collection",
-			"count" => count($auteur),
-			"auteur" => $auteur
-		];
 
-		$response->getBody()->write(json_encode($data));
+    public function __invoke(Request $request, Response $response, array $args): Response {
+		$service = new ArticleService();
+        $idAuteur = $args['id'];
+        $article = $service->getArticlesByAuteur($idAuteur);
+        $data = [
+            "type" => "collection",
+            "count" => count($article),
+            "article" => $article
+        ];
+
+        $data = json_encode($data, JSON_PRETTY_PRINT);
+		$response->getBody()->write($data);
 		return $response->withHeader('Content-Type', 'application/json')->withStatus(200);
 	}
 }
