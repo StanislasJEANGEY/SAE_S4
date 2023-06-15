@@ -25,6 +25,9 @@ Liens utiles :
 
 ## Fonctionnalités
 
+Lien vers le sujet :  
+https://arche.univ-lorraine.fr/pluginfile.php/3211556/mod_resource/content/2/Sujet-Architecture-SAE-S4-DWM.01.pdf
+
 | Fonctionnalité                                              | Nom de la personne | Statut |
 | ----------------------------------------------------------- | :----------------: | :----: |
 | 1. Créer un article                                         |        ---         |  ---   |
