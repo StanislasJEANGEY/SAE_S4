@@ -1,14 +1,14 @@
 <?php
 
-
-use services\utils\Eloquent;
-use Slim\Factory\AppFactory as Factory;
+use Slim\Factory\AppFactory;
 
 
-$app = Factory::create();
+require_once __DIR__ . '/../vendor/autoload.php';
+
+
+$app = AppFactory::create();
+
 $app->addRoutingMiddleware();
 $app->addErrorMiddleware(true, false, false);
 
-Eloquent::init(__DIR__ . '/../conf/conf.ini');
-
-return $app;        
+return $app;

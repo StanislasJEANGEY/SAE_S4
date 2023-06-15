@@ -1,24 +1,25 @@
 <?php
 
 namespace minipress\api\actions;
+
+use minipress\api\services\article\ArticleService;
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
-use services\categorie\CategorieService;
 
-
-class getCategoriesByApi extends AbstractAction
+class getArticleApi extends AbstractAction
 {
 
     public function __invoke(Request $request, Response $response, array $args): Response
     {
-        $service = new CategorieService();
-        $cat = $service->getCategories();
+        $service = new ArticleService();
+        $article = $service->getArticles();
         $data=["type"=>"collection",
-            "count"=>count($cat),
-            "categories"=>$cat
+            "count"=>count($article),
+            "article"=>$article
         ];
 
-        $response->getBody()->write(json_encode($data));
+        $data = json_encode($data, JSON_PRETTY_PRINT);
+        $response->getBody()->write($data);
         return $response->withHeader('Content-Type', 'application/json')->withStatus(200);
     }
 }

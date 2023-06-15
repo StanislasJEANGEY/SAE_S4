@@ -6,7 +6,7 @@ use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
 use services\auteurs\AuteurService;
 
-class getAuteurById extends AbstractAction
+class getArticleByAuteurApi extends AbstractAction
 {
 
 	public function __invoke(Request $request, Response $response, array $args): Response {

@@ -2,7 +2,7 @@
 
 namespace minipress\api\actions;
 
-class getArticlesByCategorie
+class getArticlesByCategorieApi
 {
 
 }

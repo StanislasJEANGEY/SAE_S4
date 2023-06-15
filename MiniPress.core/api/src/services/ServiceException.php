@@ -1,6 +1,6 @@
 <?php
 
-namespace minipress\services;
+namespace minipress\api\services;
 
 use Exception;
 
