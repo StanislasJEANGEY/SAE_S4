@@ -1,6 +1,7 @@
 <?php
 
 namespace minipress\appli\services\article;
+
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use minipress\appli\models\Article;
 use minipress\appli\services\ServiceException;
@@ -20,16 +21,12 @@ class ArticleService
         }
     }
 
-    function setArticle($titre, $resume, $contenu, $date_creation, $image_url, $categorie_id, $auteur_id){
-        $article = new Article();
-        $article->titre = $titre;
-        $article->resume = $resume;
-        $article->contenu = $contenu;
-        $article->date_creation = $date_creation;
-        $article->image_url = $image_url;
-        $article->categorie_id = $categorie_id;
-        $article->auteur_id = $auteur_id;
-        $article->save();
+    function setArticle($data): void {
+		$article = new Article();
+		$article->titre = $data['titre'];
+		$article->resume = $data['resume'];
+		$article->contenu = $data['contenu'];
+		$article->save();
     }
 
     public function getArticles() :array
