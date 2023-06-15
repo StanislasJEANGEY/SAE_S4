@@ -26,14 +26,14 @@ Liens utiles :
 ## Fonctionnalités
 
 | Fonctionnalité                                              | Nom de la personne | Statut |
-| ----------------------------------------------------------- | :----------------: | :----: |
-| 1. Créer un article                                         |        ---         |  ---   |
-| 2. Créer un article en choisissant une catégorie            |        ---         |  ---   |
+|-------------------------------------------------------------|:------------------:|:------:|
+| 1. Créer un article                                         |       Jules        |  ---   |
+| 2. Créer un article en choisissant une catégorie            |      Antonin       |  ---   |
 | 3. Afficher la liste des articles                           |        ---         |  ---   |
 | 4. Afficher la liste des articles en filtrant par catégorie |        ---         |  ---   |
 | 5. Création d’une catégorie                                 |        ---         |  ---   |
-| 6. Formulaire d’authentification                            |        ---         |  ---   |
-| 7. Contrôle d’accès                                         |        ---         |  ---   |
+| 6. Formulaire d’authentification                            |       Damien       |  ---   |
+| 7. Contrôle d’accès                                         |       Damien       |  ---   |
 | 8. Auteurs                                                  |        ---         |  ---   |
 | 9. API : liste des catégories                               |     Stanislas      |   OK   |
 | 10. API : liste des articles                                |     Stanislas      |   OK   |
