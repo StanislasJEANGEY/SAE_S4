@@ -1,6 +1,6 @@
 <?php
 
-namespace services\auteurs;
+namespace minipress\appli\services\auteurs;
 
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use minipress\api\models\Auteur;

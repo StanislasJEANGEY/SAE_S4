@@ -1,6 +1,6 @@
 <?php
 
-namespace services\categorie;
+namespace minipress\appli\services\categorie;
 
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use minipress\api\models\Categorie;
