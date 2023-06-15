@@ -15,7 +15,7 @@ return function (\Slim\App $app): void {
     })->setName('home');
     $app->get('/articles[/]', ListeArticlesAction::class)->setName("liste_articles_get");
     $app->get('/articles/{id}[/]', ArticleAction::class)->setName("article_get");
-	$app->get('/add_articles[/]', \minipress\appli\actions\get\AddArticleAction::class)->setName("add_articles_get");
+	$app->get('/add_articles[/]', \minipress\appli\actions\get\AddArticleAction::class)->setName("articles_get");
 	$app->post('/add_articles[/]', \minipress\appli\actions\post\AddArticleAction::class)->setName("add_articles_post");
 	$app->get('/appli/setArticleByCategorie',  minipress\appli\actions\post\setArticleByCategorie::class)->setName('setArticleByCategorie');
 
