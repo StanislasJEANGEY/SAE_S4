@@ -22,4 +22,5 @@ return function (\Slim\App $app): void {
     $app->post('/inscription[/]', InscriptionAction::class)->setName("inscription_post");
     $app->get('/connexion[/]', ConnexionAction::class)->setName("connexion_get");
     $app->post('/connexion[/]', ConnexionAction::class)->setName("connexion_post");
+    $app->get('/appli/setArticleByCategorie',  minipress\appli\actions\post\setArticleByCategorie::class)->setName('setArticleByCategorie');
 };
