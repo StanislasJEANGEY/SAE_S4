@@ -1,5 +1,22 @@
 {% extends 'Squelette.twig' %}
 
 {% block content %}
-
+    <div class="container">
+        <h2 class="heading">Créer un article :</h2>
+        <form method="post" action="{{ url_for('add_categorie_post') }}">
+            <div>
+                <label for="titre">Titre</label>
+                <input type="text" id="titre" name="titre" required placeholder="titre">
+            </div>
+            <div>
+                <label for="contenu">Contenu</label>
+                <input type="text" id="contenu" name="contenu" required placeholder="contenu">
+            </div>
+            <div>
+                <label for="resume">Résumé</label>
+                <input type="text" id="resume" name="resume" required placeholder="resume">
+            </div>
+            <input type="submit" value="Enregistrer">
+        </form>
+    </div>
 {% endblock %}
