@@ -1,24 +1,21 @@
 <?php
 
-namespace minipress\appli\actions\get;
+namespace minipress\appli\actions\post;
 
 use minipress\appli\actions\AbstractAction;
-use minipress\appli\models\User;
 use minipress\appli\services\auth\AuthentificationService;
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
+use Slim\Routing\RouteContext;
 use Slim\Views\Twig;
 use Twig\Error\LoaderError;
 use Twig\Error\RuntimeError;
 use Twig\Error\SyntaxError;
 
-class InscriptionAction extends AbstractAction
+class InscriptionActionPost extends AbstractAction
 {
 
     /**
-     * @param Request $request
-     * @param Response $response
-     * @param array $args
      * @throws SyntaxError
      * @throws RuntimeError
      * @throws LoaderError
@@ -27,6 +24,8 @@ class InscriptionAction extends AbstractAction
     {
         $authService = new AuthentificationService();
         $view = Twig::fromRequest($request);
+        $routeContext = RouteContext::fromRequest($request);
+        $url = $routeContext->getRouteParser()->urlFor('connexion_get');
 
         if ($request->getMethod() === 'POST') {
             $data = $request->getParsedBody();
@@ -35,18 +34,18 @@ class InscriptionAction extends AbstractAction
             $email = $data['email'];
             $password = $data['password'];
 
-            // Enregistrer l'utilisateur
+            // Enregistrer l'utilisate ur
             $success = $authService->registerUser($username, $email, $password);
 
             if ($success) {
                 // Rediriger l'utilisateur vers la page de connexion ou afficher un message de réussite
-                return $response->withRedirect('/connexion');
+                return $response->withHeader('Location', $url);
             } else {
                 // Afficher le formulaire d'inscription avec un message d'erreur
                 return $view->render($response, 'InscriptionView.twig', ['error' => 'L\'utilisateur existe déjà']);
             }
-        }
+    }
 
         return $view->render($response, 'InscriptionView.twig');
-    }
+}
 }
