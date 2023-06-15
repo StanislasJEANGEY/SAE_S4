@@ -9,9 +9,10 @@ ROBERT Antonin
 Plage de port utilisé : 18080->18090
 URL dépôt git : https://github.com/StanislasJEANGEY/SAE_S4.git
 
-Identifiants et mots de passe :
+Identifiants et mots de passe pour se connecter sur MiniPress:
 - admin : admin
 - user : user
+
 
 Liens utiles :
 - appli (http://docketu.iutnc.univ-lorraine.fr:18085)
