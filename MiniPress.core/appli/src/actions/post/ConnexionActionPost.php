@@ -6,6 +6,7 @@ use minipress\appli\actions\AbstractAction;
 use minipress\appli\services\auth\AuthentificationService;
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
+use Slim\Routing\RouteContext;
 use Slim\Views\Twig;
 
 class ConnexionActionPost extends AbstractAction
@@ -15,6 +16,8 @@ class ConnexionActionPost extends AbstractAction
     {
         $authService = new AuthentificationService();
         $view = Twig::fromRequest($request);
+        $routeContext = RouteContext::fromRequest($request);
+        $url = $routeContext->getRouteParser()->urlFor('home');
 
         if ($request->getMethod() === 'POST') {
             $data = $request->getParsedBody();
@@ -26,15 +29,14 @@ class ConnexionActionPost extends AbstractAction
             $success = $authService->authenticateUser($username, $password);
 
             if ($success) {
-                // Rediriger l'utilisateur vers la page d'accueil ou une autre page protégée
-                return $response->withRedirect('/');
+                $response = $response->withHeader('Location', $url)->withStatus(302);
             } else {
                 // Afficher le formulaire de connexion avec un message d'erreur
                 return $view->render($response, 'ConnexionView.twig', ['error' => 'Identifiants invalides']);
             }
         }
 
-        return $view->render($response, 'ConnexionView.twig');
+        return $response;
     }
 
 }

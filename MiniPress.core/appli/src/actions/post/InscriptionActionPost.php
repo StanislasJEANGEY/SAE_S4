@@ -2,6 +2,7 @@
 
 namespace minipress\appli\actions\post;
 
+use Elastic\Apm\SpanContextHttpInterface;
 use minipress\appli\actions\AbstractAction;
 use minipress\appli\services\auth\AuthentificationService;
 use Psr\Http\Message\ResponseInterface as Response;
@@ -36,7 +37,7 @@ class InscriptionActionPost extends AbstractAction
             $repeatPassword = $data['repeat-password'];
 
             // Enregistrer l'utilisate ur
-            if($password !== $repeatPassword){
+            if ($password !== $repeatPassword) {
                 return $view->render($response, 'InscriptionView.twig', ['error' => 'Mot de passe différent']);
             }
 
@@ -45,19 +46,18 @@ class InscriptionActionPost extends AbstractAction
                 return $view->render($response, 'InscriptionView.twig', ['error' => 'Email invalide']);
             }
 
-        $success = $authService->registerUser($username, $email, $password);
+            $success = $authService->registerUser($username, $email, $password);
 
 
-
-        if ($success) {
+            if ($success) {
                 // Rediriger l'utilisateur vers la page de connexion ou afficher un message de réussite
-                return $response->withHeader('Location', $url);
+                $response = $response->withHeader('Location', $url)->withStatus(302);
             } else {
                 // Afficher le formulaire d'inscription avec un message d'erreur
                 return $view->render($response, 'InscriptionView.twig', ['error' => 'L\'utilisateur existe déjà']);
             }
-    }
+        }
 
-        return $view->render($response, 'InscriptionView.twig');
-}
+        return $response;
+    }
 }

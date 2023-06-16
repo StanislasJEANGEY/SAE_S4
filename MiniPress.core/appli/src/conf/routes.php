@@ -2,9 +2,7 @@
 
 use minipress\appli\actions\get\ArticleAction;
 use minipress\appli\actions\get\AccueilActionGet;
-use minipress\appli\actions\get\ConnexionAction;
 use minipress\appli\actions\get\ConnexionActionGet;
-use minipress\appli\actions\get\InscriptionAction;
 use minipress\appli\actions\get\InscriptionActionGet;
 use minipress\appli\actions\get\ListeArticlesAction;
 use minipress\appli\actions\post\ConnexionActionPost;
