@@ -13,7 +13,7 @@ use Twig\Error\LoaderError;
 use Twig\Error\RuntimeError;
 use Twig\Error\SyntaxError;
 
-class AddArticleAction extends AbstractAction {
+class AddArticleActionGet extends AbstractAction {
 
 	/**
 	 * @throws RuntimeError
@@ -22,19 +22,11 @@ class AddArticleAction extends AbstractAction {
 	 */
 	public function __invoke(Request $request, Response $response, array $args): Response {
 		$articleService = new ArticleService();
+		$articleService->getArticles();
+
 		$view = Twig::fromRequest($request);
 
-		$data = $request->getParsedBody();
-		$data['titre'] = filter_var($data['titre'], FILTER_SANITIZE_FULL_SPECIAL_CHARS);
-		$data['contenu'] = filter_var($data['contenu'], FILTER_SANITIZE_FULL_SPECIAL_CHARS);
-		$data['resume'] = filter_var($data['resume'], FILTER_SANITIZE_FULL_SPECIAL_CHARS);
-		try {
-			$articleService->setArticle($data);
-		} catch (ServiceException $e) {
-			throw new HttpBadRequestException($request, $e->getMessage());
-		}
-
-		$view->render($response, 'AddArticleView.twig');
+		$view->render($response, 'AddArticleView.twig', ['articles' => $articleService]);
 
 		return $response;
 	}

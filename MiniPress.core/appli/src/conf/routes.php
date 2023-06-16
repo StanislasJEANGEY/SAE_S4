@@ -1,28 +1,26 @@
 <?php
 
-use minipress\appli\actions\get\ArticleAction;
+use minipress\appli\actions\get\AddArticleActionGet;
+use minipress\appli\actions\get\ArticleActionGet;
 use minipress\appli\actions\get\AccueilActionGet;
-use minipress\appli\actions\get\ArticlesByCategorieActionGet;
 use minipress\appli\actions\get\ConnexionActionGet;
 use minipress\appli\actions\get\DeconnexionActionGet;
 use minipress\appli\actions\get\InscriptionActionGet;
-use minipress\appli\actions\get\ListeArticlesAction;
+use minipress\appli\actions\get\ListeArticlesActionGet;
+use minipress\appli\actions\post\AddArticleByCategoriePost;
+use minipress\appli\actions\post\AddArticleActionPost;
 use minipress\appli\actions\get\ProfilActionGet;
 use minipress\appli\actions\post\ConnexionActionPost;
 use minipress\appli\actions\post\InscriptionActionPost;
-use Psr\Http\Message\ResponseInterface as Response;
-use Psr\Http\Message\ServerRequestInterface as Request;
 
 return function (\Slim\App $app): void {
     $app->get('/', AccueilActionGet::class)->setName("home");
-    $app->get('/articles[/]', ListeArticlesAction::class)->setName("liste_articles_get");
-    $app->get('/categorie/{id}/articles[/]', ArticlesByCategorieActionGet::class)->setName("articles_by_categorie_get");
-    $app->get('/articles/{id}[/]', ArticleAction::class)->setName("article_get");
-	$app->get('/add_articles[/]', \minipress\appli\actions\get\AddArticleAction::class)->setName("articles_get");
-	$app->post('/add_articles[/]', \minipress\appli\actions\post\AddArticleAction::class)->setName("add_articles_post");
-
-	$app->get('/appli/articleByCategorie',  minipress\appli\actions\get\ArticleByCategorie::class)->setName('articleByCategorie');
-    $app->post('/appli/articleByCategorie', minipress\appli\actions\post\AddArticleByCategorie::class)->setName('addArticleByCategorie');
+    $app->get('/articles[/]', ListeArticlesActionGet::class)->setName("liste_articles_get");
+    $app->get('/articles/{id}[/]', ArticleActionGet::class)->setName("article_get");
+	$app->get('/add_articles[/]', AddArticleActionGet::class)->setName("add_articles_get");
+	$app->post('/add_articles[/]', AddArticleActionPost::class)->setName("add_articles_post");
+	$app->get('/appli/setArticleByCategorie',  AddArticleByCategoriePost::class)->setName('add_articleByCategorie_get');
+	$app->post('/appli/articleByCategorie', AddArticleByCategoriePost::class)->setName('add_articleByCategorie_post');
 
 	/** Route Authentification */
     $app->get('/inscription[/]', InscriptionActionGet::class)->setName("inscription_get");

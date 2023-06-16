@@ -11,7 +11,7 @@ use Psr\Http\Message\ServerRequestInterface as Request;
 use Slim\Routing\RouteContext;
 use Slim\Views\Twig;
 
-class AddArticleByCategorie extends AbstractAction
+class AddArticleByCategoriePost extends AbstractAction
 {
 
     public function __invoke(Request $request, Response $response, array $args): Response

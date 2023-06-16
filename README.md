@@ -34,9 +34,9 @@ https://arche.univ-lorraine.fr/pluginfile.php/3211556/mod_resource/content/2/Suj
 | 2. Créer un article en choisissant une catégorie            |      Antonin       |   OK   |
 | 3. Afficher la liste des articles                           |     Stanislas      |   OK   |
 | 4. Afficher la liste des articles en filtrant par catégorie |     Stanislas      |   OK   |
-| 5. Création d’une catégorie                                 |     Stanislas      |  DEB   |
-| 6. Formulaire d’authentification                            |       Damien       |  ---   |
-| 7. Contrôle d’accès                                         |       Damien       |  ---   |
+| 5. Création d’une catégorie                                 |      Antonin       |  ---   |
+| 6. Formulaire d’authentification                            |       Damien       |   OK   |
+| 7. Contrôle d’accès                                         |       Damien       |   OK   |
 | 8. Auteurs                                                  |        ---         |  ---   |
 | 9. API : liste des catégories                               |     Stanislas      |   OK   |
 | 10. API : liste des articles                                |     Stanislas      |   OK   |
@@ -44,5 +44,5 @@ https://arche.univ-lorraine.fr/pluginfile.php/3211556/mod_resource/content/2/Suj
 | 12. API : article complet                                   |      Antonin       |   OK   |
 | 13. API : liste des articles d’un auteur                    |     Stanislas      |   OK   |
 | 14. Publication/dépublication des articles                  |        ---         |  ---   |
-| 15. Création d’utilisateurs                                 |        ---         |  ---   |
-| 16. Tri de la liste d’articles dans l’API                   |        ---         |  ---   |
+| 15. Création d’utilisateurs                                 |       Damien       |  ---   |
+| 16. Tri de la liste d’articles dans l’API                   |     Stanislas      |  ---   |
