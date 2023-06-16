@@ -18,7 +18,6 @@ class articleByCategorie extends AbstractAction
         $categorieService = new CategorieService();
         $categories = $categorieService->getCategories();
 
-        var_dump($categories);
 
         $view = Twig::fromRequest($request);
         return $view->render($response, 'setArticleByCategorie.twig', ['categories'=>$categories]);
