@@ -54,4 +54,9 @@ class ArticleService
     {
         return Article::all()->toArray();
     }
+
+    public function getArticlesByCategorie(mixed $id)
+    {
+        return Article::where('categorie_id', $id)->get()->toArray();
+    }
 }
