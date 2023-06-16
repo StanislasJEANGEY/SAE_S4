@@ -1,6 +1,6 @@
 <?php
 
-namespace minipress\appli\actions\post;
+namespace minipress\appli\actions\get;
 
 use minipress\appli\actions\AbstractAction;
 use minipress\appli\services\article\ArticleService;
@@ -9,7 +9,7 @@ use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
 use Slim\Views\Twig;
 
-class setArticleByCategorie extends AbstractAction
+class articleByCategorie extends AbstractAction
 {
 
     public function __invoke(Request $request, Response $response, array $args): Response
@@ -17,6 +17,7 @@ class setArticleByCategorie extends AbstractAction
 
         $categorieService = new CategorieService();
         $categories = $categorieService->getCategories();
+
         var_dump($categories);
 
         $view = Twig::fromRequest($request);
