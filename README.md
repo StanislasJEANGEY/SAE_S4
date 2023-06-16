@@ -44,5 +44,5 @@ https://arche.univ-lorraine.fr/pluginfile.php/3211556/mod_resource/content/2/Suj
 | 12. API : article complet                                   |      Antonin       |   OK   |
 | 13. API : liste des articles d’un auteur                    |     Stanislas      |   OK   |
 | 14. Publication/dépublication des articles                  |        ---         |  ---   |
-| 15. Création d’utilisateurs                                 |       Damien       |  ---   |
+| 15. Création d’utilisateurs                                 |       Damien       |   OK   |
 | 16. Tri de la liste d’articles dans l’API                   |     Stanislas      |  ---   |
