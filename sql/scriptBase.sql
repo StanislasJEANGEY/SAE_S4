@@ -5,7 +5,7 @@ DROP TABLE IF EXISTS categories;
 
 
 -- Création de la base de données
-CREATE DATABASE minipress;
+CREATE DATABASE IF NOT EXISTS minipress;
 
 -- Utilisation de la base de données
 USE minipress;
@@ -38,6 +38,16 @@ CREATE TABLE articles
     FOREIGN KEY (categorie_id) REFERENCES categories (id),
     FOREIGN KEY (auteur_id) REFERENCES auteurs (id)
 );
+
+-- Création de la table "users"
+CREATE TABLE users (
+   id INT PRIMARY KEY AUTO_INCREMENT,
+   username VARCHAR(255) UNIQUE NOT NULL,
+   email VARCHAR(255) UNIQUE NOT NULL,
+   password VARCHAR(255) NOT NULL
+);
+
+
 
 -- Insertion de catégories
 INSERT INTO categories (nom)

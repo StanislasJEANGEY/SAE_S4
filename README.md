@@ -33,7 +33,7 @@ https://arche.univ-lorraine.fr/pluginfile.php/3211556/mod_resource/content/2/Suj
 | 1. Créer un article                                         |       Jules        |  ---   |
 | 2. Créer un article en choisissant une catégorie            |      Antonin       |  ---   |
 | 3. Afficher la liste des articles                           |     Stanislas      |   OK   |
-| 4. Afficher la liste des articles en filtrant par catégorie |        ---         |  ---   |
+| 4. Afficher la liste des articles en filtrant par catégorie |     Stanislas      |  DEB   |
 | 5. Création d’une catégorie                                 |        ---         |  ---   |
 | 6. Formulaire d’authentification                            |       Damien       |  ---   |
 | 7. Contrôle d’accès                                         |       Damien       |  ---   |
