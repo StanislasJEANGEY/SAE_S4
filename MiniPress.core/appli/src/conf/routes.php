@@ -1,19 +1,19 @@
 <?php
 
 use minipress\appli\actions\get\ArticleAction;
+use minipress\appli\actions\get\AccueilActionGet;
 use minipress\appli\actions\get\ConnexionAction;
+use minipress\appli\actions\get\ConnexionActionGet;
 use minipress\appli\actions\get\InscriptionAction;
 use minipress\appli\actions\get\InscriptionActionGet;
 use minipress\appli\actions\get\ListeArticlesAction;
+use minipress\appli\actions\post\ConnexionActionPost;
 use minipress\appli\actions\post\InscriptionActionPost;
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
 
 return function (\Slim\App $app): void {
-    $app->get('/', function (Request $request, Response $response, array $args) {
-        $response->getBody()->write('<center><h1>Minipress</h1></center><a href="/inscription">Inscription</a>');
-        return $response;
-    })->setName('home');
+    $app->get('/', AccueilActionGet::class)->setName("home");
     $app->get('/articles[/]', ListeArticlesAction::class)->setName("liste_articles_get");
     $app->get('/articles/{id}[/]', ArticleAction::class)->setName("article_get");
 	$app->get('/add_articles[/]', \minipress\appli\actions\get\AddArticleAction::class)->setName("articles_get");
@@ -23,6 +23,6 @@ return function (\Slim\App $app): void {
 	/** Route Authentification */
     $app->get('/inscription[/]', InscriptionActionGet::class)->setName("inscription_get");
     $app->post('/inscription[/]', InscriptionActionPost::class)->setName("inscription_post");
-    $app->get('/connexion[/]', ConnexionAction::class)->setName("connexion_get");
-    $app->post('/connexion[/]', ConnexionAction::class)->setName("connexion_post");
+    $app->get('/connexion[/]', ConnexionActionGet::class)->setName("connexion_get");
+    $app->post('/connexion[/]', ConnexionActionPost::class)->setName("connexion_post");
 };

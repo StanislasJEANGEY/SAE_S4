@@ -1,15 +1,14 @@
 <?php
 
-namespace minipress\appli\actions\get;
+namespace minipress\appli\actions\post;
 
 use minipress\appli\actions\AbstractAction;
-use minipress\appli\models\User;
 use minipress\appli\services\auth\AuthentificationService;
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
 use Slim\Views\Twig;
 
-class ConnexionAction extends AbstractAction
+class ConnexionActionPost extends AbstractAction
 {
 
     public function __invoke(Request $request, Response $response, array $args): Response
@@ -37,4 +36,5 @@ class ConnexionAction extends AbstractAction
 
         return $view->render($response, 'ConnexionView.twig');
     }
+
 }

@@ -33,11 +33,23 @@ class InscriptionActionPost extends AbstractAction
             $username = $data['username'];
             $email = $data['email'];
             $password = $data['password'];
+            $repeatPassword = $data['repeat-password'];
 
             // Enregistrer l'utilisate ur
-            $success = $authService->registerUser($username, $email, $password);
+            if($password !== $repeatPassword){
+                return $view->render($response, 'InscriptionView.twig', ['error' => 'Mot de passe différent']);
+            }
 
-            if ($success) {
+            //verifie si l'email est valide
+            if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+                return $view->render($response, 'InscriptionView.twig', ['error' => 'Email invalide']);
+            }
+
+        $success = $authService->registerUser($username, $email, $password);
+
+
+
+        if ($success) {
                 // Rediriger l'utilisateur vers la page de connexion ou afficher un message de réussite
                 return $response->withHeader('Location', $url);
             } else {
