@@ -2,6 +2,7 @@
 DROP TABLE IF EXISTS articles;
 DROP TABLE IF EXISTS auteurs;
 DROP TABLE IF EXISTS categories;
+DROP TABLE IF EXISTS users;
 
 
 -- Création de la base de données
@@ -48,6 +49,15 @@ CREATE TABLE users (
 );
 
 
+
+-- Création de la table "users"
+CREATE TABLE users (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    username VARCHAR(255) UNIQUE NOT NULL,
+    email VARCHAR(255) UNIQUE NOT NULL,
+    password VARCHAR(255) NOT NULL,
+    role VARCHAR(255) NOT NULL
+);
 
 -- Insertion de catégories
 INSERT INTO categories (nom)

@@ -8,9 +8,8 @@ use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
 use Slim\Views\Twig;
 
-class ProfilActionGet extends AbstractAction
+class AddUserActionGet extends AbstractAction
 {
-
 
     public function __invoke(Request $request, Response $response, array $args): Response
     {
@@ -18,7 +17,7 @@ class ProfilActionGet extends AbstractAction
         $authService = new AuthentificationService();
         $estConnecte = $authService->getCurrentUser();
 
-        return $view->render($response, 'ProfilView.twig', [
+        return $view->render($response, 'AddUserView.twig', [
             'estConnecte' => $estConnecte,
         ]);
     }

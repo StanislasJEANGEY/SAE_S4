@@ -1,5 +1,6 @@
 <?php
 
+use minipress\appli\actions\get\AddUserActionGet;
 use minipress\appli\actions\get\AddArticleActionGet;
 use minipress\appli\actions\get\ArticleActionGet;
 use minipress\appli\actions\get\AccueilActionGet;
@@ -10,6 +11,7 @@ use minipress\appli\actions\get\ListeArticlesActionGet;
 use minipress\appli\actions\post\AddArticleByCategoriePost;
 use minipress\appli\actions\post\AddArticleActionPost;
 use minipress\appli\actions\get\ProfilActionGet;
+use minipress\appli\actions\post\AddUserActionPost;
 use minipress\appli\actions\post\ConnexionActionPost;
 use minipress\appli\actions\post\InscriptionActionPost;
 
@@ -30,4 +32,7 @@ return function (\Slim\App $app): void {
     $app->get('/profil/{id}[/]', ProfilActionGet::class)->setName("profil_get");
     $app->get('/deconnexion[/]', DeconnexionActionGet::class)->setName("deconnexion_get");
 
+    /** Route admin */
+    $app->get('/addUser[/]', AddUserActionGet::class)->setName("add_user_get");
+    $app->post('/addUser[/]', AddUserActionPost::class)->setName("add_user_post");
 };
