@@ -10,13 +10,9 @@ use minipress\api\actions\getCategoriesApi;
 
 return function (\Slim\App $app): void {
     $app->get('/', getAccueilApi::class)->setName('home');
-$app->get('/api/categories[/]', getCategoriesApi::class)->setName('getCategoriesApi');
-$app->get('/api/articles[/]', getArticleApi::class)->setName('getArticleApi');
-$app->get('/api/categories/{id}/articles[/]', getArticlesByCategorieApi::class)->setName('getArticlesByCategorieApi');
-$app->get('/api/article/{id}[/]', getArticleByIdApi::class)->setName('getArticleByIdApi');
-$app->get('/api/auteur/{id}/articles[/]', getArticleByAuteurApi::class)->setName('getArticleByAuteurApi');
-
-
-
-
+    $app->get('/api/categories[/]', getCategoriesApi::class)->setName('getCategoriesApi');
+    $app->get('/api/articles[/]', getArticleApi::class)->setName('getArticleApi');
+    $app->get('/api/categories/{id}/articles[/]', getArticlesByCategorieApi::class)->setName('getArticlesByCategorieApi');
+    $app->get('/api/articles/{id}[/]', getArticleByIdApi::class)->setName('getArticleByIdApi');
+    $app->get('/api/auteurs/{id}/articles[/]', getArticleByAuteurApi::class)->setName('getArticleByAuteurApi');
 };

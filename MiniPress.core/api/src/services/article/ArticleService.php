@@ -32,4 +32,9 @@ class ArticleService
     function getArticlesByAuteur(int $idAuteur): array {
         return Article::where('auteur_id', $idAuteur)->get()->toArray();
     }
+
+    public function getArticlesWithAuteur()
+    {
+        return Article::with('auteur')->get()->toArray();
+    }
 }
