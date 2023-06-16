@@ -6,7 +6,7 @@ use minipress\appli\models\User;
 
 class AuthentificationService
 {
-    public function registerUser(string $username, string $email, string $password): bool
+    public function registerUser(string $username, string $email, string $password, ?string $role): bool
     {
         // Vérifier si l'utilisateur existe déjà
         if (User::where('username', $username)->orWhere('email', $email)->exists()) {
@@ -18,6 +18,7 @@ class AuthentificationService
         $user->username = $username;
         $user->email = $email;
         $user->password = password_hash($password, PASSWORD_DEFAULT);
+        $user->role = $role;
         $user->save();
 
         return true;

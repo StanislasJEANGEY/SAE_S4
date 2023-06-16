@@ -1,0 +1,43 @@
+{% extends 'Squelette.twig' %}
+
+{% block content %}
+    <div class="container">
+        <center><h1 class="mt-5">Créer un utilisateur</h1></center>
+
+        {% if valid %}
+            <div class="alert alert-success mt-4">{{ valid }}</div>
+        {% endif %}
+        {% if error %}
+            <div class="alert alert-danger mt-4">{{ error }}</div>
+        {% endif %}
+
+        <div class="row justify-content-center mt-4">
+            <div class="col-md-6">
+                <form method="POST" action="{{ url_for('add_user_post') }}">
+                    <div class="mb-3">
+                        <label for="username" class="form-label">Nom d'utilisateur</label>
+                        <input type="text" id="username" name="username" class="form-control" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="email" class="form-label">Adresse e-mail</label>
+                        <input type="email" id="email" name="email" class="form-control" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="password" class="form-label">Mot de passe</label>
+                        <input type="password" id="password" name="password" class="form-control" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="role" class="form-label">Rôle</label>
+                        <select id="role" name="role" class="form-select" required>
+                            <option value="utilisateur">Utilisateur</option>
+                            <option value="admin">Admin</option>
+                        </select>
+                    </div>
+                    <div class="mb-3">
+                        <button type="submit" class="btn btn-primary">Créer</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+{% endblock %}
