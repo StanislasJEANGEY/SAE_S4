@@ -3,8 +3,10 @@
 use minipress\appli\actions\get\ArticleAction;
 use minipress\appli\actions\get\AccueilActionGet;
 use minipress\appli\actions\get\ConnexionActionGet;
+use minipress\appli\actions\get\DeconnexionActionGet;
 use minipress\appli\actions\get\InscriptionActionGet;
 use minipress\appli\actions\get\ListeArticlesAction;
+use minipress\appli\actions\get\ProfilActionGet;
 use minipress\appli\actions\post\ConnexionActionPost;
 use minipress\appli\actions\post\InscriptionActionPost;
 use Psr\Http\Message\ResponseInterface as Response;
@@ -23,4 +25,7 @@ return function (\Slim\App $app): void {
     $app->post('/inscription[/]', InscriptionActionPost::class)->setName("inscription_post");
     $app->get('/connexion[/]', ConnexionActionGet::class)->setName("connexion_get");
     $app->post('/connexion[/]', ConnexionActionPost::class)->setName("connexion_post");
+    $app->get('/profil/{id}[/]', ProfilActionGet::class)->setName("profil_get");
+    $app->get('/deconnexion[/]', DeconnexionActionGet::class)->setName("deconnexion_get");
+
 };

@@ -1,0 +1,20 @@
+{% extends 'Squelette.twig' %}
+
+{% block content %}
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <div class="card mt-5">
+                    <div class="card-body">
+                        <h5 class="card-title">Informations personnelles</h5>
+                        <p class="card-text"><strong>Nom d'utilisateur :</strong> {{ estConnecte.username }}</p>
+                        <p class="card-text"><strong>Adresse e-mail :</strong> {{ estConnecte.email }}</p>
+                    </div>
+                </div>
+                <div class="text-center mt-4">
+                    <a href="{{ url_for('deconnexion_get') }}" class="btn btn-primary">Se déconnecter</a>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
