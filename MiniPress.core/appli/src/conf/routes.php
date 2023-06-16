@@ -2,6 +2,7 @@
 
 use minipress\appli\actions\get\ArticleAction;
 use minipress\appli\actions\get\AccueilActionGet;
+use minipress\appli\actions\get\ArticlesByCategorieActionGet;
 use minipress\appli\actions\get\ConnexionActionGet;
 use minipress\appli\actions\get\DeconnexionActionGet;
 use minipress\appli\actions\get\InscriptionActionGet;
@@ -15,6 +16,7 @@ use Psr\Http\Message\ServerRequestInterface as Request;
 return function (\Slim\App $app): void {
     $app->get('/', AccueilActionGet::class)->setName("home");
     $app->get('/articles[/]', ListeArticlesAction::class)->setName("liste_articles_get");
+    $app->get('/categorie/{id}/articles[/]', ArticlesByCategorieActionGet::class)->setName("articles_by_categorie_get");
     $app->get('/articles/{id}[/]', ArticleAction::class)->setName("article_get");
 	$app->get('/add_articles[/]', \minipress\appli\actions\get\AddArticleAction::class)->setName("articles_get");
 	$app->post('/add_articles[/]', \minipress\appli\actions\post\AddArticleAction::class)->setName("add_articles_post");
