@@ -21,12 +21,33 @@ class ArticleService
         }
     }
 
+    /**
+     * @throws ServiceException
+     */
     function setArticle($data): void {
-		$article = new Article();
-		$article->titre = $data['titre'];
-		$article->resume = $data['resume'];
-		$article->contenu = $data['contenu'];
-		$article->save();
+        try {
+            $article = new Article();
+            $article->titre = $data['titre'];
+            $article->resume = $data['resume'];
+            $article->contenu = $data['contenu'];
+            $article->save();
+        }catch (ModelNotFoundException $e) {
+            throw new ServiceException("Une erreur s'est produite lors de l'enregistrement de l'article");
+        }
+
+    }
+    function setArticleByCategorie($data): void
+    {
+        try {
+            $article = new Article();
+            $article->titre = $data['titre'];
+            $article->resume = $data['resume'];
+            $article->contenu = $data['contenu'];
+            $article->categorie_id = $data['categorie'];
+            $article->save();
+        }catch (ModelNotFoundException $e) {
+            throw new ServiceException("Une erreur s'est produite lors de l'enregistrement de l'article");
+        }
     }
 
     public function getArticles() :array

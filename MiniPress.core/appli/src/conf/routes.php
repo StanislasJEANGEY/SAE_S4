@@ -20,7 +20,9 @@ return function (\Slim\App $app): void {
     $app->get('/articles/{id}[/]', ArticleAction::class)->setName("article_get");
 	$app->get('/add_articles[/]', \minipress\appli\actions\get\AddArticleAction::class)->setName("articles_get");
 	$app->post('/add_articles[/]', \minipress\appli\actions\post\AddArticleAction::class)->setName("add_articles_post");
-	$app->get('/appli/setArticleByCategorie',  minipress\appli\actions\post\setArticleByCategorie::class)->setName('setArticleByCategorie');
+
+	$app->get('/appli/articleByCategorie',  minipress\appli\actions\get\ArticleByCategorie::class)->setName('articleByCategorie');
+    $app->post('/appli/articleByCategorie', minipress\appli\actions\post\AddArticleByCategorie::class)->setName('addArticleByCategorie');
 
 	/** Route Authentification */
     $app->get('/inscription[/]', InscriptionActionGet::class)->setName("inscription_get");
