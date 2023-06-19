@@ -3,6 +3,7 @@
 namespace minipress\appli\actions\get;
 
 use minipress\appli\services\article\ArticleService;
+use minipress\appli\services\auth\AuthentificationService;
 use minipress\appli\services\categorie\CategorieService;
 use minipress\appli\services\ServiceException;
 use Psr\Http\Message\ResponseInterface as Response;
@@ -23,13 +24,16 @@ class ArticlesByCategorieActionGet extends \minipress\appli\actions\AbstractActi
      */
     public function __invoke(Request $request, Response $response, array $args): Response
     {
+        $authService = new AuthentificationService();
+        $estConnecte = $authService->getCurrentUser();
+
         $articleService = new ArticleService();
         $articles = $articleService->getArticlesByCategorie($args['id']);
         $categorieService = new CategorieService();
         $categorie = $categorieService->getCategorieById($args['id']);
         $view = Twig::fromRequest($request);
         $view->render($response, 'ArticlesByCategorieView.twig', [
-            'articles' => $articles, 'categorie' => $categorie
+            'articles' => $articles, 'categorie' => $categorie, 'estConnecte' => $estConnecte
         ]);
 
         return $response;

@@ -1,10 +1,15 @@
 {% extends 'Squelette.twig' %}
-{%  block content %}
-    <div>
-        <h2>{{ article.titre }}</h2>
-        <p>{{ article.resume }}</p>
-        <p>{{ article.contenu }}</p>
-        <p>Date de création : {{ article.date_creation }}</p>
-        <img src="{{ article.image_url }}" alt="Image de l'article">
+
+{% block content %}
+    <div class="container">
+        <div class="card mt-5 mb-5">
+            <div class="card-body">
+                <h2 class="card-title">{{ article.titre }}</h2>
+                <p class="card-text">{{ article.resume }}</p>
+                <p class="card-text">{{ article.contenu }}</p>
+                <p class="card-text"><strong>Date de création :</strong> {{ article.date_creation | date('d/m/Y à H:i') }}</p>
+                <img src="{{ article.image_url }}" alt="Image de l'article" class="img-fluid mb-3">
+            </div>
+        </div>
     </div>
 {% endblock %}

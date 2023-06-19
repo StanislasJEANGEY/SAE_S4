@@ -2,21 +2,27 @@
 
 {% block content %}
     <div class="container">
-        <h2 class="heading">Créer un article :</h2>
-        <form method="post" action="{{ url_for('add_articles_post') }}">
-            <div>
-                <label for="titre">Titre</label>
-                <input type="text" id="titre" name="titre" required placeholder="titre">
+        <div class="card mt-5 mb-5">
+            <div class="card-header">
+                <h2 class="card-title">Créer un article :</h2>
             </div>
-            <div>
-                <label for="contenu">Contenu</label>
-                <input type="text" id="contenu" name="contenu" required placeholder="contenu">
+            <div class="card-body">
+                <form method="post" action="{{ url_for('add_articles_post') }}">
+                    <div class="mb-3">
+                        <label for="titre" class="form-label">Titre</label>
+                        <input type="text" id="titre" name="titre" class="form-control" required placeholder="Titre">
+                    </div>
+                    <div class="mb-3">
+                        <label for="contenu" class="form-label">Contenu</label>
+                        <textarea id="contenu" name="contenu" class="form-control" required placeholder="Contenu" rows="5"></textarea>
+                    </div>
+                    <div class="mb-3">
+                        <label for="resume" class="form-label">Résumé</label>
+                        <textarea id="resume" name="resume" class="form-control" required placeholder="Résumé"></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Enregistrer</button>
+                </form>
             </div>
-            <div>
-                <label for="resume">Résumé</label>
-                <input type="text" id="resume" name="resume" required placeholder="resume">
-            </div>
-            <input type="submit" value="Enregistrer">
-        </form>
+        </div>
     </div>
 {% endblock %}

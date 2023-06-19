@@ -12,6 +12,8 @@
                 <li class="nav-item">
                     <a class="nav-link" href="{{ url_for('home') }}">Accueil</a>
                 </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ url_for('liste_articles_get') }}">Liste des articles</a>
                 {% if estConnecte is defined and estConnecte.role == 2 %}
                     <li class="nav-item">
                         <a class="nav-link" href="{{ url_for('add_user_get') }}">Créer un utilisateur</a>
