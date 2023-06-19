@@ -4,10 +4,12 @@ use minipress\appli\actions\get\AddUserActionGet;
 use minipress\appli\actions\get\AddArticleActionGet;
 use minipress\appli\actions\get\ArticleActionGet;
 use minipress\appli\actions\get\AccueilActionGet;
+use minipress\appli\actions\get\CategorieActionGet;
 use minipress\appli\actions\get\ConnexionActionGet;
 use minipress\appli\actions\get\DeconnexionActionGet;
 use minipress\appli\actions\get\InscriptionActionGet;
 use minipress\appli\actions\get\ListeArticlesActionGet;
+use minipress\appli\actions\get\ListeCategoriesActionGet;
 use minipress\appli\actions\post\AddArticleByCategoriePost;
 use minipress\appli\actions\post\AddArticleActionPost;
 use minipress\appli\actions\get\ProfilActionGet;
@@ -25,8 +27,12 @@ return function (\Slim\App $app): void {
 	$app->post('/add_articles[/]', AddArticleActionPost::class)->setName("add_articles_post");
 	$app->get('/appli/setArticleByCategorie',  AddArticleByCategoriePost::class)->setName('add_articleByCategorie_get');
 	$app->post('/appli/articleByCategorie', AddArticleByCategoriePost::class)->setName('add_articleByCategorie_post');
+    $app->get('/categories[/]', ListeCategoriesActionGet::class)->setName("liste_categories_get");
+    $app->get('/categories/{id}[/]', CategorieActionGet::class)->setName("categorie_get");
 
-	/** Route Authentification */
+
+
+    /** Route Authentification */
     $app->get('/inscription[/]', InscriptionActionGet::class)->setName("inscription_get");
     $app->post('/inscription[/]', InscriptionActionPost::class)->setName("inscription_post");
     $app->get('/connexion[/]', ConnexionActionGet::class)->setName("connexion_get");
