@@ -28,12 +28,9 @@ class AddArticleActionPost extends AbstractAction {
 		$user = $authentificationService->getCurrentUser();
 
 		$auteurService = new AuteurService();
-		$auteur = $auteurService->getAuteurById($user['id']);
 
-		if (!$auteurService->isAuteur($user['id'])) {
-			$auteurService->setAuteur($user['id']);
-		}
 
+        $auteur = $auteurService->getAuteurByUserId($user['id']);
 		$idAuteur = $auteur['id'];
 
 		$data = $request->getParsedBody();

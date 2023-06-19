@@ -59,6 +59,7 @@ class ArticleService
             $article->resume = $data['resume'];
             $article->contenu = $data['contenu'];
             $article->categorie_id = $data['categorie'];
+            $article->auteur_id = $data['auteur_id'];
             $article->save();
         }catch (ModelNotFoundException $e) {
             throw new ServiceException("Une erreur s'est produite lors de l'enregistrement de l'article");
@@ -67,10 +68,7 @@ class ArticleService
 
     public function getArticles() :array
     {
-	    return Article::join('auteurs', 'articles.auteur_id', '=', 'auteurs.id')
-		    ->select('articles.*', 'auteurs.nom as auteur_nom')
-		    ->get()
-		    ->toArray();
+	            return Article::all()->toArray();
     }
 
     public function getArticlesByCategorie(mixed $id)

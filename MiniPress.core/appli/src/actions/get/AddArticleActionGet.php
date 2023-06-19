@@ -35,7 +35,7 @@ class AddArticleActionGet extends AbstractAction {
         $idCateg = $args['id'];
 
 		$auteurService = new AuteurService();
-		$auteurs = $auteurService->getAuteurById($estConnecte['id']);
+		$auteurs = $auteurService->getAuteurByUserId($estConnecte['id']);
 
         $view = Twig::fromRequest($request);
 

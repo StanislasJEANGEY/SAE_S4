@@ -68,4 +68,12 @@ class AuthentificationService
 		}
 	}
 
+    public function getUserByEMail($email) {
+        try {
+            return User::where('email', $email)->firstOrFail()->toArray();
+        } catch (ModelNotFoundException $e) {
+            throw new ServiceException("User $email n'existe pas", 404, $e);
+        }
+    }
+
 }

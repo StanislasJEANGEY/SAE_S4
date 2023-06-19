@@ -13,18 +13,17 @@ class AuteurService {
 	/**
 	 * @throws ServiceException
 	 */
-	public function setAuteur($id): void {
+	public function setAuteur($email): void {
 		try {
-			$auteur = new Auteur();
-			$auteur->id = $id;
-			$authService = new AuthentificationService();
-			$user = $authService->getUserById($id);
-			$auteur->nom = $user['nom'];
-			$auteur->user_id = $user['id'];
-			$auteur->save();
-		} catch (ModelNotFoundException $e) {
-			throw new ServiceException("Une erreur s'est produite lors de l'enregistrement de l'auteur");
-		}
+            $auteur = new Auteur();
+            $authentificationService = new AuthentificationService();
+            $estConnecte = $authentificationService->getUserByEMail($email);
+            $auteur->user_id = $estConnecte['id'];
+            $auteur->nom = $estConnecte['username'];
+            $auteur->save();
+        } catch (ModelNotFoundException $e) {
+            throw new ServiceException("Une erreur s'est produite lors de l'enregistrement de l'auteur");
+        }
 	}
 
 	/**
@@ -38,12 +37,21 @@ class AuteurService {
 		}
 	}
 
+    public function getAuteurByUserId($id) {
+        try {
+            return Auteur::where('user_id', $id)->firstOrFail()->toArray();
+        } catch (ModelNotFoundException $e) {
+            throw new ServiceException("Auteur $id n'existe pas", 404, $e);
+        }
+    }
+
 	public function isAuteur($idUser): bool {
 		try {
-			return Auteur::findOrFail($idUser)->toArray();
-		} catch (ModelNotFoundException $e) {
-			return false;
-		}
+            Auteur::where('user_id', $idUser)->firstOrFail();
+            return true;
+        } catch (ModelNotFoundException $e) {
+            return false;
+        }
 	}
 
 }
