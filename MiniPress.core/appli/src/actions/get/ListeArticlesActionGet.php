@@ -27,7 +27,6 @@ class ListeArticlesActionGet extends \minipress\appli\actions\AbstractAction
 
         $service = new ArticleService();
         $articles = $service->getArticles();
-
         $view = Twig::fromRequest($request);
         $view->render($response, 'ListeArticlesView.twig', [
             'articles' => $articles, 'estConnecte' => $estConnecte

@@ -7,18 +7,50 @@
         <div class="row justify-content-center">
             <div class="col-md-8">
                 <div class="list-group mb-5">
-                    {% for article in articles %}
-                        <a href="/articles/{{ article.id }}" class="list-group-item list-group-item-action">
-                            <h5 class="mb-1">{{ article.titre }}</h5>
-                            <p class="mb-1">{{ article.resume }}</p>
-                            <small class="text-muted">Publié le {{ article.date_creation | date('d/m/Y à H:i') }}</small>
-                        </a>
-                    {% endfor %}
+
+                        {% for article in articles %}
+                            <div id="article">
+
+                                <a href="/articles/{{ article.id }}" class="list-group-item list-group-item-action">
+                                    <h5 class="mb-1">{{ article.titre }}</h5>
+                                    <p class="mb-1">{{ article.resume }}</p>
+                                    <small class="text-muted">Publié
+                                        le {{ article.date_creation | date('d/m/Y à H:i') }}</small>
+                                </a>
+                                {% if article.publie == 1 %}
+                                <form action="" method="post"><label>
+                                        <input type="checkbox" name="publie" checked>
+                                        <input name="id" hidden="hidden" value="{{ article.id }}">
+                                    </label>
+                                    <label for="publie">Publié</label>
+
+                                    <div>
+                                        <input type="submit" value="Sauvegarder">
+                                    </div>
+                                </form>
+                                {% else %}
+                                    <form action="" method="post"><label>
+                                            <input type="checkbox" name="publie" >
+                                            <input name="id" hidden="hidden" value="{{ article.id }}">
+                                        </label>
+                                        <label for="publie">Publié</label>
+
+                                        <div>
+                                            <input type="submit" value="Sauvegarder">
+                                        </div>
+                                    </form>
+                                {% endif %}
+
+
+                            </div>
+                        {% endfor %}
+
+
                 </div>
                 {% if estConnecte %}
-                <div class="text-center mb-5">
-                    <a href="{{ url_for('add_articles_get') }}" class="btn btn-primary">Créer un article</a>
-                </div>
+                    <div class="text-center mb-5">
+                        <a href="{{ url_for('add_articles_get') }}" class="btn btn-primary">Créer un article</a>
+                    </div>
                 {% endif %}
             </div>
         </div>

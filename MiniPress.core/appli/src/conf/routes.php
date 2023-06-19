@@ -14,10 +14,12 @@ use minipress\appli\actions\get\ProfilActionGet;
 use minipress\appli\actions\post\AddUserActionPost;
 use minipress\appli\actions\post\ConnexionActionPost;
 use minipress\appli\actions\post\InscriptionActionPost;
+use minipress\appli\actions\post\ListeArticlesActionPost;
 
 return function (\Slim\App $app): void {
     $app->get('/', AccueilActionGet::class)->setName("home");
     $app->get('/articles[/]', ListeArticlesActionGet::class)->setName("liste_articles_get");
+    $app->post('/articles[/]', ListeArticlesActionPost::class)->setName("liste_articles_post");
     $app->get('/articles/{id}[/]', ArticleActionGet::class)->setName("article_get");
 	$app->get('/add_articles[/]', AddArticleActionGet::class)->setName("add_articles_get");
 	$app->post('/add_articles[/]', AddArticleActionPost::class)->setName("add_articles_post");

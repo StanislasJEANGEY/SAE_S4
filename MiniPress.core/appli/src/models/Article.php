@@ -8,7 +8,7 @@ class Article extends Model
 {
     protected $table = 'articles';
     protected $primaryKey = 'id';
-    protected $fillable = ['titre', 'resume', 'contenu', 'date_creation', 'image_url', 'categorie_id', 'auteur_id'];
+    protected $fillable = ['titre', 'resume', 'contenu', 'date_creation', 'image_url', 'categorie_id', 'auteur_id','publie'];
 	public $timestamps = false;
 
     public function categorie(): \Illuminate\Database\Eloquent\Relations\BelongsTo {
