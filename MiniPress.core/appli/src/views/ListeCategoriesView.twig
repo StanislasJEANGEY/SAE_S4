@@ -1,0 +1,25 @@
+{% extends 'Squelette.twig' %}
+
+{% block content %}
+    <div class="container">
+        <h1 class="display-4 text-center mb-5 mt-5">Catégories</h1>
+
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                <div class="list-group mb-5">
+                    {% for categ in categories %}
+                        <div id="article">
+                            <a href="{{ url_for('categorie_get', {'id': categ.id}) }}" class="list-group-item list-group-item-action">
+                                <h5 class="mb-1">{{ categ.nom }}</h5></a>
+                        </div>
+                    {% endfor %}
+                </div>
+                {% if estConnecte %}
+                    <div class="text-center mb-5">
+                        <a href="{{ url_for('add_categories_get') }}" class="btn btn-primary">Créer une catégorie</a>
+                    </div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+{% endblock %}

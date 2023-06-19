@@ -14,6 +14,10 @@
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="{{ url_for('liste_articles_get') }}">Liste des articles</a>
+                    </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ url_for('liste_categories_get') }}">Liste des categories</a>
+                </li>
                 {% if estConnecte is defined and estConnecte.role == 2 %}
                     <li class="nav-item">
                         <a class="nav-link" href="{{ url_for('add_user_get') }}">Créer un utilisateur</a>
