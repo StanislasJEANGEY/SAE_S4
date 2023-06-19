@@ -15,14 +15,12 @@ class DeconnexionActionGet extends AbstractAction
 
     public function __invoke(Request $request, Response $response, array $args): Response
     {
-        $view = Twig::fromRequest($request);
         $authService = new AuthentificationService();
         $routeContext = RouteContext::fromRequest($request);
         $url = $routeContext->getRouteParser()->urlFor('home');
 
         $authService->logoutUser();
         return $response->withHeader('Location', $url)->withStatus(302);
-
     }
 
 }
