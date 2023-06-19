@@ -20,8 +20,8 @@ Liens utiles :
 
 -   appli (http://docketu.iutnc.univ-lorraine.fr:18085)
 -   api (http://docketu.iutnc.univ-lorraine.fr:18086)
--   sql (http://docketu.iutnc.univ-lorraine.fr:18087) network : sql.db
--   phpmyadmin (http://docketu.iutnc.univ-lorraine.fr:18088)
+-   phpmyadmin (http://docketu.iutnc.univ-lorraine.fr:18087)
+-   sql (http://docketu.iutnc.univ-lorraine.fr:18088) network : sql.db
 
 ## Fonctionnalités
 
