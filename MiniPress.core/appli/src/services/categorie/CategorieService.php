@@ -25,4 +25,15 @@ class CategorieService {
 		}
 	}
 
+    function setCategories($categorie) {
+        $categories = new Categorie();
+        $categories->nom = $categorie['nom'];
+        try {
+            return $categories->save();
+        } catch (\Exception $e) {
+            throw new ServiceException("La catégorie n'a pas pu être ajoutée", 500, $e);
+        }
+
+    }
+
 }

@@ -34,7 +34,7 @@ https://arche.univ-lorraine.fr/pluginfile.php/3211556/mod_resource/content/2/Suj
 | 2. Créer un article en choisissant une catégorie            |      Antonin       |   OK   |
 | 3. Afficher la liste des articles                           |     Stanislas      |   OK   |
 | 4. Afficher la liste des articles en filtrant par catégorie |     Stanislas      |   OK   |
-| 5. Création d’une catégorie                                 |      Antonin       |  ---   |
+| 5. Création d’une catégorie                                 |      Antonin       |   OK   |
 | 6. Formulaire d’authentification                            |       Damien       |   OK   |
 | 7. Contrôle d’accès                                         |       Damien       |   OK   |
 | 8. Auteurs                                                  |        ---         |  ---   |
