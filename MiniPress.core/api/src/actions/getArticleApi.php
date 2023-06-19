@@ -13,7 +13,7 @@ class getArticleApi extends AbstractAction
     public function __invoke(Request $request, Response $response, array $args): Response
     {
         $service = new ArticleService();
-        $article = $service->getArticles();
+        $article = $service->getArticlePublished();
         $data = [
             "type" => "collection",
             "count" => count($article),

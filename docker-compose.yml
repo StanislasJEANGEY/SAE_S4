@@ -1,45 +1,41 @@
-version: "3"
-
+version: "1"
 networks:
-  sae.net:
+  giftbox.net:
     driver: bridge
 
 services:
-  # appli 
-  appli:
-    image: stanislasj/sae_php:latest
-    environment:
-      - http_proxy=http://www-cache.iutnc.univ-lorraine.fr:3128
-      - https_proxy=http://www-cache.iutnc.univ-lorraine.fr:3128
-    ports:
-      - "18085:80"
-    volumes :
-      - ./MiniPress.core/appli/public:/var/www/html
-      - ./MiniPress.core/appli/src:/var/www/src
-    working_dir: /var/www/src
-    networks:
-      - sae.net
-    depends_on:
-      - sql
-
-  # api 
   api:
     image: stanislasj/sae_php:latest
     environment:
       - http_proxy=http://www-cache.iutnc.univ-lorraine.fr:3128
       - https_proxy=http://www-cache.iutnc.univ-lorraine.fr:3128
     ports:
-      - "18086:80"
-    volumes :
+      - "18085:80"
+    volumes:
       - ./MiniPress.core/api/public:/var/www/html
       - ./MiniPress.core/api/src:/var/www/src
     working_dir: /var/www/src
     networks:
-      - sae.net
+      - giftbox.net
     depends_on:
       - sql
 
-  # base de données
+  appli:
+    image: stanislasj/sae_php:latest
+    environment:
+      - http_proxy=http://www-cache.iutnc.univ-lorraine.fr:3128
+      - https_proxy=http://www-cache.iutnc.univ-lorraine.fr:3128
+    ports:
+      - "18086:80"
+    volumes:
+      - ./MiniPress.core/appli/public:/var/www/html
+      - ./MiniPress.core/appli/src:/var/www/src
+    working_dir: /var/www/src
+    networks:
+      - giftbox.net
+    depends_on:
+      - sql
+
   sql:
     image: mysql:latest
     environment:
@@ -47,24 +43,19 @@ services:
       - MYSQL_DATABASE=${DB_NAME}
       - MYSQL_USER=${DB_USER_NAME}
       - MYSQL_PASSWORD=${DB_USER_PASSWORD}
-
     ports:
-      - "18087:3306"
+      - "18088:3306"
     networks:
-      sae.net:
+      giftbox.net:
         aliases:
           - sql.db
 
-  # phpmyadmin
   phpmyadmin:
     image: phpmyadmin:latest
     environment:
       PMA_HOST: sql
       PMA_PORT: 3306
     ports:
-      - "18088:80"
-
+      - "18087:80"
     networks:
-      - sae.net
-    depends_on:
-      - sql
+      - giftbox.net
