@@ -12,12 +12,13 @@ CREATE DATABASE IF NOT EXISTS minipress;
 USE minipress;
 
 -- Création de la table "users"
-CREATE TABLE users (
-    id INT PRIMARY KEY AUTO_INCREMENT,
+CREATE TABLE users
+(
+    id       INT PRIMARY KEY AUTO_INCREMENT,
     username VARCHAR(255) UNIQUE NOT NULL,
-    email VARCHAR(255) UNIQUE NOT NULL,
-    password VARCHAR(255) NOT NULL,
-    role VARCHAR(255) NOT NULL
+    email    VARCHAR(255) UNIQUE NOT NULL,
+    password VARCHAR(255)        NOT NULL,
+    role     VARCHAR(255)        NOT NULL
 );
 
 -- Création de la table "categories"
@@ -30,8 +31,9 @@ CREATE TABLE categories
 -- Création de la table "auteurs"
 CREATE TABLE auteurs
 (
-    id  INT PRIMARY KEY AUTO_INCREMENT,
-    nom VARCHAR(255) NOT NULL,
+    id      INT PRIMARY KEY AUTO_INCREMENT,
+    nom     VARCHAR(255) NOT NULL,
+    user_id INT,
     FOREIGN KEY (user_id) REFERENCES users (id)
 );
 
