@@ -59,4 +59,14 @@ class ArticleService
     {
         return Article::where('categorie_id', $id)->get()->toArray();
     }
+
+    function modifyPubArticle($id){
+        $article = Article::find($id);
+        if($article->publie == 0){
+            $article->publie = 1;
+        }else{
+            $article->publie = 0;
+        }
+        $article->save();
+    }
 }
