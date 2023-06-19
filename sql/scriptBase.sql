@@ -44,7 +44,7 @@ CREATE TABLE articles
     titre         VARCHAR(255) NOT NULL,
     resume        TEXT,
     contenu       TEXT         NOT NULL,
-    date_creation DATETIME     NOT NULL,
+    date_creation DATETIME     NOT NULL DEFAULT CURRENT_TIMESTAMP,
     image_url     VARCHAR(255),
     categorie_id  INT,
     auteur_id     INT,

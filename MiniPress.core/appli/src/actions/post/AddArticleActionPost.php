@@ -16,15 +16,17 @@ class AddArticleActionPost extends AbstractAction {
 		$articleService = new ArticleService();
 		$routeContext = RouteContext::fromRequest($request);
 		$url = $routeContext->getRouteParser()->urlFor('home');
+        $idCateg = $args['id'];
 
 		$data = $request->getParsedBody();
 		$data['titre'] = filter_var($data['titre'], FILTER_SANITIZE_FULL_SPECIAL_CHARS);
 		$data['contenu'] = filter_var($data['contenu'], FILTER_SANITIZE_FULL_SPECIAL_CHARS);
 		$data['resume'] = filter_var($data['resume'], FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+        $data['categorie'] = $idCateg;
 		$data['date_creation'] = date("Y-m-d H:i:s");
 
 		try {
-			$articleService->setArticle($data);
+			$articleService->setArticleByCategorie($data);
 		} catch (ServiceException $e) {
 			throw new HttpBadRequestException($request, $e->getMessage());
 		}

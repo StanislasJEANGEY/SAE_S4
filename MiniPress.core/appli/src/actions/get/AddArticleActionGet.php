@@ -26,11 +26,11 @@ class AddArticleActionGet extends AbstractAction {
 		$articleService->getArticles();
         $authService = new AuthentificationService();
         $estConnecte = $authService->getCurrentUser();
-
+        $idCateg = $args['id'];
 
         $view = Twig::fromRequest($request);
 
-		$view->render($response, 'AddArticleView.twig', ['articles' => $articleService, 'estConnecte' => $estConnecte]);
+		$view->render($response, 'AddArticleView.twig', ['articles' => $articleService, 'estConnecte' => $estConnecte, 'idCateg' => $idCateg]);
 
 		return $response;
 	}

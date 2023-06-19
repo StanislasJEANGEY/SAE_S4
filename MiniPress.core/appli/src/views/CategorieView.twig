@@ -32,7 +32,7 @@
                 </div>
                 {% if estConnecte %}
                     <div class="text-center mb-5">
-                        <a href="{{ url_for('add_articles_get') }}" class="btn btn-primary">Créer un article</a>
+                        <a href="{{ url_for('add_articles_get', {'id': idCateg}) }}" class="btn btn-primary">Créer un article</a>
                     </div>
                 {% endif %}
             </div>

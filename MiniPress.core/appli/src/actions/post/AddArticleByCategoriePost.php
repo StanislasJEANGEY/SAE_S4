@@ -22,6 +22,8 @@ class AddArticleByCategoriePost extends AbstractAction
         $data['titre'] = filter_var($data['titre'], FILTER_SANITIZE_FULL_SPECIAL_CHARS);
         $data['contenu'] = filter_var($data['contenu'], FILTER_SANITIZE_FULL_SPECIAL_CHARS);
         $data['resume'] = filter_var($data['resume'], FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+        $data['date_creation'] = date("Y-m-d H:i:s");
+
         $articleService = new ArticleService();
 
         try {

@@ -1,37 +1,36 @@
 {% extends 'Squelette.twig' %}
-{% block a %}
-    {% block content %}
-        <div class="container" >
-            <h2 class="heading">Créer un article avec une catégorie :</h2>
-            <form method="post" action="{{ url_for('articleByCategorie') }}">
-                <div id="contenu">
-                    <div>
-                        <label for="titre">Titre</label>
-                        <input type="text" id="titre" name="titre" required placeholder="titre">
+
+{% block content %}
+    <div class="container">
+        <h2 class="text-center mb-4 mt-5">Créer un article avec une catégorie :</h2>
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <form method="post" action="{{ url_for('add_articleByCategorie_post') }}">
+                    <div class="mb-3">
+                        <label for="titre" class="form-label">Titre</label>
+                        <input type="text" id="titre" name="titre" class="form-control" required placeholder="Titre">
                     </div>
-                    <div>
-                        <label for="contenu">Contenu</label>
-                        <input type="text" id="contenu" name="contenu" required placeholder="contenu">
+                    <div class="mb-3">
+                        <label for="contenu" class="form-label">Contenu</label>
+                        <textarea id="contenu" name="contenu" class="form-control" rows="6" required placeholder="Contenu"></textarea>
                     </div>
-                    <div>
-                        <label for="resume">Résumé</label>
-                        <input type="text" id="resume" name="resume" required placeholder="resume">
+                    <div class="mb-3">
+                        <label for="resume" class="form-label">Résumé</label>
+                        <textarea id="resume" name="resume" class="form-control" rows="3" required placeholder="Résumé"></textarea>
                     </div>
-                    <div>
-                        <label for="categorie">Catégorie</label>
-                        <select name="categorie" id="categorie">
+                    <div class="mb-3">
+                        <label for="categorie" class="form-label">Catégorie</label>
+                        <select name="categorie" id="categorie" class="form-select">
                             {% for categorie in categories %}
                                 <option value="{{ categorie.id }}">{{ categorie.nom }}</option>
                             {% endfor %}
                         </select>
                     </div>
-
-
-
-                </div>
-                <input type="submit" value="Enregistrer">
-            </form>
+                    <div class="text-center mb-5 mt-5 ">
+                        <button type="submit" class="btn btn-primary">Enregistrer</button>
+                    </div>
+                </form>
+            </div>
         </div>
-    {% endblock %}
+    </div>
 {% endblock %}
-
