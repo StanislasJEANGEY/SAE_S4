@@ -48,6 +48,7 @@ CREATE TABLE articles
     image_url     VARCHAR(255),
     categorie_id  INT,
     auteur_id     INT,
+    publie        BOOLEAN      NOT NULL DEFAULT FALSE,
     FOREIGN KEY (categorie_id) REFERENCES categories (id),
     FOREIGN KEY (auteur_id) REFERENCES auteurs (id)
 );
