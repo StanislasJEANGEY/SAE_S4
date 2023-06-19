@@ -25,16 +25,20 @@ class ArticleService
         return Article::all()->toArray();
     }
 
+    function getArticlePublished(): array {
+        return Article::where('publie', 1)->get()->toArray();
+    }
+
     function getArticlesByCategorie(int $idCategorie): array {
-        return Article::where('categorie_id', $idCategorie)->get()->toArray();
+        return Article::where('categorie_id', $idCategorie)->where('publie', 1)->get()->toArray();
     }
 
     function getArticlesByAuteur(int $idAuteur): array {
-        return Article::where('auteur_id', $idAuteur)->get()->toArray();
+        return Article::where('auteur_id', $idAuteur)->where('publie', 1)->get()->toArray();
     }
 
     public function getArticlesWithAuteur()
     {
-        return Article::with('auteur')->get()->toArray();
+        return Article::with('auteur')->where('publie', 1)->get()->toArray();
     }
 }
