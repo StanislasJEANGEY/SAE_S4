@@ -1,13 +1,26 @@
 {% extends 'Squelette.twig' %}
+
 {% block content %}
-    <h1>Articles</h1>
-    <ul>
-        {% for article in articles %}
-            <li>
-                <a href="/articles/{{ article.id }}">{{ article.titre }}</a>
-            </li>
-        {% endfor %}
-    </ul>
+    <div class="container">
+        <h1 class="display-4 text-center mb-5 mt-5">Articles</h1>
 
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                <div class="list-group mb-5">
+                    {% for article in articles %}
+                        <a href="/articles/{{ article.id }}" class="list-group-item list-group-item-action">
+                            <h5 class="mb-1">{{ article.titre }}</h5>
+                            <p class="mb-1">{{ article.resume }}</p>
+                            <small class="text-muted">Publié le {{ article.date_creation | date('d/m/Y à H:i') }}</small>
+                        </a>
+                    {% endfor %}
+                </div>
+                {% if estConnecte %}
+                <div class="text-center mb-5">
+                    <a href="{{ url_for('add_articles_get') }}" class="btn btn-primary">Créer un article</a>
+                </div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
 {% endblock %}
-

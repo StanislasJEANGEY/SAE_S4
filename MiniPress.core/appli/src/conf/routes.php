@@ -35,4 +35,6 @@ return function (\Slim\App $app): void {
     /** Route admin */
     $app->get('/addUser[/]', AddUserActionGet::class)->setName("add_user_get");
     $app->post('/addUser[/]', AddUserActionPost::class)->setName("add_user_post");
+    $app->get('/addCategories[/]', \minipress\appli\actions\get\FormulaireCategories::class)->setName("add_categories_get");
+    $app->post('/addCategories[/]', \minipress\appli\actions\post\FormulaireCategories::class)->setName("add_categories_post");
 };

@@ -11,6 +11,16 @@ CREATE DATABASE IF NOT EXISTS minipress;
 -- Utilisation de la base de données
 USE minipress;
 
+-- Création de la table "users"
+CREATE TABLE users
+(
+    id       INT PRIMARY KEY AUTO_INCREMENT,
+    username VARCHAR(255) UNIQUE NOT NULL,
+    email    VARCHAR(255) UNIQUE NOT NULL,
+    password VARCHAR(255)        NOT NULL,
+    role     INT                 NOT NULL
+);
+
 -- Création de la table "categories"
 CREATE TABLE categories
 (
@@ -21,8 +31,10 @@ CREATE TABLE categories
 -- Création de la table "auteurs"
 CREATE TABLE auteurs
 (
-    id  INT PRIMARY KEY AUTO_INCREMENT,
-    nom VARCHAR(255) NOT NULL
+    id      INT PRIMARY KEY AUTO_INCREMENT,
+    nom     VARCHAR(255) NOT NULL,
+    user_id INT,
+    FOREIGN KEY (user_id) REFERENCES users (id)
 );
 
 -- Création de la table "articles"
@@ -40,24 +52,6 @@ CREATE TABLE articles
     FOREIGN KEY (auteur_id) REFERENCES auteurs (id)
 );
 
--- Création de la table "users"
-CREATE TABLE users (
-   id INT PRIMARY KEY AUTO_INCREMENT,
-   username VARCHAR(255) UNIQUE NOT NULL,
-   email VARCHAR(255) UNIQUE NOT NULL,
-   password VARCHAR(255) NOT NULL
-);
-
-
-
--- Création de la table "users"
-CREATE TABLE users (
-    id INT PRIMARY KEY AUTO_INCREMENT,
-    username VARCHAR(255) UNIQUE NOT NULL,
-    email VARCHAR(255) UNIQUE NOT NULL,
-    password VARCHAR(255) NOT NULL,
-    role VARCHAR(255) NOT NULL
-);
 
 -- Insertion de catégories
 INSERT INTO categories (nom)
@@ -88,3 +82,7 @@ VALUES ('Article 1', 'Résumé de l\'article 1', 'Contenu de l\'article 1...', '
         'https://exemple.com/image7.jpg', 1, 1),
        ('Article 8', 'Résumé de l\'article 8', 'Contenu de l\'article 8...', '2023-06-08 17:15:00',
         'https://exemple.com/image8.jpg', 2, 2);
+
+-- Insertion d'utilisateurs
+INSERT INTO users (username, email, password, role)
+VALUES ('admin', 'admin@mail.com', '$2y$10$SdTtHv3a9giMTg8iQ3QOzufnmKWMwYkNV2Q8B9gdXsnpcX4WyKisS', 2)
