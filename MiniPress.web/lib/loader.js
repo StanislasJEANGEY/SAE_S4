@@ -5,7 +5,7 @@ import {url} from './conf.js';
  * @returns {Promise<Response | void>}
  */
 export function loadArticles(){
-    let promise = fetch(url+'/api/article');
+    let promise = fetch(url+'/api/articles');
     return promise.then((response) => {
         if (response.ok) {
             return response.json();
