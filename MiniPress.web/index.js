@@ -19,6 +19,6 @@ const test = () => {
     });
 }
 const articles = new Articles(test());
-articles.toString();
+articles.filtreArticlesByMotCle("1");
 
 // loadArticles();

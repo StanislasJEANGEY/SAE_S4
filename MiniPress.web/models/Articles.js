@@ -12,8 +12,15 @@ export default class Articles {
 
     filtreArticlesByMotCle(motCle) {
         let tab = [];
-
+        this._tabArticles.forEach((article) => {
+            if (article['titre'].includes(motCle)) {
+                tab.push(article);
+            }
+        });
+        console.log(tab);
+        return tab;
     }
+
     get tabArticles() {
         return this._tabArticles;
     }
