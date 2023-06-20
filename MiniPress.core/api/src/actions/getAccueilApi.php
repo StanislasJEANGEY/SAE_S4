@@ -19,32 +19,32 @@ class getAccueilApi extends AbstractAction
     {
       "href": "'. $links .'/api/categories",
       "method": "GET",
-      "description": "Récupère la liste complète des catégories disponibles.",
+      "description": "Récupère la liste complète des catégories disponibles."
     },
     {
       "href": "'. $links .'/api/articles",
       "method": "GET",
-      "description": "Récupère la liste complète des articles disponibles.",
+      "description": "Récupère la liste complète des articles disponibles."
     },
     {
       "href": "'. $links .'/api/categories/{id}/articles",
       "method": "GET",
-      "description": "Récupère les articles d\'une catégorie spécifique identifiée par son ID.",
+      "description": "Récupère les articles d\'une catégorie spécifique identifiée par son ID."
     },
     {
       "href": "'. $links .'/api/articles/{id}",
       "method": "GET",
-      "description": "Récupère les détails d\'un article spécifique identifié par son ID.",
+      "description": "Récupère les détails d\'un article spécifique identifié par son ID."
     },
     {
       "href": "'. $links .'/api/auteurs/{id}/articles",
       "method": "GET",
-      "description": "Récupère les articles d\'un auteur spécifique identifié par son ID.",
-    }
+      "description": "Récupère les articles d\'un auteur spécifique identifié par son ID."
+    },
     {
       "href": "'. $links .'/api/auteurs",
       "method": "GET",
-      "description": "Récupère la liste des auteurs.",
+      "description": "Récupère la liste des auteurs."
     }
   ]
 }';
