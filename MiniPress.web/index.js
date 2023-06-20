@@ -12,13 +12,14 @@ function loadArticles() {
         }
     });
 }
-const test = () => {
+var articles;
+const Article = () => {
     return loader.loadArticles().then((result) => {
-        console.log(result);
-        return result;
+        console.log("result");
+        articles = new Articles(result);
+        articles.triListeArticlesParDateAscendant();
+    }).catch((error) => {
+        console.log(error);
     });
 }
-const articles = new Articles(test());
-articles.filtreArticlesByMotCle("1");
-
-// loadArticles();
+Article();
