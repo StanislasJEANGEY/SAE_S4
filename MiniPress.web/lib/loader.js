@@ -5,14 +5,14 @@ import {url} from './conf.js';
  * @returns {Promise<Response | void>}
  */
 export function loadArticles(){
-    let promise = fetch(url+'/api/articles');
+    let promise = fetch(url+'/api/article');
     return promise.then((response) => {
         if (response.ok) {
             return response.json();
         } else {
             console.log(response.status);
         }
-    }).catch((error) => console.log(error));
+    }).catch((error) => document.getElementById("articles").innerHTML = "Erreur lors du chargement des articles : "+error);
 }
 
 /**
@@ -28,7 +28,7 @@ let promise = fetch(url+'/api/articles/'+id);
         } else {
             console.log(response.status);
         }
-    }).catch((error) => console.log(error));
+    }).catch( (error) => document.getElementById("articles").innerHTML = "Erreur lors du chargement de l'article : "+error);
 }
 
 /**
@@ -43,7 +43,7 @@ export function loadCategories(){
         } else {
             console.log(response.status);
         }
-    }).catch((error) => console.log(error));
+    }).catch((error) => document.getElementById("articles").innerHTML = "Erreur lors du chargement des catégories : "+error);
 }
 
 /**
@@ -59,7 +59,7 @@ export function loadArticlesByCategorie(id){
         } else {
             console.log(response.status);
         }
-    }).catch((error) => console.log(error));
+    }).catch((error) => document.getElementById("articles").innerHTML = "Erreur lors du chargement des articles de la catégorie : "+error);
 }
 
 /**
@@ -76,7 +76,7 @@ export function loadArticlesByAuteur(id){
         } else {
             console.log(response.status);
         }
-    }).catch((error) => console.log(error));
+    }).catch((error) => document.getElementById("articles").innerHTML = "Erreur lors du chargement des articles de l'auteur : "+error);
 }
 
 
