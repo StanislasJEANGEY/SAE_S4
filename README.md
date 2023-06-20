@@ -8,7 +8,7 @@ JEANGEY Stanislas
 MELCHIOR Damien
 ROBERT Antonin
 
-Plage de port utilisé : 18080->18090
+Plage de port utilisé : 18090->18099
 
 URL dépôt git : https://github.com/StanislasJEANGEY/SAE_S4.git
 
