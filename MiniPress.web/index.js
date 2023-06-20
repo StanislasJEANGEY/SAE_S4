@@ -1,5 +1,5 @@
 import * as loader from './lib/loader.js';
-import {Articles} from "./models/Articles.js";
+import Articles from "./models/Articles.js";
 
 
 function loadArticles() {
@@ -12,7 +12,11 @@ function loadArticles() {
         }
     });
 }
-const articles = new Articles();
-articles.filtreArticlesByMotCle("1");
+const data = loader.loadArticles().then((result) => {
+    let temp = result['articles'];
+    console.log(temp);
+});
+const articles = new Articles(data);
+articles.toString();
 
 // loadArticles();
