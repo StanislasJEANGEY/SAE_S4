@@ -22,8 +22,6 @@ class getArticleByIdApi
             "article"=>$article
         ];
 
-        $data = mb_convert_encoding($data, 'UTF-8');
-        $data = json_decode($data, true);
         $data = json_encode($data, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE);
 
         $response->getBody()->write($data);
