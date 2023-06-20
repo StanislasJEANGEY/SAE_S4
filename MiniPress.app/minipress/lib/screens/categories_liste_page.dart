@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:minipress/providers/minipress_provider.dart';
+import 'package:minipress/screens/article_by_categorie.dart';
 import 'package:provider/provider.dart';
 import 'package:minipress/models/articles.dart';
 import 'package:minipress/models/categories.dart';
@@ -24,6 +25,8 @@ class CategorieListPage extends StatelessWidget {
                     itemBuilder: (context, index) {
                       return ListTile(
                         title: Text(snapshot.data![index].nom),
+                        onTap: () => displayArticleCategorie(
+                            context, snapshot.data![index]),
                       );
                     },
                   );
@@ -36,15 +39,13 @@ class CategorieListPage extends StatelessWidget {
         }));
   }
 
-  void displayArticlesByCategorie(Categories categories) {
-    // Filtrer les articles en fonction de la catégorie sélectionnée
-    List<Articles> articles = [];
-
-    List<Articles> articlesByCategorie = articles
-        .where((article) => article.categorieId == categories.id)
-        .toList();
-
-    // Mettre à jour la liste des articles à afficher
-    articles = articlesByCategorie;
+  void displayArticleCategorie(BuildContext context, Categories categories) {
+    // Afficher les détails de l'article sélectionné
+    Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (context) => ArticleByCategoriePage(categorie: categories),
+      ),
+    );
   }
 }

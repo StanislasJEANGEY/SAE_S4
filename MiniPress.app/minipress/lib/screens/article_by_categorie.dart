@@ -2,14 +2,17 @@ import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:minipress/models/articles.dart';
+import 'package:minipress/models/categories.dart';
 import 'package:minipress/providers/minipress_provider.dart';
 import 'package:minipress/screens/article_details_page.dart';
 import 'package:provider/provider.dart';
 import 'package:intl/intl.dart';
 import 'package:html_unescape/html_unescape.dart';
 
-class ArticleListPage extends StatelessWidget {
-  const ArticleListPage({super.key});
+class ArticleByCategoriePage extends StatelessWidget {
+  const ArticleByCategoriePage({Key? key, required this.categorie}) : super(key: key);
+
+  final Categories categorie;
 
   // articles.sort((a, b) => b.dateCreation.compareTo(a.dateCreation));
 
@@ -18,12 +21,12 @@ class ArticleListPage extends StatelessWidget {
     final unescape = HtmlUnescape();
     return Scaffold(
         appBar: AppBar(
-          title: const Text('Liste des articles'),
+          title: const Text('Liste des articles par catégorie'),
         ),
         body: Consumer<MinipressProvider>(
             builder: (context, minipressProvider, child) {
           return FutureBuilder<List<Articles>>(
-              future: minipressProvider.getArticles(),
+              future: minipressProvider.getArticlesByCategorie(categorie.id!),
               builder: (context, snapshot) {
                 if (snapshot.hasData) {
                   return ListView.builder(

@@ -23,51 +23,52 @@ class MinipressProvider extends ChangeNotifier {
     }
   }
 
-  // Future<List<Articles>> getArticles() async {
-  //   var url = Uri.parse('http://docketu.iutnc.univ-lorraine.fr:18086/api/articles');
-  //   var response = await http.get(url);
+  Future<List<Articles>> getArticles() async {
+    var url = Uri.parse('http://docketu.iutnc.univ-lorraine.fr:18096/api/articles');
+    var response = await http.get(url);
 
-  //   if (response.statusCode == 200) {
-  //     var jsonData = jsonDecode(response.body);
-  //     List<Articles> articles = [];
-  //     for (var item in jsonData) {
-  //       articles.add(Articles(item['id'], item['titre'], item['contenu'], item['date'], item['auteur'], item['categorie']));
-  //     }
-  //     return articles;
-  //   } else {
-  //     throw Exception('Échec de la requête avec le code ${response.statusCode}');
-  //   }
-  // }
+    if (response.statusCode == 200) {
+      var jsonData = jsonDecode(response.body) as Map<String, dynamic>;
+      List<Articles> articles = [];
+      for (var item in jsonData['article']) {
+        var article = Articles.fromJson(item);
+        articles.add(article);
+      }
+      return articles;
+    } else {
+      throw Exception('Échec de la requête avec le code ${response.statusCode}');
+    }
+  }
 
-  // Future<List<Articles>> getArticlesByCategory(int categoryId) async {
-  //   var url = Uri.parse('http://docketu.iutnc.univ-lorraine.fr:18086/api/categories/$categoryId/articles');
-  //   var response = await http.get(url);
+  Future<List<Articles>> getArticlesByCategorie(int categoryId) async {
+    var url = Uri.parse('http://docketu.iutnc.univ-lorraine.fr:18096/api/categories/$categoryId/articles');
+    var response = await http.get(url);
 
-  //   if (response.statusCode == 200) {
-  //     var jsonData = jsonDecode(response.body);
-  //     List<Articles> articles = [];
-  //     for (var item in jsonData) {
-  //       var article = Articles.fromJson(item);
-  //       articles.add(article);
-  //     }
-  //     return articles;
-  //   } else {
-  //     throw Exception('Échec de la requête avec le code ${response.statusCode}');
-  //   }
-  // }
+    if (response.statusCode == 200) {
+      var jsonData = jsonDecode(response.body) as Map<String, dynamic>;
+      List<Articles> articles = [];
+      for (var item in jsonData['categories']) {
+        var article = Articles.fromJson(item);
+        articles.add(article);
+      }
+      return articles;
+    } else {
+      throw Exception('Échec de la requête avec le code ${response.statusCode}');
+    }
+  }
 
-  // Future<Articles> getArticleById(int articleId) async {
-  //   var url = Uri.parse('http://docketu.iutnc.univ-lorraine.fr:18086/api/article/$articleId');
-  //   var response = await http.get(url);
+  Future<Articles> getArticleById(int articleId) async {
+    var url = Uri.parse('http://docketu.iutnc.univ-lorraine.fr:18096/api/articles/$articleId');
+    var response = await http.get(url);
 
-  //   if (response.statusCode == 200) {
-  //     var jsonData = jsonDecode(response.body);
-  //     var article = Articles.fromJson(jsonData);
-  //     return article;
-  //   } else {
-  //     throw Exception('Échec de la requête avec le code ${response.statusCode}');
-  //   }
-  // }
+    if (response.statusCode == 200) {
+      var jsonData = jsonDecode(response.body) as Map<String, dynamic>;
+      var article = Articles.fromJson(jsonData['article']);
+      return article;
+    } else {
+      throw Exception('Échec de la requête avec le code ${response.statusCode}');
+    }
+  }
 
   // Future<List<Articles>> getArticlesByAuthor(int authorId) async {
   //   var url = Uri.parse('http://docketu.iutnc.univ-lorraine.fr:18086/api/auteur/$authorId/articles');
