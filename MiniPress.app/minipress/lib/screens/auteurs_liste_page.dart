@@ -1,6 +1,12 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 import 'package:minipress/models/articles.dart';
 import 'package:minipress/models/auteurs.dart';
+import 'package:minipress/providers/minipress_provider.dart';
+import 'package:minipress/screens/article_by_auteur.dart';
+import 'package:provider/provider.dart';
 
 class AuteurListPage extends StatelessWidget {
   const AuteurListPage({Key? key}) : super(key: key);
@@ -8,24 +14,41 @@ class AuteurListPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Liste des auteurs'),
-      ),
-      body: Container(
-          // Affichage de la liste des auteurs...
-          ),
-    );
+        appBar: AppBar(
+          title: const Text('Liste des articles'),
+        ),
+        body: Consumer<MinipressProvider>(
+            builder: (context, minipressProvider, child) {
+          return FutureBuilder<List<Auteurs>>(
+              future: minipressProvider.getAuteurs(),
+              builder: (context, snapshot) {
+                if (snapshot.hasData) {
+                  return ListView.builder(
+                    itemCount: snapshot.data!.length,
+                    itemBuilder: (context, index) {
+                      return ListTile(
+                        title: Text(snapshot.data![index].nom),
+                        onTap: () => displayArticlesByAuthor(
+                            context, snapshot.data![index]),
+                      );
+                    },
+                  );
+                } else if (snapshot.hasError) {
+                  return const Text('Erreur de chargement des catégories');
+                } else {
+                  return const Center(child: CircularProgressIndicator());
+                }
+              });
+        }));
   }
 
-  void displayArticlesByAuthor(Auteurs auteurs) {
-    // Filtrer les articles en fonction de l'auteur sélectionné
-    List<Articles> articles = [];
-
-    List<Articles> articlesByAuthor = articles
-        .where((article) => article.auteurId == auteurs.id)
-        .toList();
-    
-    // Mettre à jour la liste des articles à afficher
-    articles = articlesByAuthor;
+  void displayArticlesByAuthor(BuildContext context, Auteurs auteur) {
+    // Afficher les détails de l'article sélectionné
+    Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (context) => ArticleByAuteurPage(auteur: auteur),
+      ),
+    );
   }
 }

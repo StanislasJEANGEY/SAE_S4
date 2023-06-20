@@ -1,6 +1,7 @@
 import 'package:http/http.dart' as http;
 import 'package:flutter/material.dart';
 import 'package:minipress/models/articles.dart';
+import 'package:minipress/models/auteurs.dart';
 import 'dart:convert';
 
 import 'package:minipress/models/categories.dart';
@@ -70,20 +71,37 @@ class MinipressProvider extends ChangeNotifier {
     }
   }
 
-  // Future<List<Articles>> getArticlesByAuthor(int authorId) async {
-  //   var url = Uri.parse('http://docketu.iutnc.univ-lorraine.fr:18086/api/auteur/$authorId/articles');
-  //   var response = await http.get(url);
+  Future<List<Auteurs>> getAuteurs() async {
+    var url = Uri.parse('http://docketu.iutnc.univ-lorraine.fr:18096/api/auteurs');
+    var response = await http.get(url);
 
-  //   if (response.statusCode == 200) {
-  //     var jsonData = jsonDecode(response.body);
-  //     List<Articles> articles = [];
-  //     for (var item in jsonData) {
-  //       var article = Articles.fromJson(item);
-  //       articles.add(article);
-  //     }
-  //     return articles;
-  //   } else {
-  //     throw Exception('Échec de la requête avec le code ${response.statusCode}');
-  //   }
-  // }
+    if (response.statusCode == 200) {
+      var jsonData = jsonDecode(response.body) as Map<String, dynamic>;
+      List<Auteurs> auteurs = [];
+      for (var item in jsonData['auteurs']) {
+        var auteur = Auteurs.fromJson(item);
+        auteurs.add(auteur);
+      }
+      return auteurs;
+    } else {
+      throw Exception('Échec de la requête avec le code ${response.statusCode}');
+    }
+  }
+
+  Future<List<Articles>> getArticlesByAuthor(int authorId) async {
+    var url = Uri.parse('http://docketu.iutnc.univ-lorraine.fr:18096/api/auteurs/$authorId/articles');
+    var response = await http.get(url);
+
+    if (response.statusCode == 200) {
+      var jsonData = jsonDecode(response.body) as Map<String, dynamic>;
+      List<Articles> articles = [];
+      for (var item in jsonData['article']) {
+        var article = Articles.fromJson(item);
+        articles.add(article);
+      }
+      return articles;
+    } else {
+      throw Exception('Échec de la requête avec le code ${response.statusCode}');
+    }
+  }
 }
