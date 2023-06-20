@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:minipress/providers/minipress_provider.dart';
 import 'package:provider/provider.dart';
-
-import '../models/categories.dart';
+import 'package:minipress/models/articles.dart';
+import 'package:minipress/models/categories.dart';
 
 class CategorieListPage extends StatelessWidget {
   const CategorieListPage({super.key});
@@ -34,5 +34,17 @@ class CategorieListPage extends StatelessWidget {
                 }
               });
         }));
+  }
+
+  void displayArticlesByCategorie(Categories categories) {
+    // Filtrer les articles en fonction de la catégorie sélectionnée
+    List<Articles> articles = [];
+
+    List<Articles> articlesByCategorie = articles
+        .where((article) => article.categorieId == categories.id)
+        .toList();
+
+    // Mettre à jour la liste des articles à afficher
+    articles = articlesByCategorie;
   }
 }

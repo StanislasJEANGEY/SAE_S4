@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:minipress/models/auteurs.dart';
 import 'package:minipress/models/categories.dart';
 import 'package:minipress/screens/articles_liste_page.dart';
+import 'package:minipress/screens/auteurs_liste_page.dart';
 import 'package:minipress/screens/categories_liste_page.dart';
 import '../models/articles.dart';
 
@@ -19,8 +20,6 @@ class _MinipressMasterState extends State<MinipressMaster> {
 
   @override
   Widget build(BuildContext context) {
-    // Tri des articles par date de création
-    articles.sort((a, b) => b.dateCreation.compareTo(a.dateCreation));
 
     return Scaffold(
       appBar: AppBar(
@@ -50,18 +49,17 @@ class _MinipressMasterState extends State<MinipressMaster> {
             );
           },
         ),
+        ListTile(
+          title: const Text('Liste des auteurs'),
+          onTap: () {
+            // Naviguer vers la liste des auteurs
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => const AuteurListPage()),
+            );
+          },
+        ),
       ])),
-      // Affichage de la liste des articles pour l'instant dans l'accueil, à déplacer plus tard
-      body: ListView.builder(
-        itemCount: articles.length,
-        itemBuilder: (context, index) {
-          return ListTile(
-            title: Text(articles[index].titre),
-            subtitle: Text(auteurs[index].nom),
-            trailing: Text(articles[index].dateCreation.toString()),
-          );
-        },
-      ),
     );
   }
 }
