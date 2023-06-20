@@ -35,13 +35,13 @@ class getAccueilApi extends AbstractAction
       "name": "getArticlesByCategorieApi"
     },
     {
-      "route": "'. $links .'/api/article/{id}",
+      "route": "'. $links .'/api/articles/{id}",
       "method": "GET",
       "description": "Récupère les détails d\'un article spécifique identifié par son ID.",
       "name": "getArticleByIdApi"
     },
     {
-      "route": "'. $links .'/api/auteur/{id}/articles",
+      "route": "'. $links .'/api/auteurs/{id}/articles",
       "method": "GET",
       "description": "Récupère les articles d\'un auteur spécifique identifié par son ID.",
       "name": "getArticleByAuteurApi"
