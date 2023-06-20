@@ -5,7 +5,6 @@ export default class Articles {
 
     constructor(data) {
         this.tabArticles = data['article'];
-        //console.log(data);
         this.count = data['count'];
     }
 
@@ -30,14 +29,18 @@ export default class Articles {
     }
 
     triListeArticlesParDateAscendant() {
-        //console.log(this.tabArticles);
+
         this.tabArticles.sort((a, b) => {
-            return new Date(a['date']).getTime() - new Date(b['date']).getTime();
-        });
-        //console.log(this.tabArticles);
+            return new Date(a['date_creation']).getTime() - new Date(b['date_creation']).getTime();
+        } );
+
     }
 
-
+    triListeArticlesParDateDescendant() {
+        this.tabArticles.sort((a, b) => {
+            return new Date(b['date_creation']).getTime() - new Date(a['date_creation']).getTime();
+        });
+    }
 
     get getTabArticles() {
         return this.tabArticles;
@@ -46,4 +49,5 @@ export default class Articles {
     get getCount() {
         return this.count;
     }
+
 }

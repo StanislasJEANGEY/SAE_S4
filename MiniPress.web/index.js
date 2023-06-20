@@ -19,11 +19,13 @@ document.getElementById("bt_auteurs").addEventListener("click", () => {
 });
 
 
+
 const getArticles = () => {
     return loader.loadArticles().then((result) => {
         //console.log("result");
         let articles = new Articles(result);
         articles.triListeArticlesParDateAscendant();
+        articles.triListeArticlesParDateDescendant();
         uiListeArticles.getUi(articles)
     }).catch((error) => {
         console.log(error);
