@@ -12,11 +12,13 @@ function loadArticles() {
         }
     });
 }
-const data = loader.loadArticles().then((result) => {
-    let temp = result['articles'];
-    console.log(temp);
-});
-const articles = new Articles(data);
-articles.toString();
+const test = () => {
+    return loader.loadArticles().then((result) => {
+        console.log(result);
+        return result;
+    });
+}
+const articles = new Articles(test());
+articles.filtreArticlesByMotCle("1");
 
 // loadArticles();
