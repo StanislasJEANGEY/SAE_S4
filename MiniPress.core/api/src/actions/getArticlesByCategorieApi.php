@@ -19,9 +19,8 @@ class getArticlesByCategorieApi extends AbstractAction
             "categories"=>$cat
         ];
 
-        $data = mb_convert_encoding($data, 'UTF-8');
-        $data = json_decode($data, true);
         $data = json_encode($data, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE);
+        $data = str_replace('\/','/',$data);
 
         $response->getBody()->write($data);
         return $response->withHeader('Content-Type', 'application/json')

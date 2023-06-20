@@ -1,3 +1,5 @@
+import 'package:flutter/material.dart';
+
 class MinipressApp extends StatefulWidget {
   const MinipressApp({Key? key}) : super(key: key);
 
@@ -6,5 +8,5 @@ class MinipressApp extends StatefulWidget {
 }
 
 class _MinipressAppState extends State<MinipressApp> {
-
+  
 }
