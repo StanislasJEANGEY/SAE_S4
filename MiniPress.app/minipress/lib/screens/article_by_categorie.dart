@@ -7,7 +7,6 @@ import 'package:minipress/providers/minipress_provider.dart';
 import 'package:minipress/screens/article_details_page.dart';
 import 'package:provider/provider.dart';
 import 'package:intl/intl.dart';
-import 'package:html_unescape/html_unescape.dart';
 
 class ArticleByCategoriePage extends StatelessWidget {
   const ArticleByCategoriePage({Key? key, required this.categorie}) : super(key: key);
@@ -18,7 +17,6 @@ class ArticleByCategoriePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final unescape = HtmlUnescape();
     return Scaffold(
         appBar: AppBar(
           title: const Text('Liste des articles par catégorie'),

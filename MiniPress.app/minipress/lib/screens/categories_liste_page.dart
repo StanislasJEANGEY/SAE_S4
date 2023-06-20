@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:minipress/providers/minipress_provider.dart';
 import 'package:minipress/screens/article_by_categorie.dart';
 import 'package:provider/provider.dart';
-import 'package:minipress/models/articles.dart';
 import 'package:minipress/models/categories.dart';
 
 class CategorieListPage extends StatelessWidget {
