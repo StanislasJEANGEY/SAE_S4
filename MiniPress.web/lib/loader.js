@@ -1,21 +1,13 @@
-import url from './conf.js';
-
-
-
-
-class loader {
-    constructor() {
-        this.url = url;
-    }
-
-    loadArticles() {
-        return fetch(this.url + '/articles')
-            .then(response => response.json())
-            .then(data => {
-                return data;
-            })
-            .catch(error => {
-                console.log(error);
-            });
-    }
+import {url} from './conf.js';
+export function loadArticles(){
+    let promise = fetch(url+'/api/articles');
+    return promise.then((response) => {
+        if (response.ok) {
+            return response.json();
+        } else {
+            console.log(response.status);
+        }
+    }).catch((error) => console.log(error));
 }
+
+
