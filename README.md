@@ -18,10 +18,10 @@ Identifiants et mots de passe pour se connecter sur MiniPress:
 
 Liens utiles :
 
--   appli (http://docketu.iutnc.univ-lorraine.fr:18085)
--   api (http://docketu.iutnc.univ-lorraine.fr:18086)
--   phpmyadmin (http://docketu.iutnc.univ-lorraine.fr:18087)
--   sql (http://docketu.iutnc.univ-lorraine.fr:18088) network : sql.db
+-   appli (http://docketu.iutnc.univ-lorraine.fr:18095)
+-   api (http://docketu.iutnc.univ-lorraine.fr:18096)
+-   phpmyadmin (http://docketu.iutnc.univ-lorraine.fr:18097)
+-   sql (http://docketu.iutnc.univ-lorraine.fr:18098) network : sql.db
 
 ## Fonctionnalités
 
