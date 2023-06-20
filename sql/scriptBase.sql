@@ -44,7 +44,7 @@ CREATE TABLE articles
     titre         VARCHAR(255) NOT NULL,
     resume        TEXT,
     contenu       TEXT         NOT NULL,
-    date_creation DATETIME     NOT NULL,
+    date_creation DATETIME     NOT NULL DEFAULT CURRENT_TIMESTAMP,
     image_url     VARCHAR(255),
     categorie_id  INT,
     auteur_id     INT,
@@ -60,10 +60,13 @@ VALUES ('Technologie'),
        ('Sport'),
        ('Mode');
 
+-- Insertion d'utilisateurs
+INSERT INTO users (username, email, password, role)
+VALUES ('admin', 'admin@mail.com', '$2y$10$SdTtHv3a9giMTg8iQ3QOzufnmKWMwYkNV2Q8B9gdXsnpcX4WyKisS', 2);
+
 -- Insertion d'auteurs
-INSERT INTO auteurs (nom)
-VALUES ('Auteur 1'),
-       ('Auteur 2');
+INSERT INTO auteurs (nom, user_id)
+VALUES ('admin', 1);
 
 -- Insertion d'articles
 INSERT INTO articles (titre, resume, contenu, date_creation, image_url, categorie_id, auteur_id, publie)
@@ -72,18 +75,14 @@ VALUES ('Article 1', 'Résumé de l\'article 1', 'Contenu de l\'article 1...', '
        ('Article 2', 'Résumé de l\'article 2', 'Contenu de l\'article 2...', '2023-06-02 14:30:00',
         'https://exemple.com/image2.jpg', 2, 1, 1),
        ('Article 3', 'Résumé de l\'article 3', 'Contenu de l\'article 3...', '2023-06-03 16:45:00',
-        'https://exemple.com/image3.jpg', 3, 2, 1),
+        'https://exemple.com/image3.jpg', 3, 1, 1),
        ('Article 4', 'Résumé de l\'article 4', 'Contenu de l\'article 4...', '2023-06-04 09:15:00',
-        'https://exemple.com/image4.jpg', 1, 2, 0),
+        'https://exemple.com/image4.jpg', 1, 1, 0),
        ('Article 5', 'Résumé de l\'article 5', 'Contenu de l\'article 5...', '2023-06-05 11:30:00',
         'https://exemple.com/image5.jpg', 2, 1, 0),
        ('Article 6', 'Résumé de l\'article 6', 'Contenu de l\'article 6...', '2023-06-06 13:45:00',
-        'https://exemple.com/image6.jpg', 3, 2, 0),
+        'https://exemple.com/image6.jpg', 3, 1, 0),
        ('Article 7', 'Résumé de l\'article 7', 'Contenu de l\'article 7...', '2023-06-07 15:00:00',
         'https://exemple.com/image7.jpg', 1, 1, 0),
        ('Article 8', 'Résumé de l\'article 8', 'Contenu de l\'article 8...', '2023-06-08 17:15:00',
-        'https://exemple.com/image8.jpg', 2, 2, 0);
-
--- Insertion d'utilisateurs
-INSERT INTO users (username, email, password, role)
-VALUES ('admin', 'admin@mail.com', '$2y$10$SdTtHv3a9giMTg8iQ3QOzufnmKWMwYkNV2Q8B9gdXsnpcX4WyKisS', 2)
+        'https://exemple.com/image8.jpg', 2, 1, 0);

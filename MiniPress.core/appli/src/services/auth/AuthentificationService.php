@@ -2,7 +2,9 @@
 
 namespace minipress\appli\services\auth;
 
+use Illuminate\Database\Eloquent\ModelNotFoundException;
 use minipress\appli\models\User;
+use minipress\appli\services\ServiceException;
 
 class AuthentificationService
 {
@@ -54,4 +56,24 @@ class AuthentificationService
 
         return null;
     }
+
+	/**
+	 * @throws ServiceException
+	 */
+	public function getUserById($id) {
+		try {
+			return User::findOrFail($id)->toArray();
+		} catch (ModelNotFoundException $e) {
+			throw new ServiceException("User $id n'existe pas", 404, $e);
+		}
+	}
+
+    public function getUserByEMail($email) {
+        try {
+            return User::where('email', $email)->firstOrFail()->toArray();
+        } catch (ModelNotFoundException $e) {
+            throw new ServiceException("User $email n'existe pas", 404, $e);
+        }
+    }
+
 }

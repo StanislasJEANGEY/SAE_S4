@@ -36,7 +36,7 @@ class CategorieActionGet extends AbstractAction
 
         $view = Twig::fromRequest($request);
         $view->render($response, 'CategorieView.twig', [
-            'articles' => $article, 'estConnecte' => $estConnecte, 'categorie' => $categ
+            'articles' => $article, 'estConnecte' => $estConnecte, 'categorie' => $categ, 'idCateg' => $idCateg
         ]);
         return $response;
     }

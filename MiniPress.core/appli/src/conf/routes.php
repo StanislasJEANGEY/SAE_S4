@@ -1,5 +1,6 @@
 <?php
 
+use minipress\appli\actions\get\AddArticleByCategorieGet;
 use minipress\appli\actions\get\AddUserActionGet;
 use minipress\appli\actions\get\AddArticleActionGet;
 use minipress\appli\actions\get\ArticleActionGet;
@@ -23,9 +24,9 @@ return function (\Slim\App $app): void {
     $app->get('/articles[/]', ListeArticlesActionGet::class)->setName("liste_articles_get");
     $app->post('/articles[/]', ListeArticlesActionPost::class)->setName("liste_articles_post");
     $app->get('/articles/{id}[/]', ArticleActionGet::class)->setName("article_get");
-	$app->get('/add_articles[/]', AddArticleActionGet::class)->setName("add_articles_get");
-	$app->post('/add_articles[/]', AddArticleActionPost::class)->setName("add_articles_post");
-	$app->get('/appli/setArticleByCategorie',  AddArticleByCategoriePost::class)->setName('add_articleByCategorie_get');
+	$app->get('/add_articles/{id}[/]', AddArticleActionGet::class)->setName("add_articles_get");
+	$app->post('/add_articles/{id}[/]', AddArticleActionPost::class)->setName("add_articles_post");
+	$app->get('/appli/setArticleByCategorie',  AddArticleByCategorieGet::class)->setName('add_articleByCategorie_get');
 	$app->post('/appli/articleByCategorie', AddArticleByCategoriePost::class)->setName('add_articleByCategorie_post');
     $app->get('/categories[/]', ListeCategoriesActionGet::class)->setName("liste_categories_get");
     $app->get('/categories/{id}[/]', CategorieActionGet::class)->setName("categorie_get");

@@ -4,6 +4,8 @@ namespace minipress\appli\services\article;
 
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use minipress\appli\models\Article;
+use minipress\appli\services\auteurs\AuteurService;
+use minipress\appli\services\auth\AuthentificationService;
 use minipress\appli\services\ServiceException;
 
 
@@ -30,13 +32,26 @@ class ArticleService
             $article->titre = $data['titre'];
             $article->resume = $data['resume'];
             $article->contenu = $data['contenu'];
+			$article->date_creation = $data['date_creation'];
+			$article->image_url = $data['image_url'];
+
+			$authentificationService = new AuthentificationService();
+			$auteurService = new AuteurService();
+			$estConnecte = $authentificationService->getCurrentUser();
+			$auteur = $auteurService->getAuteurById($estConnecte['id']);
+			$article->auteur_id = $auteur['id'];
+
             $article->save();
         }catch (ModelNotFoundException $e) {
             throw new ServiceException("Une erreur s'est produite lors de l'enregistrement de l'article");
         }
 
     }
-    function setArticleByCategorie($data): void
+
+	/**
+	 * @throws ServiceException
+	 */
+	function setArticleByCategorie($data): void
     {
         try {
             $article = new Article();
@@ -44,6 +59,7 @@ class ArticleService
             $article->resume = $data['resume'];
             $article->contenu = $data['contenu'];
             $article->categorie_id = $data['categorie'];
+            $article->auteur_id = $data['auteur_id'];
             $article->save();
         }catch (ModelNotFoundException $e) {
             throw new ServiceException("Une erreur s'est produite lors de l'enregistrement de l'article");
@@ -52,7 +68,7 @@ class ArticleService
 
     public function getArticles() :array
     {
-        return Article::all()->toArray();
+	            return Article::all()->toArray();
     }
 
     public function getArticlesByCategorie(mixed $id)
@@ -60,7 +76,7 @@ class ArticleService
         return Article::where('categorie_id', $id)->get()->toArray();
     }
 
-    function modifyPubArticle($id){
+    function modifyPubArticle($id): void {
         $article = Article::find($id);
         if($article->publie == 0){
             $article->publie = 1;

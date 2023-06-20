@@ -37,7 +37,7 @@ https://arche.univ-lorraine.fr/pluginfile.php/3211556/mod_resource/content/2/Suj
 | 5. Création d’une catégorie                                 |      Antonin       |   OK   |
 | 6. Formulaire d’authentification                            |       Damien       |   OK   |
 | 7. Contrôle d’accès                                         |       Damien       |   OK   |
-| 8. Auteurs                                                  |       Jules        |  DEB   |
+| 8. Auteurs                                                  |    Jules/Damien    |   OK   |
 | 9. API : liste des catégories                               |     Stanislas      |   OK   |
 | 10. API : liste des articles                                |     Stanislas      |   OK   |
 | 11. API : articles d’une catégorie                          |     Stanislas      |   OK   |

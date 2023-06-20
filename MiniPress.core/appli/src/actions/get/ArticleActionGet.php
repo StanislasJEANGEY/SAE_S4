@@ -3,6 +3,7 @@
 namespace minipress\appli\actions\get;
 
 use minipress\appli\services\article\ArticleService;
+use minipress\appli\services\auteurs\AuteurService;
 use minipress\appli\services\auth\AuthentificationService;
 use minipress\appli\services\ServiceException;
 use Psr\Http\Message\ResponseInterface as Response;
@@ -30,9 +31,12 @@ class ArticleActionGet extends \minipress\appli\actions\AbstractAction
         $idArticle = $args['id'];
         $article = $service->getArticlesById($idArticle);
 
+		$auteurService = new AuteurService();
+		$auteurs = $auteurService->getAuteurById($article['auteur_id']);
+
         $view = Twig::fromRequest($request);
         $view->render($response, 'ArticleView.twig', [
-            'article' => $article, 'estConnecte' => $estConnecte
+            'article' => $article, 'estConnecte' => $estConnecte, 'auteurs' => $auteurs
         ]);
         return $response;
     }

@@ -3,15 +3,26 @@
 namespace minipress\appli\actions\post;
 
 use minipress\appli\actions\AbstractAction;
+use minipress\appli\services\auteurs\AuteurService;
 use minipress\appli\services\auth\AuthentificationService;
+use minipress\appli\services\ServiceException;
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
 use Slim\Routing\RouteContext;
 use Slim\Views\Twig;
+use Twig\Error\LoaderError;
+use Twig\Error\RuntimeError;
+use Twig\Error\SyntaxError;
 
 class AddUserActionPost extends AbstractAction
 {
 
+    /**
+     * @throws RuntimeError
+     * @throws LoaderError
+     * @throws SyntaxError
+     * @throws ServiceException
+     */
     public function __invoke(Request $request, Response $response, array $args): Response
     {
         $authService = new AuthentificationService();
@@ -34,6 +45,8 @@ class AddUserActionPost extends AbstractAction
             }
 
             $success = $authService->registerUser($username, $email, $password, $role);
+            $auteurService = new AuteurService();
+            $auteurService->setAuteur($email);
 
 
             if ($success) {
