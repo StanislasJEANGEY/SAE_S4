@@ -1,5 +1,3 @@
-import * as loader from './../lib/loader.js';
-
 export default class Articles {
     tabArticles = [];
     count = 0;
@@ -7,7 +5,7 @@ export default class Articles {
 
     constructor(data) {
         this.tabArticles = data['article'];
-        console.log(data);
+        //console.log(data);
         this.count = data['count'];
     }
 
@@ -32,20 +30,20 @@ export default class Articles {
     }
 
     triListeArticlesParDateAscendant() {
-        console.log(this.tabArticles);
+        //console.log(this.tabArticles);
         this.tabArticles.sort((a, b) => {
             return new Date(a['date']).getTime() - new Date(b['date']).getTime();
         });
-        console.log(this.tabArticles);
+        //console.log(this.tabArticles);
     }
 
 
 
-    get tabArticles() {
+    get getTabArticles() {
         return this.tabArticles;
     }
 
-    get count() {
+    get getCount() {
         return this.count;
     }
 }
