@@ -79,4 +79,15 @@ export function loadArticlesByAuteur(id){
     }).catch((error) => document.getElementById("articles").innerHTML = "Erreur lors du chargement des articles de l'auteur : "+error);
 }
 
+export function loadAuteurs(){
+    let promise = fetch(url+'/api/auteurs');
+    return promise.then((response) => {
+        if (response.ok) {
+            return response.json();
+        } else {
+            console.log(response.status);
+        }
+    }).catch((error) => document.getElementById("articles").innerHTML = "Erreur lors du chargement des auteurs : "+error);
+}
+
 

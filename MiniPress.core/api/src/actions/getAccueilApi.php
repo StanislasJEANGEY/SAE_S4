@@ -17,34 +17,34 @@ class getAccueilApi extends AbstractAction
   "description": "L\'API Minipress permet d\'accéder aux articles, aux auteurs et aux catégories d\'articles d\'une plateforme de publication en ligne.",
   "links": [
     {
-      "route": "'. $links .'/api/categories",
+      "href": "'. $links .'/api/categories",
       "method": "GET",
       "description": "Récupère la liste complète des catégories disponibles.",
-      "name": "getCategoriesApi"
     },
     {
-      "route": "'. $links .'/api/articles",
+      "href": "'. $links .'/api/articles",
       "method": "GET",
       "description": "Récupère la liste complète des articles disponibles.",
-      "name": "getArticleApi"
     },
     {
-      "route": "'. $links .'/api/categories/{id}/articles",
+      "href": "'. $links .'/api/categories/{id}/articles",
       "method": "GET",
       "description": "Récupère les articles d\'une catégorie spécifique identifiée par son ID.",
-      "name": "getArticlesByCategorieApi"
     },
     {
-      "route": "'. $links .'/api/articles/{id}",
+      "href": "'. $links .'/api/articles/{id}",
       "method": "GET",
       "description": "Récupère les détails d\'un article spécifique identifié par son ID.",
-      "name": "getArticleByIdApi"
     },
     {
-      "route": "'. $links .'/api/auteurs/{id}/articles",
+      "href": "'. $links .'/api/auteurs/{id}/articles",
       "method": "GET",
       "description": "Récupère les articles d\'un auteur spécifique identifié par son ID.",
-      "name": "getArticleByAuteurApi"
+    }
+    {
+      "href": "'. $links .'/api/auteurs",
+      "method": "GET",
+      "description": "Récupère la liste des auteurs.",
     }
   ]
 }';

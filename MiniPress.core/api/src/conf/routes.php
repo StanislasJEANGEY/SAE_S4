@@ -6,6 +6,7 @@
     use minipress\api\actions\getArticleByIdApi;
     use minipress\api\actions\getArticlesByCategorieApi;
     use minipress\api\actions\getArticleByAuteurApi;
+    use minipress\api\actions\getAuteursApi;
     use minipress\api\actions\getCategoriesApi;
 
     return function (\Slim\App $app): void {
@@ -15,4 +16,5 @@
         $app->get('/api/categories/{id}/articles[/]', getArticlesByCategorieApi::class)->setName('getArticlesByCategorieApi');
         $app->get('/api/articles/{id}[/]', getArticleByIdApi::class)->setName('getArticleByIdApi');
         $app->get('/api/auteurs/{id}/articles[/]', getArticleByAuteurApi::class)->setName('getArticleByAuteurApi');
+        $app->get('/api/auteurs[/]', getAuteursApi::class)->setName('getAuteursApi');
     };
