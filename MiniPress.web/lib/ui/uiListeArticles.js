@@ -62,6 +62,7 @@ export function getUi(listeArticles) {
     rechercheTitre.addEventListener("click", (elem) => {
         document.getElementById("listeArticlesdiv").innerHTML = "";
         let recherche = document.getElementById("inputRechercheTitre").value;
+
         listeArticles.filtreArticlesByMotCleTitre(recherche);
         listeArticles.setTabArticles = listeArticles.filtreArticlesByMotCleTitre(recherche);
         getUi(listeArticles);
