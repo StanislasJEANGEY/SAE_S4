@@ -1,6 +1,4 @@
 export function getUi(article) {
-    console.log("getUi __ uiArticle.js");
-    console.log(article);
     let converter = new showdown.Converter();
     let div = document.getElementById("articleDetails");
     div.innerHTML = `

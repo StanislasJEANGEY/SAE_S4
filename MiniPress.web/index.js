@@ -21,7 +21,6 @@ document.getElementById("bt_auteurs").addEventListener("click", () => {
 
 export function getListeArticlesByCategorie (id) {
     loader.loadArticlesByCategorie(id).then((result) => {
-        //console.log("result");
         let articles = new ListeArticles(result);
         articles.triListeArticlesParDateAscendant();
         uiListeArticles.getUi(articles)
@@ -32,9 +31,8 @@ export function getListeArticlesByCategorie (id) {
 
 export function getListeArticlesByAuteur (id) {
     loader.loadArticlesByAuteur(id).then((result) => {
-        //console.log("result");
         let articles = new ListeArticles(result);
-        articles.triListeArticlesParDateAscendant();
+        //articles.triListeArticlesParDateAscendant();
         uiListeArticles.getUi(articles)
     }).catch((error) => {
         console.log(error);
