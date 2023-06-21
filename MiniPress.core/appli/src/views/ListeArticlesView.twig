@@ -18,7 +18,7 @@
                             {% apply markdown_to_html %}
                                 {{ article.resume }}
                             {% endapply %}
-                            <form action="" method="post" class="form-inline">
+                            <form action="{{ url_for('liste_articles_post') }}" method="post" class="form-inline">
                                 <div class="form-check">
                                     {% if article.publie == 1 %}
                                         <input type="checkbox" name="publie" class="form-check-input" checked onchange="this.form.submit()">

@@ -49,9 +49,9 @@ class _ArticleListPageState extends State<ArticleListPage> {
         actions: [
           Expanded(
             child: Container(
+              width: 200.0, // Set the desired width for the search bar
               margin: const EdgeInsets.symmetric(horizontal: 16.0),
               padding: const EdgeInsets.only(left: 35.0),
-              width: 50.0,
               child: TextField(
                 onChanged: (value) {
                   setState(() {
@@ -91,7 +91,7 @@ class _ArticleListPageState extends State<ArticleListPage> {
               'Trier par ordre',
             ),
           ),
-        ],
+        ], 
       ),
       body: Consumer<MinipressProvider>(
         builder: (context, minipressProvider, child) {
@@ -100,6 +100,13 @@ class _ArticleListPageState extends State<ArticleListPage> {
             builder: (context, snapshot) {
               if (snapshot.hasData) {
                 List<Articles> articles = snapshot.data!;
+                if (selectedValue == '1') {
+                      articles.sort(
+                          (a, b) => a.dateCreation.compareTo(b.dateCreation));
+                    } else if (selectedValue == '2') {
+                      articles.sort(
+                          (a, b) => b.dateCreation.compareTo(a.dateCreation));
+                    }
                 return ListView.builder(
                   itemCount: articles.length,
                   itemBuilder: (context, index) {
@@ -116,14 +123,6 @@ class _ArticleListPageState extends State<ArticleListPage> {
                             .contains(searchKeyword!.toLowerCase())) {
                       return const SizedBox
                           .shrink(); // Retourne un widget vide pour masquer l'article
-                    }
-
-                    if (selectedValue == '1') {
-                      articles.sort(
-                          (a, b) => a.dateCreation.compareTo(b.dateCreation));
-                    } else if (selectedValue == '2') {
-                      articles.sort(
-                          (a, b) => b.dateCreation.compareTo(a.dateCreation));
                     }
                     return Card(
                       elevation: 2.0,
