@@ -6,42 +6,64 @@ export function getUi(listeArticles) {
     let html = `
         <label for="tri">Trier par : </label>
         <select name="tri" id="tri">
+            <option value="default" selected>--Choisir--</option>
             <option value="dateAsc">Dates Ascendantes</option>
             <option value="dateDesc">Dates Descendantes</option>
         </select>
+        <label for="rechercheTitre">Rechercher dans le titre: </label>
+        <input type="text" id="inputRechercheTitre" name="inputRechercheTitre">
+        <button id="rechercher">Rechercher</button>
+        
     `;
 
     let converter = new showdown.Converter();
+    html += "<div id='listeArticlesdiv'>";
 
-    //si data n'est pas vide alors
-    if(data.length > 0) {
-        data.forEach(article => {
-            html += `
-            <div class="article" id="${article.id}">
+    if (data != null) {
+        if (data.length > 0) {
+            data.forEach(article => {
+                html += `
+            <div class="article" id="article${article.id}">
                 <h2>${article.titre}</h2>
                 <p>${article.date_creation}</p>
                 <p>${converter.makeHtml(article.resume)}</p>
             </div>
         `
-        })
-        div.innerHTML = html;
-
-        const articles = document.querySelectorAll("#listeArticles");
-        articles.forEach(article => {
-            article.addEventListener("click", (elem) => {
-                getArticleById(elem.target.closest('.article').id);
             })
-        })
+            div.innerHTML = html;
 
-        const tri = document.getElementById('tri');
-        tri.addEventListener("change", (elem) => {
-            if(elem.target.value === "dateAsc") {
-                listeArticles.triListeArticlesParDateAscendant();
-                getUi(listeArticles);
-            } else if(elem.target.value === "dateDesc") {
-                listeArticles.triListeArticlesParDateDescendant();
-                getUi(listeArticles);
-            }
-        })
+            const articles = document.querySelectorAll("#listeArticles");
+            articles.forEach(article => {
+                article.addEventListener("click", (elem) => {
+                    if (elem.target.id.includes("article")) {
+                        getArticleById(elem.target.closest('.article').id.replace('article', ''));
+                    }
+                })
+            })
+
+        }
     }
+    html += "</div>"
+
+    const tri = document.getElementById('tri');
+    tri.addEventListener("change", (elem) => {
+        if (elem.target.value === "dateAsc") {
+            document.getElementById("liste_auth_categ").innerHTML = "";
+            listeArticles.triListeArticlesParDateAscendant();
+            getUi(listeArticles);
+        } else if (elem.target.value === "dateDesc") {
+            document.getElementById("liste_auth_categ").innerHTML = "";
+            listeArticles.triListeArticlesParDateDescendant();
+            getUi(listeArticles);
+        }
+    })
+
+    const rechercheTitre = document.getElementById('rechercher');
+    rechercheTitre.addEventListener("click", (elem) => {
+        document.getElementById("listeArticlesdiv").innerHTML = "";
+        let recherche = document.getElementById("inputRechercheTitre").value;
+        listeArticles.filtreArticlesByMotCleTitre(recherche);
+        listeArticles.setTabArticles = listeArticles.filtreArticlesByMotCleTitre(recherche);
+        getUi(listeArticles);
+    })
 }
