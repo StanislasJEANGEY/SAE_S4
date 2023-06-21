@@ -50,6 +50,10 @@ class _ArticleListPageState extends State<ArticleListPage> {
             value: selectedValue,
             items: const [
               DropdownMenuItem<String>(
+                value: '0',
+                child: Text('Aucun'),
+              ),
+              DropdownMenuItem<String>(
                 value: '1',
                 child: Text('Croissant'),
               ),
