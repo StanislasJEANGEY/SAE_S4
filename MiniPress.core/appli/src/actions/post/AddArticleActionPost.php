@@ -34,9 +34,9 @@ class AddArticleActionPost extends AbstractAction {
 		$idAuteur = $auteur['id'];
 
 		$data = $request->getParsedBody();
-		$data['titre'] = filter_var($data['titre'], FILTER_SANITIZE_SPECIAL_CHARS);
-		$data['contenu'] = filter_var($data['contenu'], FILTER_SANITIZE_SPECIAL_CHARS);
-		$data['resume'] = filter_var($data['resume'], FILTER_SANITIZE_SPECIAL_CHARS);
+		$data['titre'] = filter_var($data['titre']);
+		$data['contenu'] = filter_var($data['contenu']);
+		$data['resume'] = filter_var($data['resume']);
         $data['categorie'] = $idCateg;
 		$data['auteur_id'] = $idAuteur;
 		$data['date_creation'] = date("Y-m-d H:i:s");
