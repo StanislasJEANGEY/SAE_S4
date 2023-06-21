@@ -1,4 +1,4 @@
-import {showdown} from "./node_modules/showdown/bin/showdown.js";
+import showdown from "./showdown.js";
 
 export function getUi(listeArticles) {
     let data = listeArticles.getTabArticles;
