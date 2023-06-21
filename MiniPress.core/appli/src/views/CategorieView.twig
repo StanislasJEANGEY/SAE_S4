@@ -15,7 +15,10 @@
                                     <small class="text-muted">Publié le {{ article.date_creation | date('d/m/Y à H:i') }}</small>
                                 </div>
                             </a>
-                            <p class="mb-1">{{ article.resume }}</p>
+                            {% apply markdown_to_html %}
+                                {{ article.resume }}
+                            {% endapply %}
+
                             <form action="" method="post" class="form-inline">
                                 <div class="form-check">
                                     {% if article.publie == 1 %}
