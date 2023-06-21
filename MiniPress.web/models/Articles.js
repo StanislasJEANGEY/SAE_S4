@@ -1,53 +1,36 @@
 export default class Articles {
-    tabArticles = [];
-    count = 0;
-
+    _titre = "";
+    _resume = "";
+    _contenu = "";
+    _date_creation = "";
+    _id = 0;
 
     constructor(data) {
-        this.tabArticles = data['article'];
-        this.count = data['count'];
+        this._titre = data['article']['titre'];
+        this._resume = data['article']['resume'];
+        this._contenu = data['article']['contenu'];
+        this._date_creation = data['article']['date_creation'];
+        this._id = data['article']['id'];
     }
 
-    filtreArticlesByMotCleTitre(motCle) {
-        let tab = [];
-        this.tabArticles.forEach((article) => {
-            if (article['titre'].includes(motCle)) {
-                tab.push(article);
-            }
-        });
-        return tab;
+    get getTitre() {
+        return this._titre;
     }
 
-    filtreArticlesByMotCleTitreResume(motCle) {
-        let tab = [];
-        this.tabArticles.forEach((article) => {
-            if (article['titre'].includes(motCle) || article['resume'].includes(motCle)) {
-                tab.push(article);
-            }
-        });
-        return tab;
+    get getResume() {
+        return this._resume;
     }
 
-    triListeArticlesParDateAscendant() {
-
-        this.tabArticles.sort((a, b) => {
-            return new Date(a['date_creation']).getTime() - new Date(b['date_creation']).getTime();
-        } );
-
+    get getContenu() {
+        return this._contenu;
     }
 
-    triListeArticlesParDateDescendant() {
-        this.tabArticles.sort((a, b) => {
-            return new Date(b['date_creation']).getTime() - new Date(a['date_creation']).getTime();
-        });
+    get getDate_creation() {
+        return this._date_creation;
     }
 
-    get getTabArticles() {
-        return this.tabArticles;
-    }
 
-    get getCount() {
-        return this.count;
+    get getId() {
+        return this._id;
     }
-
 }

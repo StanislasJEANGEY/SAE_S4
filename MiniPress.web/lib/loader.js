@@ -69,7 +69,7 @@ export function loadArticlesByCategorie(id){
  */
 
 export function loadArticlesByAuteur(id){
-    let promise = fetch(url +'/api/authors/'+id+'/articles');
+    let promise = fetch(url +'/api/auteurs/'+id+'/articles');
     return promise.then((response) => {
         if (response.ok) {
             return response.json();

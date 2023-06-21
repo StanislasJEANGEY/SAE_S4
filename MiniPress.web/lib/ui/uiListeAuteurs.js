@@ -1,14 +1,20 @@
+import {getListeArticlesByAuteur} from "../../index.js";
 export function getUi(listeAuteurs) {
     let data = listeAuteurs.getTabAuteurs;
-    let div = document.getElementById("main");
-    let html = "<div id='listeAuteurs'>";
+    let div = document.getElementById("liste_auth_categ");
+    let html = "";
     data.forEach(auteur => {
         html += `
-            <div class="auteur">
-                <h2>${auteur.nom}</h2>
-            </div>
+            <h2 id="${auteur.id}">${auteur.nom}</h2>
         `
     })
-    html += "</div>";
     div.innerHTML = html;
+
+    const auteurs = document.querySelectorAll("#liste_auth_categ");
+    auteurs.forEach(auteur => {
+        auteur.addEventListener("click", (elem) => {
+            console.log(elem.target.id)
+            getListeArticlesByAuteur(elem.target.id)
+        })
+    })
 }

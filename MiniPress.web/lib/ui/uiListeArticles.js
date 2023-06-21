@@ -1,22 +1,30 @@
-import showdown from "./showdown.js";
+import {getArticleById} from "../../index.js";
 
 export function getUi(listeArticles) {
     let data = listeArticles.getTabArticles;
-    let div = document.getElementById("main");
-    let html = "<div id='listeArticles'>";
+    let div = document.getElementById("listeArticles");
+    let html = "";
 
     let converter = new showdown.Converter();
 
-
-    data.forEach(article => {
-        html += `
-            <div class="article">
+    //si data n'est pas vide alors
+    if(data.length > 0) {
+        data.forEach(article => {
+            html += `
+            <div class="article" id="${article.id}">
                 <h2>${article.titre}</h2>
                 <p>${article.date_creation}</p>
-                ${converter.makeHtml(article.contenu)}
+                <p>${converter.makeHtml(article.resume)}</p>
             </div>
         `
-    })
-    html += "</div>";
-    div.innerHTML = html;
+        })
+        div.innerHTML = html;
+
+        const articles = document.querySelectorAll("#listeArticles");
+        articles.forEach(article => {
+            article.addEventListener("click", (elem) => {
+                getArticleById(elem.target.closest('.article').id);
+            })
+        })
+    }
 }

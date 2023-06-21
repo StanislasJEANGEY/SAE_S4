@@ -1,14 +1,13 @@
 import * as loader from './lib/loader.js';
-import Articles from "./models/Articles.js";
+import ListeArticles from "./models/ListeArticles.js";
 import Categories from "./models/Categories.js";
 import Auteurs from "./models/Auteurs.js";
 import * as uiListeArticles from './lib/ui/uiListeArticles.js';
 import * as uiListeCategories from "./lib/ui/uiListeCategorie.js";
 import * as uiListeAuteur from "./lib/ui/uiListeAuteurs.js";
+import * as uiArticles from "./lib/ui/uiArticle.js";
+import Articles from "./models/Articles.js";
 
-document.getElementById("bt_article").addEventListener("click", () => {
-    getArticles();
-});
 
 document.getElementById("bt_categories").addEventListener("click", () => {
     getCategories();
@@ -20,13 +19,32 @@ document.getElementById("bt_auteurs").addEventListener("click", () => {
 
 
 
-const getArticles = () => {
-    return loader.loadArticles().then((result) => {
+export function getListeArticlesByCategorie (id) {
+    loader.loadArticlesByCategorie(id).then((result) => {
         //console.log("result");
-        let articles = new Articles(result);
+        let articles = new ListeArticles(result);
         articles.triListeArticlesParDateAscendant();
-        articles.triListeArticlesParDateDescendant();
         uiListeArticles.getUi(articles)
+    }).catch((error) => {
+        console.log(error);
+    });
+}
+
+export function getListeArticlesByAuteur (id) {
+    loader.loadArticlesByAuteur(id).then((result) => {
+        //console.log("result");
+        let articles = new ListeArticles(result);
+        articles.triListeArticlesParDateAscendant();
+        uiListeArticles.getUi(articles)
+    }).catch((error) => {
+        console.log(error);
+    });
+}
+
+export function getArticleById (id) {
+    loader.loadArticle(id).then((result) => {
+        let article = new Articles(result);
+        uiArticles.getUi(article)
     }).catch((error) => {
         console.log(error);
     });

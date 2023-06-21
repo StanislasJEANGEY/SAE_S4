@@ -27,6 +27,25 @@
     border: 2px solid black
 }
 
+#listeArticles {
+    top: 0;
+    margin-left: 320px;
+    width: 300px;
+    height: 100vh;
+    position: fixed;
+}
 
+.article{
+    background-color: #666666;
+    margin: 10px;
+    padding: 10px;
+    border: 2px solid black;
+    border-radius: 5px;
+    color: white;
+}
 
+#articleDetails{
+    top: 0;
+    margin-left: 640px;
+}
 
