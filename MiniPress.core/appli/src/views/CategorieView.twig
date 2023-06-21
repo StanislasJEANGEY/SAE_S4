@@ -14,10 +14,10 @@
                                     <h5 class="mb-1">{{ article.titre }}</h5>
                                     <small class="text-muted">Publié le {{ article.date_creation | date('d/m/Y à H:i') }}</small>
                                 </div>
+                                {% apply markdown_to_html %}
+                                    {{ article.resume }}
+                                {% endapply %}
                             </a>
-                            {% apply markdown_to_html %}
-                                {{ article.resume }}
-                            {% endapply %}
 
                             <form action="{{ url_for('categorie_post', {'id': idCateg}) }}" method="post" class="form-inline">
                                 <div class="form-check">
