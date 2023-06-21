@@ -23,7 +23,7 @@ export function getListeArticlesByCategorie (id) {
     loader.loadArticlesByCategorie(id).then((result) => {
         let articles = new ListeArticles(result);
         articles.triListeArticlesParDateAscendant();
-        uiListeArticles.getUi(articles)
+        uiListeArticles.getUi(articles, articles.getTabArticles)
     }).catch((error) => {
         console.log(error);
     });
@@ -33,7 +33,7 @@ export function getListeArticlesByAuteur (id) {
     loader.loadArticlesByAuteur(id).then((result) => {
         let articles = new ListeArticles(result);
         articles.triListeArticlesParDateAscendant();
-        uiListeArticles.getUi(articles)
+        uiListeArticles.getUi(articles, articles.getTabArticles)
     }).catch((error) => {
         console.log(error);
     });

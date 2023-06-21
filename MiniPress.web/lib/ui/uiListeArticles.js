@@ -1,7 +1,7 @@
 import {getArticleById} from "../../index.js";
 
-export function getUi(listeArticles) {
-    let data = listeArticles.getTabArticles;
+export function getUi(listeArticles, tabArticles) {
+    let data = tabArticles;
     let div = document.getElementById("listeArticles");
     let html = `
         <label for="tri">Trier par : </label>
@@ -50,11 +50,11 @@ export function getUi(listeArticles) {
         if (elem.target.value === "dateAsc") {
             document.getElementById("liste_auth_categ").innerHTML = "";
             listeArticles.triListeArticlesParDateAscendant();
-            getUi(listeArticles);
+            getUi(listeArticles, listeArticles.getTabArticles);
         } else if (elem.target.value === "dateDesc") {
             document.getElementById("liste_auth_categ").innerHTML = "";
             listeArticles.triListeArticlesParDateDescendant();
-            getUi(listeArticles);
+            getUi(listeArticles, listeArticles.getTabArticles);
         }
     })
 
@@ -64,7 +64,7 @@ export function getUi(listeArticles) {
         let recherche = document.getElementById("inputRechercheTitre").value;
 
         listeArticles.filtreArticlesByMotCleTitre(recherche);
-        listeArticles.setTabArticles = listeArticles.filtreArticlesByMotCleTitre(recherche);
-        getUi(listeArticles);
+        let tab = listeArticles.filtreArticlesByMotCleTitre(recherche);
+        getUi(listeArticles, tab);
     })
 }
