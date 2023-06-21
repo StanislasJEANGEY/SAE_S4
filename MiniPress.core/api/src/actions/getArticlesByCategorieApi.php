@@ -16,7 +16,7 @@ class getArticlesByCategorieApi extends AbstractAction
         $articles = $service->getArticlesByCategorie($idCateg);
         $data=["type"=>"collection",
             "count"=>count($articles),
-            "categories"=>$articles
+            "articles"=>$articles
         ];
 
         $data = json_encode($data, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE);
