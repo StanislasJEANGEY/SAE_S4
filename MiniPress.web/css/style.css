@@ -1,0 +1,49 @@
+
+#menu {
+    width: 200px;
+    height: 100%;
+    background-color: #f1f1f1;
+    float: left;
+}
+
+#main {
+    margin-left: 200px;
+    padding: 20px;
+}
+
+#menu ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+#menu li {
+    padding: 8px 16px;
+    cursor: pointer;
+}
+
+#menu li:hover {
+    background-color: #555;
+    color: white;
+}
+
+#main {
+    margin-left: 200px;
+    padding: 20px;
+}
+
+#menu ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+#menu li {
+    padding: 8px 16px;
+    cursor: pointer;
+}
+
+#menu li:hover {
+    background-color: #555;
+    color: white;
+}
