@@ -120,3 +120,50 @@ body {
         margin-left: 320px;
     }
 }
+
+#rechercher {
+    background-color: #666666;
+    color: white;
+    padding: 8px;
+    border: none;
+    cursor: pointer;
+}
+
+#inputRechercheTitre {
+    padding: 8px;
+    border: 1px solid #666666;
+    border-radius: 5px;
+}
+
+#listeArticlesdiv {
+    margin-top: 20px;
+}
+
+#tri {
+    padding: 8px;
+    border: 1px solid #666666;
+    border-radius: 5px;
+}
+
+#liste_auth_categ {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+}
+
+#liste_auth_categ h2 {
+    background-color: rgba(61, 54, 54, 0.22);
+    padding: 8px 16px;
+    cursor: pointer;
+    transition: transform 0.2s;
+    margin: 10px;
+    border: 2px solid black;
+    border-radius: 5px;
+    color: white;
+}
+
+#liste_auth_categ h2:hover {
+    transform: translateX(5px);
+    border: 2px solid black;
+}
+
