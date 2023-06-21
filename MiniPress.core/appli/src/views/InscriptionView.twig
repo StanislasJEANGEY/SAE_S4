@@ -12,7 +12,7 @@
                             <div class="alert alert-danger">{{ error }}</div>
                         {% endif %}
 
-                        <form method="POST" action="{{ url_for('inscription_post') }}">
+                        <form method="POST" action="{{ url_for('inscription_post') }}" accept-charset="UTF-8">
                             <div class="mb-3">
                                 <label for="username" class="form-label">Nom d'utilisateur</label>
                                 <input type="text" id="username" name="username" class="form-control" required>
