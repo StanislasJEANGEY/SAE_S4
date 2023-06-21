@@ -72,7 +72,7 @@ VALUES ('admin', 1);
 INSERT INTO articles (titre, resume, contenu, date_creation, image_url, categorie_id, auteur_id, publie)
 VALUES (' Article 1', '## Résumé
 Dans cet article, nous explorons les fonctionnalités de Markdown et comment les utiliser pour formater du contenu. Découvrez comment ajouter des titres, créer des listes, insérer des liens et des images, et bien plus encore !
-', '
+', '## Contenu
 ### Paragraphe 1
 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam placerat massa eu ex aliquet, eget consequat nunc varius. Sed ac malesuada turpis. *Italique* et **gras** peuvent être utilisés pour mettre en valeur certaines parties du texte. Par exemple, vous pouvez créer une liste non ordonnée pour résumer vos points principaux :
 
@@ -90,7 +90,7 @@ Vestibulum et aliquet massa, quis commodo nisl. Fusce tincidunt, risus in dignis
 
 (' Article 2', '## Résumé
 Dans cet article, nous explorons les fonctionnalités de Markdown et comment les utiliser pour formater du contenu. Découvrez comment ajouter des titres, créer des listes, insérer des liens et des images, et bien plus encore !
-', '
+', '## Contenu
 ### Paragraphe 1
 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam placerat massa eu ex aliquet, eget consequat nunc varius. Sed ac malesuada turpis. *Italique* et **gras** peuvent être utilisés pour mettre en valeur certaines parties du texte. Par exemple, vous pouvez créer une liste non ordonnée pour résumer vos points principaux :
 
@@ -108,7 +108,7 @@ Vestibulum et aliquet massa, quis commodo nisl. Fusce tincidunt, risus in dignis
 
 (' Article 3', '## Résumé
 Dans cet article, nous explorons les fonctionnalités de Markdown et comment les utiliser pour formater du contenu. Découvrez comment ajouter des titres, créer des listes, insérer des liens et des images, et bien plus encore !
-', '
+', '## Contenu
 ### Paragraphe 1
 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam placerat massa eu ex aliquet, eget consequat nunc varius. Sed ac malesuada turpis. *Italique* et **gras** peuvent être utilisés pour mettre en valeur certaines parties du texte. Par exemple, vous pouvez créer une liste non ordonnée pour résumer vos points principaux :
 
@@ -126,7 +126,7 @@ Vestibulum et aliquet massa, quis commodo nisl. Fusce tincidunt, risus in dignis
 
 (' Article 4', '## Résumé
 Dans cet article, nous explorons les fonctionnalités de Markdown et comment les utiliser pour formater du contenu. Découvrez comment ajouter des titres, créer des listes, insérer des liens et des images, et bien plus encore !
-', '
+', '## Contenu
 ### Paragraphe 1
 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam placerat massa eu ex aliquet, eget consequat nunc varius. Sed ac malesuada turpis. *Italique* et **gras** peuvent être utilisés pour mettre en valeur certaines parties du texte. Par exemple, vous pouvez créer une liste non ordonnée pour résumer vos points principaux :
 
@@ -144,7 +144,7 @@ Vestibulum et aliquet massa, quis commodo nisl. Fusce tincidunt, risus in dignis
 
 (' Article 5', '## Résumé
 Dans cet article, nous explorons les fonctionnalités de Markdown et comment les utiliser pour formater du contenu. Découvrez comment ajouter des titres, créer des listes, insérer des liens et des images, et bien plus encore !
-', '
+', '## Contenu
 ### Paragraphe 1
 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam placerat massa eu ex aliquet, eget consequat nunc varius. Sed ac malesuada turpis. *Italique* et **gras** peuvent être utilisés pour mettre en valeur certaines parties du texte. Par exemple, vous pouvez créer une liste non ordonnée pour résumer vos points principaux :
 
@@ -162,7 +162,7 @@ Vestibulum et aliquet massa, quis commodo nisl. Fusce tincidunt, risus in dignis
 
 ('Article 6', '## Résumé
 Dans cet article, nous explorons les fonctionnalités de Markdown et comment les utiliser pour formater du contenu. Découvrez comment ajouter des titres, créer des listes, insérer des liens et des images, et bien plus encore !
-', '
+', '## Contenu
 ### Paragraphe 1
 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam placerat massa eu ex aliquet, eget consequat nunc varius. Sed ac malesuada turpis. *Italique* et **gras** peuvent être utilisés pour mettre en valeur certaines parties du texte. Par exemple, vous pouvez créer une liste non ordonnée pour résumer vos points principaux :
 
@@ -180,7 +180,7 @@ Vestibulum et aliquet massa, quis commodo nisl. Fusce tincidunt, risus in dignis
 
 (' Article 7', '## Résumé
 Dans cet article, nous explorons les fonctionnalités de Markdown et comment les utiliser pour formater du contenu. Découvrez comment ajouter des titres, créer des listes, insérer des liens et des images, et bien plus encore !
-', '
+', '## Contenu
 ### Paragraphe 1
 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam placerat massa eu ex aliquet, eget consequat nunc varius. Sed ac malesuada turpis. *Italique* et **gras** peuvent être utilisés pour mettre en valeur certaines parties du texte. Par exemple, vous pouvez créer une liste non ordonnée pour résumer vos points principaux :
 
@@ -198,7 +198,7 @@ Vestibulum et aliquet massa, quis commodo nisl. Fusce tincidunt, risus in dignis
 
 (' Article 8', '## Résumé
 Dans cet article, nous explorons les fonctionnalités de Markdown et comment les utiliser pour formater du contenu. Découvrez comment ajouter des titres, créer des listes, insérer des liens et des images, et bien plus encore !
-', '
+', '## Contenu
 ### Paragraphe 1
 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam placerat massa eu ex aliquet, eget consequat nunc varius. Sed ac malesuada turpis. *Italique* et **gras** peuvent être utilisés pour mettre en valeur certaines parties du texte. Par exemple, vous pouvez créer une liste non ordonnée pour résumer vos points principaux :
 
