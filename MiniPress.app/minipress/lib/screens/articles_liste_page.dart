@@ -1,13 +1,14 @@
 import 'dart:convert';
 import 'package:flutter/material.dart';
+import 'package:flutter_markdown/flutter_markdown.dart';
+import 'package:intl/intl.dart';
 import 'package:minipress/models/articles.dart';
 import 'package:minipress/providers/minipress_provider.dart';
 import 'package:minipress/screens/article_details_page.dart';
 import 'package:provider/provider.dart';
-import 'package:intl/intl.dart';
 
 class ArticleListPage extends StatelessWidget {
-  const ArticleListPage({super.key});
+  const ArticleListPage({Key? key});
 
   @override
   Widget build(BuildContext context) {
@@ -48,8 +49,10 @@ class ArticleListPage extends StatelessWidget {
                 });
               }
             },
-            hint: const Text('Trier par ordre'), // Texte par défaut affiché sur le bouton
-            isExpanded: true,
+            hint: const Text(
+              'Trier par ordre',
+            ), // Texte par défaut affiché sur le bouton
+            // isExpanded: true,
           ),
         ],
       ),
@@ -62,31 +65,54 @@ class ArticleListPage extends StatelessWidget {
                 return ListView.builder(
                   itemCount: snapshot.data!.length,
                   itemBuilder: (context, index) {
-                    return ListTile(
-                      title: Text(snapshot.data![index].titre),
-                      subtitle: Text(
-                          utf8.decode(snapshot.data![index].resume.codeUnits)),
-                      trailing: Row(
-                        mainAxisSize: MainAxisSize.min,
-                        children: [
-                          Text(
-                            DateFormat('dd/MM/yyyy à HH:mm')
-                                .format(snapshot.data![index].dateCreation),
-                          ),
-                          const SizedBox(
-                            width: 10,
-                          ), // Espacement entre la date et la case à cocher
-                          Checkbox(
-                            value: snapshot.data![index].publie == 1,
-                            onChanged: null,
-                            activeColor:
-                                Colors.green, // Couleur de la case cochée
-                            checkColor: Colors.white, // Couleur de la coche
-                          ),
-                        ],
+                    return Card(
+                      elevation: 2.0,
+                      margin: const EdgeInsets.symmetric(
+                        horizontal: 16.0,
+                        vertical: 8.0,
                       ),
-                      onTap: () =>
-                          displayArticleDetails(context, snapshot.data![index]),
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(8.0),
+                      ),
+                      child: ListTile(
+                        title: Text(
+                          snapshot.data![index].titre,
+                          style: TextStyle(fontWeight: FontWeight.bold),
+                        ),
+                        subtitle: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            SizedBox(height: 8.0),
+                            MarkdownBody(
+                              data: utf8.decode(
+                                snapshot.data![index].resume.codeUnits,
+                              ),
+                            ),
+                            SizedBox(height: 8.0),
+                            Row(
+                              children: [
+                                Icon(
+                                  Icons.calendar_today,
+                                  size: 16.0,
+                                ),
+                                SizedBox(width: 4.0),
+                                Text(
+                                  DateFormat('dd/MM/yyyy à HH:mm').format(
+                                    snapshot.data![index].dateCreation,
+                                  ),
+                                  style: TextStyle(fontSize: 14.0),
+                                ),
+                              ],
+                            ),
+                            SizedBox(height: 8.0),
+                            Text('Publié: ${snapshot.data![index].publie == 1 ? 'Oui' : 'Non'}'),
+                          ],
+                        ),
+                        onTap: () => displayArticleDetails(
+                          context,
+                          snapshot.data![index],
+                        ),
+                      ),
                     );
                   },
                 );

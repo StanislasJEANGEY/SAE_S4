@@ -1,5 +1,5 @@
 import 'dart:convert';
-
+import 'package:flutter_markdown/flutter_markdown.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:minipress/models/articles.dart';
@@ -23,6 +23,8 @@ class ArticleDetailsPage extends StatelessWidget {
             future: minipressProvider.getArticleById(article.id!),
             builder: (context, snapshot) {
               if (snapshot.hasData) {
+                final decodedContenu = utf8.decode(snapshot.data!.contenu.codeUnits);
+                final decodedResume = utf8.decode(snapshot.data!.resume.codeUnits);
                 return ListView(
                   padding: EdgeInsets.all(16.0),
                   children: [
@@ -40,10 +42,7 @@ class ArticleDetailsPage extends StatelessWidget {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             SizedBox(height: 8.0),
-                            Text(
-                              utf8.decode(snapshot.data!.resume.codeUnits),
-                              style: TextStyle(fontSize: 16.0),
-                            ),
+                            MarkdownBody(data: decodedResume),
                             SizedBox(height: 8.0),
                             Row(
                               children: [
@@ -57,8 +56,7 @@ class ArticleDetailsPage extends StatelessWidget {
                               ],
                             ),
                             SizedBox(height: 8.0),
-                            Text('ID: ${snapshot.data!.id}'),
-                            Text('Contenu: ${snapshot.data!.contenu}'),
+                            MarkdownBody(data: decodedContenu),
                             Text('Image URL: ${snapshot.data!.imageUrl}'),
                             Text('Catégorie ID: ${snapshot.data!.categorieId}'),
                             Text('Auteur ID: ${snapshot.data!.auteurId}'),
@@ -66,9 +64,8 @@ class ArticleDetailsPage extends StatelessWidget {
                                 'Publié: ${snapshot.data!.publie == 1 ? 'Oui' : 'Non'}'),
                           ],
                         ),
-                      ),
-                    )
-                  ],
+                    ),
+                )],
                 );
               } else if (snapshot.hasError) {
                 return const Text('Erreur de chargement des articles');
