@@ -17,7 +17,7 @@ export function getUi(listeArticles) {
     if(data.length > 0) {
         data.forEach(article => {
             html += `
-            <div class="article" id="article${article.id}">
+            <div class="article" id="${article.id}">
                 <h2>${article.titre}</h2>
                 <p>${article.date_creation}</p>
                 <p>${converter.makeHtml(article.resume)}</p>
@@ -28,11 +28,9 @@ export function getUi(listeArticles) {
 
         const articles = document.querySelectorAll("#listeArticles");
         articles.forEach(article => {
-            if (article.id.includes("article")) {
-                article.addEventListener("click", (elem) => {
-                    getArticleById(elem.target.closest('.article').id);
-                })
-            }
+            article.addEventListener("click", (elem) => {
+                getArticleById(elem.target.closest('.article').id);
+            })
         })
 
         const tri = document.getElementById('tri');
