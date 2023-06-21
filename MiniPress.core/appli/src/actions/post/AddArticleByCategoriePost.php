@@ -25,9 +25,9 @@ class AddArticleByCategoriePost extends AbstractAction
         $auteur = $auteurService->getAuteurByUserId($estConnecte['id']);
         var_dump($data);
         $data['categorie'] = filter_var($data['categorie'], FILTER_SANITIZE_NUMBER_INT);
-        $data['titre'] = filter_var($data['titre'], FILTER_SANITIZE_SPECIAL_CHARS);
-        $data['contenu'] = filter_var($data['contenu'], FILTER_SANITIZE_SPECIAL_CHARS);
-        $data['resume'] = filter_var($data['resume'], FILTER_SANITIZE_SPECIAL_CHARS);
+        $data['titre'] = filter_var($data['titre']);
+        $data['contenu'] = filter_var($data['contenu']);
+        $data['resume'] = filter_var($data['resume']);
         $data['date_creation'] = date("Y-m-d H:i:s");
         $data['auteur_id'] = $auteur['id'];
 
