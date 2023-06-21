@@ -8,38 +8,16 @@
 <body>
 <div id="menu">
     <ul>
-        <li id="bt_article">Articles</li>
-        <li id="bt_categories">Categories</li>
-        <li id="bt_auteurs">Auteurs</li>
+        <li id="bt_article">Articles<div id="second-menuArticles"></div></li>
+        <li id="bt_categories">Categories<div id="second-menuCategories"></div></li>
+        <li id="bt_auteurs">Auteurs<div id="second-menuAuteurs"></div></li>
     </ul>
+
 </div>
 <div id="main">
     <!-- Contenu principal -->
 </div>
 
-<script>
-    // Code JavaScript pour gérer les événements de clic sur les éléments du menu
-    var btArticle = document.getElementById("bt_article");
-    var btCategories = document.getElementById("bt_categories");
-    var btAuteurs = document.getElementById("bt_auteurs");
-
-    btArticle.addEventListener("click", function () {
-        // Code à exécuter lorsque l'utilisateur clique sur "Articles"
-        // Par exemple, afficher une liste d'articles dans la zone principale
-        document.getElementById("main").innerHTML = "<h2>Liste des articles</h2><ul><li>Article 1</li><li>Article 2</li><li>Article 3</li></ul>";
-    });
-
-    btCategories.addEventListener("click", function () {
-        // Code à exécuter lorsque l'utilisateur clique sur "Categories"
-        // Par exemple, afficher une liste de catégories dans la zone principale
-        document.getElementById("main").innerHTML = "<h2>Liste des catégories</h2><ul><li>Catégorie 1</li><li>Catégorie 2</li><li>Catégorie 3</li></ul>";
-    });
-
-    btAuteurs.addEventListener("click", function () {
-        // Code à exécuter lorsque l'utilisateur clique sur "Auteurs"
-        // Par exemple, afficher une liste d'auteurs dans la zone principale
-        document.getElementById("main").innerHTML = "<h2>Liste des auteurs</h2><ul><li>Auteur 1</li><li>Auteur 2</li><li>Auteur 3</li></ul>";
-    });
-</script>
+<script src ="menu.js"></script>
 </body>
 </html>
