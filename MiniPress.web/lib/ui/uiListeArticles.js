@@ -38,7 +38,7 @@ export function getUi(listeArticles, tabArticles) {
             const articles = document.querySelectorAll("#listeArticles");
             articles.forEach(article => {
                 article.addEventListener("click", (elem) => {
-                    if (elem.target.id.includes("article")) {
+                    if (elem.target.closest('.article').id.includes("article")) {
                         getArticleById(elem.target.closest('.article').id.replace('article', ''));
                     }
                 })
