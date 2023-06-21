@@ -25,6 +25,13 @@ class _MinipressMasterState extends State<MinipressMaster> {
       appBar: AppBar(
         title: const Text('Minipress', textAlign: TextAlign.center),
       ),
+      // Ajouter une texte d'accueil sur la page
+      body: const Center(
+        child: Text(
+          'Bienvenue sur Minipress',
+          style: TextStyle(fontSize: 30),
+        ),
+      ),
       // Burger menu en haut à gauche pour mettre nos boutons
       drawer: Drawer(
           child: ListView(children: [

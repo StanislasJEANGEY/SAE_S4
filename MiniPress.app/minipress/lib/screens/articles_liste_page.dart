@@ -7,16 +7,16 @@ import 'package:minipress/providers/minipress_provider.dart';
 import 'package:minipress/screens/article_details_page.dart';
 import 'package:provider/provider.dart';
 
-class ArticleListPage extends StatefulWidget  {
+class ArticleListPage extends StatefulWidget {
   const ArticleListPage({Key? key});
 
+  @override
   _ArticleListPageState createState() => _ArticleListPageState();
-
-  //fonction à utiliser pour trier les articles dans l'odre croissant ou décroissant selon la date de création
 }
 
 class _ArticleListPageState extends State<ArticleListPage> {
   String? selectedValue;
+  String? searchKeyword;
 
   void displayArticleDetails(BuildContext context, Articles article) {
     // Afficher les détails de l'article sélectionné
@@ -45,7 +45,26 @@ class _ArticleListPageState extends State<ArticleListPage> {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Liste des articles'),
+        centerTitle: true,
         actions: [
+          Expanded(
+            child: Container(
+              margin: const EdgeInsets.symmetric(horizontal: 16.0),
+              padding: const EdgeInsets.only(left: 35.0),
+              width: 50.0,
+              child: TextField(
+                onChanged: (value) {
+                  setState(() {
+                    searchKeyword = value;
+                  });
+                },
+                decoration: const InputDecoration(
+                  hintText: 'Rechercher par mot clé',
+                  hintStyle: TextStyle(color: Colors.white),
+                ),
+              ),
+            ),
+          ),
           DropdownButton<String>(
             value: selectedValue,
             items: const [
@@ -81,14 +100,31 @@ class _ArticleListPageState extends State<ArticleListPage> {
             builder: (context, snapshot) {
               if (snapshot.hasData) {
                 List<Articles> articles = snapshot.data!;
-                if (selectedValue == '1') {
-                  articles.sort((a, b) => a.dateCreation.compareTo(b.dateCreation));
-                } else if (selectedValue == '2') {
-                  articles.sort((a, b) => b.dateCreation.compareTo(a.dateCreation));
-                }
                 return ListView.builder(
                   itemCount: articles.length,
                   itemBuilder: (context, index) {
+                    final article = articles[index];
+
+                    // Vérifie si le mot clé est présent dans le titre ou le résumé
+                    if (searchKeyword != null &&
+                        !article.titre
+                            .toLowerCase()
+                            .contains(searchKeyword!.toLowerCase()) &&
+                        !utf8
+                            .decode(article.resume.codeUnits)
+                            .toLowerCase()
+                            .contains(searchKeyword!.toLowerCase())) {
+                      return const SizedBox
+                          .shrink(); // Retourne un widget vide pour masquer l'article
+                    }
+
+                    if (selectedValue == '1') {
+                      articles.sort(
+                          (a, b) => a.dateCreation.compareTo(b.dateCreation));
+                    } else if (selectedValue == '2') {
+                      articles.sort(
+                          (a, b) => b.dateCreation.compareTo(a.dateCreation));
+                    }
                     return Card(
                       elevation: 2.0,
                       margin: const EdgeInsets.symmetric(
@@ -100,42 +136,38 @@ class _ArticleListPageState extends State<ArticleListPage> {
                       ),
                       child: ListTile(
                         title: Text(
-                          articles[index].titre,
-                          style: TextStyle(fontWeight: FontWeight.bold),
+                          article.titre,
+                          style: const TextStyle(fontWeight: FontWeight.bold),
                         ),
                         subtitle: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            SizedBox(height: 8.0),
+                            const SizedBox(height: 8.0),
                             MarkdownBody(
-                              data: utf8.decode(
-                                articles[index].resume.codeUnits,
-                              ),
+                              data: utf8.decode(article.resume.codeUnits),
                             ),
-                            SizedBox(height: 8.0),
+                            const SizedBox(height: 8.0),
                             Row(
                               children: [
-                                Icon(
+                                const Icon(
                                   Icons.calendar_today,
                                   size: 16.0,
                                 ),
-                                SizedBox(width: 4.0),
+                                const SizedBox(width: 4.0),
                                 Text(
                                   DateFormat('dd/MM/yyyy à HH:mm').format(
-                                    articles[index].dateCreation,
+                                    article.dateCreation,
                                   ),
-                                  style: TextStyle(fontSize: 14.0),
+                                  style: const TextStyle(fontSize: 14.0),
                                 ),
                               ],
                             ),
-                            SizedBox(height: 8.0),
-                            Text('Publié: ${articles[index].publie == 1 ? 'Oui' : 'Non'}'),
+                            const SizedBox(height: 8.0),
+                            Text(
+                                'Publié: ${article.publie == 1 ? 'Oui' : 'Non'}'),
                           ],
                         ),
-                        onTap: () => displayArticleDetails(
-                          context,
-                          articles[index],
-                        ),
+                        onTap: () => displayArticleDetails(context, article),
                       ),
                     );
                   },

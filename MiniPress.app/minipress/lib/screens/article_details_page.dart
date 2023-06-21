@@ -38,7 +38,7 @@ class ArticleDetailsPage extends StatelessWidget {
                 final decodedResume =
                     utf8.decode(snapshot.data!.resume.codeUnits);
                 return ListView(
-                  padding: EdgeInsets.all(16.0),
+                  padding: const EdgeInsets.all(16.0),
                   children: [
                     Card(
                       elevation: 2.0,
@@ -48,24 +48,24 @@ class ArticleDetailsPage extends StatelessWidget {
                       child: ListTile(
                         title: Text(
                           snapshot.data!.titre,
-                          style: TextStyle(fontWeight: FontWeight.bold),
+                          style: const TextStyle(fontWeight: FontWeight.bold),
                         ),
                         subtitle: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            SizedBox(height: 8.0),
+                            const SizedBox(height: 8.0),
                             MarkdownBody(data: decodedResume),
-                            SizedBox(height: 8.0),
+                            const SizedBox(height: 8.0),
                             MarkdownBody(data: decodedContenu),
-                            SizedBox(height: 8.0),
+                            const SizedBox(height: 8.0),
                             Row(
                               children: [
-                                Icon(Icons.calendar_today, size: 16.0),
-                                SizedBox(width: 4.0),
+                                const Icon(Icons.calendar_today, size: 16.0),
+                                const SizedBox(width: 4.0),
                                 Text(
                                   DateFormat('dd/MM/yyyy à HH:mm')
                                       .format(snapshot.data!.dateCreation),
-                                  style: TextStyle(fontSize: 14.0),
+                                  style: const TextStyle(fontSize: 14.0),
                                 ),
                               ],
                             ),

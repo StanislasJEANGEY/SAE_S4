@@ -14,9 +14,8 @@ class ArticleByAuteurPage extends StatefulWidget {
 
   final Auteurs auteur;
 
+  @override
   _ArticleByAuteurPageState createState() => _ArticleByAuteurPageState();
-
-  // articles.sort((a, b) => b.dateCreation.compareTo(a.dateCreation));
 }
 
 class _ArticleByAuteurPageState extends State<ArticleByAuteurPage> {
@@ -107,34 +106,34 @@ class _ArticleByAuteurPageState extends State<ArticleByAuteurPage> {
                       child: ListTile(
                         title: Text(
                           articles[index].titre,
-                          style: TextStyle(fontWeight: FontWeight.bold),
+                          style: const TextStyle(fontWeight: FontWeight.bold),
                         ),
                         subtitle: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            SizedBox(height: 8.0),
+                            const SizedBox(height: 8.0),
                             MarkdownBody(
                               data: utf8.decode(
                                 articles[index].resume.codeUnits,
                               ),
                             ),
-                            SizedBox(height: 8.0),
+                            const SizedBox(height: 8.0),
                             Row(
                               children: [
-                                Icon(
+                                const Icon(
                                   Icons.calendar_today,
                                   size: 16.0,
                                 ),
-                                SizedBox(width: 4.0),
+                                const SizedBox(width: 4.0),
                                 Text(
                                   DateFormat('dd/MM/yyyy à HH:mm').format(
                                     articles[index].dateCreation,
                                   ),
-                                  style: TextStyle(fontSize: 14.0),
+                                  style: const TextStyle(fontSize: 14.0),
                                 ),
                               ],
                             ),
-                            SizedBox(height: 8.0),
+                            const SizedBox(height: 8.0),
                             Text(
                                 'Publié: ${articles[index].publie == 1 ? 'Oui' : 'Non'}'),
                           ],

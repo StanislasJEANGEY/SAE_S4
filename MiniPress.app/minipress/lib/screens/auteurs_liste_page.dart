@@ -1,5 +1,3 @@
-import 'dart:convert';
-
 import 'package:flutter/material.dart';
 import 'package:minipress/models/auteurs.dart';
 import 'package:minipress/providers/minipress_provider.dart';
