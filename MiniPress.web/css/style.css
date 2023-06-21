@@ -1,4 +1,8 @@
+#bouton{
+    color: white;
+}
 #menu {
+    grid-area: 1 / 1 / 6 / 2;
     width: 300px;
     height: 100vh;
     background-color: #666666;
@@ -21,6 +25,22 @@
     border: black; /* Supprime la bordure par défaut des boutons */
 
 }
+#liste_auth_catege{
+background-color: rgba(61, 54, 54, 0.22);
+    padding: 8px 16px;
+    cursor: pointer;
+    transition: transform 0.2s;
+     /* Supprime la bordure par défaut des boutons */
+    margin: 10px;
+    border: 2px solid black;
+    border-radius: 5px;
+    color: white;
+
+}
+#liste_auth_catege h2:hover{
+    transform: translateX(5px);
+    border: 2px solid black
+}
 
 #menu li:hover {
     transform: translateX(5px);
@@ -28,6 +48,7 @@
 }
 
 #listeArticles {
+    grid-area: 1 / 1 / 6 / 3;
     top: 0;
     margin-left: 320px;
     width: 300px;
@@ -36,6 +57,7 @@
 }
 
 .article{
+
     background-color: #666666;
     margin: 10px;
     padding: 10px;
@@ -45,7 +67,21 @@
 }
 
 #articleDetails{
-    top: 0;
-    margin-left: 640px;
+    grid-area: 1 / 2 / 6 / 5;
+}
+#article{
+    background-color: #666666;
+    margin: 10px;
+    padding: 10px;
+    border: 2px solid black;
+    border-radius: 5px;
+    color: white;
+}
+#main{
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(5, 1fr);
+    grid-column-gap: 0px;
+    grid-row-gap: 0px;
 }
 

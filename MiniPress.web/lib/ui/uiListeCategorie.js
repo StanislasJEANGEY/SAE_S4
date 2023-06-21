@@ -2,12 +2,13 @@ import {getListeArticlesByCategorie}  from "../../index.js";
 export function getUi(listeCategories){
     let data = listeCategories.getTabCategories;
     let div = document.getElementById("liste_auth_categ");
-    let html = "";
+    let html = "<div id='liste_auth_catege'>";
     data.forEach(categorie => {
         html += `
             <h2 id="${categorie.id}">${categorie.nom}</h2>
         `
     })
+    html += "</div>"
     div.innerHTML = html;
 
     const categs = document.querySelectorAll("#liste_auth_categ");
