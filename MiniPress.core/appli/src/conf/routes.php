@@ -15,6 +15,7 @@ use minipress\appli\actions\post\AddArticleByCategoriePost;
 use minipress\appli\actions\post\AddArticleActionPost;
 use minipress\appli\actions\get\ProfilActionGet;
 use minipress\appli\actions\post\AddUserActionPost;
+use minipress\appli\actions\post\CategorieActionPost;
 use minipress\appli\actions\post\ConnexionActionPost;
 use minipress\appli\actions\post\InscriptionActionPost;
 use minipress\appli\actions\post\ListeArticlesActionPost;
@@ -30,6 +31,7 @@ return function (\Slim\App $app): void {
 	$app->post('/appli/articleByCategorie', AddArticleByCategoriePost::class)->setName('add_articleByCategorie_post');
     $app->get('/categories[/]', ListeCategoriesActionGet::class)->setName("liste_categories_get");
     $app->get('/categories/{id}[/]', CategorieActionGet::class)->setName("categorie_get");
+    $app->post('/categories/{id}[/]', CategorieActionPost::class)->setName("categorie_post");
 
 
 

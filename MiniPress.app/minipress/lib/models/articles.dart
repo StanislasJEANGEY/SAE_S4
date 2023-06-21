@@ -4,7 +4,7 @@ class Articles {
   String resume;
   String contenu;
   DateTime dateCreation;
-  String imageUrl;
+  String? imageUrl;
   int? categorieId;
   int? auteurId;
   int publie;

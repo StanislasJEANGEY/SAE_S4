@@ -48,7 +48,7 @@ class MinipressProvider extends ChangeNotifier {
     if (response.statusCode == 200) {
       var jsonData = jsonDecode(response.body) as Map<String, dynamic>;
       List<Articles> articles = [];
-      for (var item in jsonData['categories']) {
+      for (var item in jsonData['articles']) {
         var article = Articles.fromJson(item);
         articles.add(article);
       }
@@ -95,7 +95,7 @@ class MinipressProvider extends ChangeNotifier {
     if (response.statusCode == 200) {
       var jsonData = jsonDecode(response.body) as Map<String, dynamic>;
       List<Articles> articles = [];
-      for (var item in jsonData['article']) {
+      for (var item in jsonData['articles']) {
         var article = Articles.fromJson(item);
         articles.add(article);
       }

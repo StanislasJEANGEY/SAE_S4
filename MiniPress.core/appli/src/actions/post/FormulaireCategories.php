@@ -20,7 +20,7 @@ class FormulaireCategories extends AbstractAction
     {
         $categories = new CategorieService();
         $data = $request->getParsedBody();
-        $data['nom'] = filter_var($data['nom'], FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+        $data['nom'] = filter_var($data['nom'], FILTER_SANITIZE_SPECIAL_CHARS);
         $success = $categories->setCategories($data);
         $view = Twig::fromRequest($request);
         $routeContext = RouteContext::fromRequest($request);
