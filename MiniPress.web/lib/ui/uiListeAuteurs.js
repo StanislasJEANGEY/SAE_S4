@@ -13,7 +13,8 @@ export function getUi(listeAuteurs) {
     const auteurs = document.querySelectorAll("#liste_auth_categ");
     auteurs.forEach(auteur => {
         auteur.addEventListener("click", (elem) => {
-            console.log(elem.target.id)
+            document.getElementById("articleDetails").innerHTML ="";
+            document.getElementById("listeArticles").innerHTML ="";
             getListeArticlesByAuteur(elem.target.id)
         })
     })

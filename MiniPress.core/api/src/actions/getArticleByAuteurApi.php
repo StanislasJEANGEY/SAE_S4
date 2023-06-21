@@ -17,7 +17,7 @@ class getArticleByAuteurApi extends AbstractAction
         $data = [
             "type" => "collection",
             "count" => count($article),
-            "article" => $article
+            "articles" => $article
         ];
 
 
