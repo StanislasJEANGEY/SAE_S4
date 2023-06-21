@@ -1,6 +1,6 @@
-version: "1"
+version: "3"
 networks:
-  giftbox.net:
+  sae.net:
     driver: bridge
 
 services:
@@ -10,13 +10,13 @@ services:
       - http_proxy=http://www-cache.iutnc.univ-lorraine.fr:3128
       - https_proxy=http://www-cache.iutnc.univ-lorraine.fr:3128
     ports:
-      - "18086:80"
+      - "18096:80"
     volumes:
       - ./MiniPress.core/api/public:/var/www/html
       - ./MiniPress.core/api/src:/var/www/src
     working_dir: /var/www/src
     networks:
-      - giftbox.net
+      - sae.net
     depends_on:
       - sql
 
@@ -26,15 +26,31 @@ services:
       - http_proxy=http://www-cache.iutnc.univ-lorraine.fr:3128
       - https_proxy=http://www-cache.iutnc.univ-lorraine.fr:3128
     ports:
-      - "18085:80"
+      - "18095:80"
     volumes:
       - ./MiniPress.core/appli/public:/var/www/html
       - ./MiniPress.core/appli/src:/var/www/src
     working_dir: /var/www/src
     networks:
-      - giftbox.net
+      - sae.net
     depends_on:
       - sql
+    
+  webjs:
+    image: stanislasj/sae_php:latest
+    environment:
+      - http_proxy=http://www-cache.iutnc.univ-lorraine.fr:3128
+      - https_proxy=http://www-cache.iutnc.univ-lorraine.fr:3128
+    ports:
+      - "18095:80"
+    volumes:
+      - ./MiniPress.web:/var/www/html
+    working_dir: /var/www/html
+    networks:
+      - sae.net
+    depends_on:
+      - sql
+      - api
 
   sql:
     image: mysql:latest
@@ -44,9 +60,9 @@ services:
       - MYSQL_USER=${DB_USER_NAME}
       - MYSQL_PASSWORD=${DB_USER_PASSWORD}
     ports:
-      - "18088:3306"
+      - "18098:3306"
     networks:
-      giftbox.net:
+      sae.net:
         aliases:
           - sql.db
 
@@ -56,6 +72,8 @@ services:
       PMA_HOST: sql
       PMA_PORT: 3306
     ports:
-      - "18087:80"
+      - "18097:80"
     networks:
-      - giftbox.net
+      - sae.net
+    depends_on:
+      - sql
