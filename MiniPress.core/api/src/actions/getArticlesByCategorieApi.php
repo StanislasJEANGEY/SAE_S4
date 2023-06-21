@@ -13,10 +13,10 @@ class getArticlesByCategorieApi extends AbstractAction
     {
         $service = new ArticleService();
         $idCateg = $args['id'];
-        $cat = $service->getArticlesByCategorie($idCateg);
+        $articles = $service->getArticlesByCategorie($idCateg);
         $data=["type"=>"collection",
-            "count"=>count($cat),
-            "categories"=>$cat
+            "count"=>count($articles),
+            "categories"=>$articles
         ];
 
         $data = json_encode($data, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE);
