@@ -12,7 +12,10 @@ export function getUi(listeArticles, tabArticles) {
         </select>
         <label for="rechercheTitre">Rechercher dans le titre: </label>
         <input type="text" id="inputRechercheTitre" name="inputRechercheTitre">
-        <button id="rechercher">Rechercher</button>
+        <button id="rechercherTitre">Rechercher</button>
+        <label for="rechercheTitreResume">Rechercher dans le titre ou dans le resumé: </label>
+        <input type="text" id="rechercheTitreResume" name="rechercheTitreResume">
+        <button id="rechercherTitreResume">Rechercher</button>
         
     `;
 
@@ -58,13 +61,19 @@ export function getUi(listeArticles, tabArticles) {
         }
     })
 
-    const rechercheTitre = document.getElementById('rechercher');
+    const rechercheTitre = document.getElementById('rechercherTitre');
     rechercheTitre.addEventListener("click", (elem) => {
         document.getElementById("listeArticlesdiv").innerHTML = "";
         let recherche = document.getElementById("inputRechercheTitre").value;
-
-        listeArticles.filtreArticlesByMotCleTitre(recherche);
         let tab = listeArticles.filtreArticlesByMotCleTitre(recherche);
+        getUi(listeArticles, tab);
+    })
+
+    const rechercheTitreResume = document.getElementById('rechercherTitreResume');
+    rechercheTitreResume.addEventListener("click", (elem) => {
+        document.getElementById("listeArticlesdiv").innerHTML = "";
+        let recherche = document.getElementById("rechercheTitreResume").value;
+        let tab = listeArticles.filtreArticlesByMotCleTitreResume(recherche);
         getUi(listeArticles, tab);
     })
 }
