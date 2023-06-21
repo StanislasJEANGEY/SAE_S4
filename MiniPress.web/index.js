@@ -32,7 +32,7 @@ export function getListeArticlesByCategorie (id) {
 export function getListeArticlesByAuteur (id) {
     loader.loadArticlesByAuteur(id).then((result) => {
         let articles = new ListeArticles(result);
-        //articles.triListeArticlesParDateAscendant();
+        articles.triListeArticlesParDateAscendant();
         uiListeArticles.getUi(articles)
     }).catch((error) => {
         console.log(error);
