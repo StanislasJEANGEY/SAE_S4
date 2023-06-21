@@ -7,13 +7,41 @@ import 'package:minipress/providers/minipress_provider.dart';
 import 'package:minipress/screens/article_details_page.dart';
 import 'package:provider/provider.dart';
 
-class ArticleListPage extends StatelessWidget {
+class ArticleListPage extends StatefulWidget  {
   const ArticleListPage({Key? key});
+
+  _ArticleListPageState createState() => _ArticleListPageState();
+
+  //fonction à utiliser pour trier les articles dans l'odre croissant ou décroissant selon la date de création
+}
+
+class _ArticleListPageState extends State<ArticleListPage> {
+  String? selectedValue;
+
+  void displayArticleDetails(BuildContext context, Articles article) {
+    // Afficher les détails de l'article sélectionné
+    Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (context) => ArticleDetailsPage(article: article),
+      ),
+    );
+  }
+
+  Future<List<Articles>> sortArticles(String value, context) async {
+    List<Articles> articles =
+        await Provider.of<MinipressProvider>(context, listen: false)
+            .getArticles();
+    if (value == '1') {
+      articles.sort((a, b) => a.dateCreation.compareTo(b.dateCreation));
+    } else if (value == '2') {
+      articles.sort((a, b) => b.dateCreation.compareTo(a.dateCreation));
+    }
+    return articles;
+  }
 
   @override
   Widget build(BuildContext context) {
-    String? selectedValue;
-
     return Scaffold(
       appBar: AppBar(
         title: const Text('Liste des articles'),
@@ -31,28 +59,14 @@ class ArticleListPage extends StatelessWidget {
               ),
             ],
             onChanged: (String? value) {
-              // Mettre à jour la valeur sélectionnée
-              selectedValue = value;
-              if (value == '1') {
-                Provider.of<MinipressProvider>(context, listen: false)
-                    .getArticles()
-                    .then((articles) {
-                  articles
-                      .sort((a, b) => a.dateCreation.compareTo(b.dateCreation));
-                });
-              } else if (value == '2') {
-                Provider.of<MinipressProvider>(context, listen: false)
-                    .getArticles()
-                    .then((articles) {
-                  articles
-                      .sort((a, b) => b.dateCreation.compareTo(a.dateCreation));
-                });
-              }
+              setState(() {
+                selectedValue = value;
+              });
+              sortArticles(value!, context);
             },
             hint: const Text(
               'Trier par ordre',
-            ), // Texte par défaut affiché sur le bouton
-            // isExpanded: true,
+            ),
           ),
         ],
       ),
@@ -62,8 +76,14 @@ class ArticleListPage extends StatelessWidget {
             future: minipressProvider.getArticles(),
             builder: (context, snapshot) {
               if (snapshot.hasData) {
+                List<Articles> articles = snapshot.data!;
+                if (selectedValue == '1') {
+                  articles.sort((a, b) => a.dateCreation.compareTo(b.dateCreation));
+                } else if (selectedValue == '2') {
+                  articles.sort((a, b) => b.dateCreation.compareTo(a.dateCreation));
+                }
                 return ListView.builder(
-                  itemCount: snapshot.data!.length,
+                  itemCount: articles.length,
                   itemBuilder: (context, index) {
                     return Card(
                       elevation: 2.0,
@@ -76,7 +96,7 @@ class ArticleListPage extends StatelessWidget {
                       ),
                       child: ListTile(
                         title: Text(
-                          snapshot.data![index].titre,
+                          articles[index].titre,
                           style: TextStyle(fontWeight: FontWeight.bold),
                         ),
                         subtitle: Column(
@@ -85,7 +105,7 @@ class ArticleListPage extends StatelessWidget {
                             SizedBox(height: 8.0),
                             MarkdownBody(
                               data: utf8.decode(
-                                snapshot.data![index].resume.codeUnits,
+                                articles[index].resume.codeUnits,
                               ),
                             ),
                             SizedBox(height: 8.0),
@@ -98,19 +118,19 @@ class ArticleListPage extends StatelessWidget {
                                 SizedBox(width: 4.0),
                                 Text(
                                   DateFormat('dd/MM/yyyy à HH:mm').format(
-                                    snapshot.data![index].dateCreation,
+                                    articles[index].dateCreation,
                                   ),
                                   style: TextStyle(fontSize: 14.0),
                                 ),
                               ],
                             ),
                             SizedBox(height: 8.0),
-                            Text('Publié: ${snapshot.data![index].publie == 1 ? 'Oui' : 'Non'}'),
+                            Text('Publié: ${articles[index].publie == 1 ? 'Oui' : 'Non'}'),
                           ],
                         ),
                         onTap: () => displayArticleDetails(
                           context,
-                          snapshot.data![index],
+                          articles[index],
                         ),
                       ),
                     );
@@ -124,16 +144,6 @@ class ArticleListPage extends StatelessWidget {
             },
           );
         },
-      ),
-    );
-  }
-
-  void displayArticleDetails(BuildContext context, Articles article) {
-    // Afficher les détails de l'article sélectionné
-    Navigator.push(
-      context,
-      MaterialPageRoute(
-        builder: (context) => ArticleDetailsPage(article: article),
       ),
     );
   }
