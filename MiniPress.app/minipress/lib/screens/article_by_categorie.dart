@@ -21,6 +21,8 @@ class ArticleByCategoriePage extends StatefulWidget {
 
 class _ArticleByCategoriePageState extends State<ArticleByCategoriePage> {
   String? selectedValue;
+  String? searchKeyword;
+
 
   void displayArticleDetails(BuildContext context, Articles article) {
     // Afficher les détails de l'article sélectionné
@@ -47,41 +49,79 @@ class _ArticleByCategoriePageState extends State<ArticleByCategoriePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Liste des articles'),
-        actions: [
-          DropdownButton<String>(
-            value: selectedValue,
-            items: const [
-              DropdownMenuItem<String>(
-                value: '0',
-                child: Text('Aucun'),
+      appBar: PreferredSize(
+        preferredSize: const Size.fromHeight(56.0), // Spécifiez la hauteur souhaitée pour l'app bar
+        child: AppBar(
+          title: null, // Supprimer le titre de l'app bar
+          centerTitle: true,
+          actions: [
+            Flexible(
+              child: Row(
+                children: [
+                  Flexible(
+                    child: Container(
+                      margin: const EdgeInsets.symmetric(horizontal: 16.0),
+                      padding: const EdgeInsets.only(left: 50.0),
+                      width: 250.0,
+                      child: TextField(
+                        onChanged: (value) {
+                          setState(() {
+                            searchKeyword = value;
+                          });
+                        },
+                        decoration: const InputDecoration(
+                          hintText: 'Rechercher par mot clé',
+                          hintStyle: TextStyle(color: Colors.white),
+                        ),
+                      ),
+                    ),
+                  ),
+                  const SizedBox(width: 16.0), // Ajouter un espacement entre le champ de recherche et le titre
+                  Expanded(
+                    child: Center(
+                      child: Text(
+                        widget.categorie.nom,
+                        style: const TextStyle(fontSize: 20.0, fontWeight: FontWeight.bold),
+                      ),
+                    ),
+                  ),
+                  const SizedBox(width: 16.0), // Ajouter un espacement entre le titre et le bouton Dropdown
+                  DropdownButton<String>(
+                    value: selectedValue,
+                    items: const [
+                      DropdownMenuItem<String>(
+                        value: '0',
+                        child: Text('Aucun'),
+                      ),
+                      DropdownMenuItem<String>(
+                        value: '1',
+                        child: Text('Croissant'),
+                      ),
+                      DropdownMenuItem<String>(
+                        value: '2',
+                        child: Text('Décroissant'),
+                      ),
+                    ],
+                    onChanged: (String? value) {
+                      setState(() {
+                        selectedValue = value;
+                      });
+                      sortArticles(value!, context);
+                    },
+                    hint: const Text(
+                      'Trier par ordre',
+                    ),
+                  ),
+                ],
               ),
-              DropdownMenuItem<String>(
-                value: '1',
-                child: Text('Croissant'),
-              ),
-              DropdownMenuItem<String>(
-                value: '2',
-                child: Text('Décroissant'),
-              ),
-            ],
-            onChanged: (String? value) {
-              setState(() {
-                selectedValue = value;
-              });
-              sortArticles(value!, context);
-            },
-            hint: const Text(
-              'Trier par ordre',
             ),
-          ),
-        ],
+          ],
+        ),
       ),
       body: Consumer<MinipressProvider>(
         builder: (context, minipressProvider, child) {
           return FutureBuilder<List<Articles>>(
-            future: minipressProvider.getArticles(),
+            future: minipressProvider.getArticlesByCategorie(widget.categorie.id!),
             builder: (context, snapshot) {
               if (snapshot.hasData) {
                 List<Articles> articles = snapshot.data!;
@@ -93,6 +133,18 @@ class _ArticleByCategoriePageState extends State<ArticleByCategoriePage> {
                 return ListView.builder(
                   itemCount: articles.length,
                   itemBuilder: (context, index) {
+                    final article = articles[index];
+                    if (searchKeyword != null &&
+                        !article.titre
+                            .toLowerCase()
+                            .contains(searchKeyword!.toLowerCase()) &&
+                        !utf8
+                            .decode(article.resume.codeUnits)
+                            .toLowerCase()
+                            .contains(searchKeyword!.toLowerCase())) {
+                      return const SizedBox
+                          .shrink(); // Retourne un widget vide pour masquer l'article
+                    }
                     return Card(
                       elevation: 2.0,
                       margin: const EdgeInsets.symmetric(
