@@ -7,20 +7,71 @@ import 'package:minipress/providers/minipress_provider.dart';
 import 'package:minipress/screens/article_details_page.dart';
 import 'package:provider/provider.dart';
 
-class ArticleListPage extends StatelessWidget {
+class ArticleListPage extends StatefulWidget {
   const ArticleListPage({Key? key});
 
   @override
-  Widget build(BuildContext context) {
-    String? selectedValue;
+  _ArticleListPageState createState() => _ArticleListPageState();
+}
 
+class _ArticleListPageState extends State<ArticleListPage> {
+  String? selectedValue;
+  String? searchKeyword;
+
+  void displayArticleDetails(BuildContext context, Articles article) {
+    // Afficher les détails de l'article sélectionné
+    Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (context) => ArticleDetailsPage(article: article),
+      ),
+    );
+  }
+
+  Future<List<Articles>> sortArticles(String value, context) async {
+    List<Articles> articles =
+        await Provider.of<MinipressProvider>(context, listen: false)
+            .getArticles();
+    if (value == '1') {
+      articles.sort((a, b) => a.dateCreation.compareTo(b.dateCreation));
+    } else if (value == '2') {
+      articles.sort((a, b) => b.dateCreation.compareTo(a.dateCreation));
+    }
+    return articles;
+  }
+
+  @override
+  Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Liste des articles'),
+        centerTitle: true,
         actions: [
+          Expanded(
+            child: Container(
+              margin: const EdgeInsets.symmetric(horizontal: 16.0),
+              padding: const EdgeInsets.only(left: 35.0),
+              width: 50.0,
+              child: TextField(
+                onChanged: (value) {
+                  setState(() {
+                    searchKeyword = value;
+                  });
+                },
+                decoration: const InputDecoration(
+                  hintText: 'Rechercher par mot clé',
+                  hintStyle: TextStyle(color: Colors.white),
+                ),
+              ),
+            ),
+          ),
           DropdownButton<String>(
             value: selectedValue,
             items: const [
+              DropdownMenuItem<String>(
+                value: '0',
+                child: Text('Aucun'),
+              ),
               DropdownMenuItem<String>(
                 value: '1',
                 child: Text('Croissant'),
@@ -31,28 +82,14 @@ class ArticleListPage extends StatelessWidget {
               ),
             ],
             onChanged: (String? value) {
-              // Mettre à jour la valeur sélectionnée
-              selectedValue = value;
-              if (value == '1') {
-                Provider.of<MinipressProvider>(context, listen: false)
-                    .getArticles()
-                    .then((articles) {
-                  articles
-                      .sort((a, b) => a.dateCreation.compareTo(b.dateCreation));
-                });
-              } else if (value == '2') {
-                Provider.of<MinipressProvider>(context, listen: false)
-                    .getArticles()
-                    .then((articles) {
-                  articles
-                      .sort((a, b) => b.dateCreation.compareTo(a.dateCreation));
-                });
-              }
+              setState(() {
+                selectedValue = value;
+              });
+              sortArticles(value!, context);
             },
             hint: const Text(
               'Trier par ordre',
-            ), // Texte par défaut affiché sur le bouton
-            // isExpanded: true,
+            ),
           ),
         ],
       ),
@@ -62,9 +99,32 @@ class ArticleListPage extends StatelessWidget {
             future: minipressProvider.getArticles(),
             builder: (context, snapshot) {
               if (snapshot.hasData) {
+                List<Articles> articles = snapshot.data!;
                 return ListView.builder(
-                  itemCount: snapshot.data!.length,
+                  itemCount: articles.length,
                   itemBuilder: (context, index) {
+                    final article = articles[index];
+
+                    // Vérifie si le mot clé est présent dans le titre ou le résumé
+                    if (searchKeyword != null &&
+                        !article.titre
+                            .toLowerCase()
+                            .contains(searchKeyword!.toLowerCase()) &&
+                        !utf8
+                            .decode(article.resume.codeUnits)
+                            .toLowerCase()
+                            .contains(searchKeyword!.toLowerCase())) {
+                      return const SizedBox
+                          .shrink(); // Retourne un widget vide pour masquer l'article
+                    }
+
+                    if (selectedValue == '1') {
+                      articles.sort(
+                          (a, b) => a.dateCreation.compareTo(b.dateCreation));
+                    } else if (selectedValue == '2') {
+                      articles.sort(
+                          (a, b) => b.dateCreation.compareTo(a.dateCreation));
+                    }
                     return Card(
                       elevation: 2.0,
                       margin: const EdgeInsets.symmetric(
@@ -76,42 +136,38 @@ class ArticleListPage extends StatelessWidget {
                       ),
                       child: ListTile(
                         title: Text(
-                          snapshot.data![index].titre,
-                          style: TextStyle(fontWeight: FontWeight.bold),
+                          article.titre,
+                          style: const TextStyle(fontWeight: FontWeight.bold),
                         ),
                         subtitle: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            SizedBox(height: 8.0),
+                            const SizedBox(height: 8.0),
                             MarkdownBody(
-                              data: utf8.decode(
-                                snapshot.data![index].resume.codeUnits,
-                              ),
+                              data: utf8.decode(article.resume.codeUnits),
                             ),
-                            SizedBox(height: 8.0),
+                            const SizedBox(height: 8.0),
                             Row(
                               children: [
-                                Icon(
+                                const Icon(
                                   Icons.calendar_today,
                                   size: 16.0,
                                 ),
-                                SizedBox(width: 4.0),
+                                const SizedBox(width: 4.0),
                                 Text(
                                   DateFormat('dd/MM/yyyy à HH:mm').format(
-                                    snapshot.data![index].dateCreation,
+                                    article.dateCreation,
                                   ),
-                                  style: TextStyle(fontSize: 14.0),
+                                  style: const TextStyle(fontSize: 14.0),
                                 ),
                               ],
                             ),
-                            SizedBox(height: 8.0),
-                            Text('Publié: ${snapshot.data![index].publie == 1 ? 'Oui' : 'Non'}'),
+                            const SizedBox(height: 8.0),
+                            Text(
+                                'Publié: ${article.publie == 1 ? 'Oui' : 'Non'}'),
                           ],
                         ),
-                        onTap: () => displayArticleDetails(
-                          context,
-                          snapshot.data![index],
-                        ),
+                        onTap: () => displayArticleDetails(context, article),
                       ),
                     );
                   },
@@ -124,16 +180,6 @@ class ArticleListPage extends StatelessWidget {
             },
           );
         },
-      ),
-    );
-  }
-
-  void displayArticleDetails(BuildContext context, Articles article) {
-    // Afficher les détails de l'article sélectionné
-    Navigator.push(
-      context,
-      MaterialPageRoute(
-        builder: (context) => ArticleDetailsPage(article: article),
       ),
     );
   }

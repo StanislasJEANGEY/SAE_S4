@@ -4,12 +4,16 @@
         <div class="card mt-5 mb-5">
             <div class="card-body">
                 <h2 class="card-title">{{ article.titre }}</h2>
-                <p class="card-text">{{ article.resume }}</p>
-                <p class="card-text">{{ article.contenu }}</p>
+                {% apply markdown_to_html %}
+                {{ article.resume }}
+                {{ article.contenu }}
+                {% endapply %}
+
                 <p class="card-text"><b>Auteur :</b> {{ auteurs.nom }}</p>
                 <p class="card-text"><b>Date de création :</b> {{ article.date_creation | date('d/m/Y à H:i') }}</p>
                 <img src="{{ article.image_url }}" alt="Image de l'article" class="img-fluid mb-3">
             </div>
         </div>
+
     </div>
 {% endblock %}
