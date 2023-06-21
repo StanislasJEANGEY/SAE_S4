@@ -11,7 +11,7 @@ class getAccueilApi extends AbstractAction
 
     public function __invoke(Request $request, Response $response, array $args): Response
     {
-        $links = "http://docketu.iutnc.univ-lorraine.fr:18086";
+        $links = "http://docketu.iutnc.univ-lorraine.fr:18096";
         $data = '
 {
   "description": "L\'API Minipress permet d\'accéder aux articles, aux auteurs et aux catégories d\'articles d\'une plateforme de publication en ligne.",
