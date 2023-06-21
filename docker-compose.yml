@@ -42,7 +42,7 @@ services:
       - http_proxy=http://www-cache.iutnc.univ-lorraine.fr:3128
       - https_proxy=http://www-cache.iutnc.univ-lorraine.fr:3128
     ports:
-      - "18095:80"
+      - "18099:80"
     volumes:
       - ./MiniPress.web:/var/www/html
     working_dir: /var/www/html
