@@ -1,5 +1,9 @@
+body{
+    font-family: "Source Code Pro", "SFMono-Regular", Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+}
 #bouton{
     color: white;
+    font-size: 30px;
 }
 #menu {
     grid-area: 1 / 1 / 6 / 2;
@@ -9,6 +13,7 @@
     position: fixed;
     top: 0;
     left: 0;
+    font-size: 20px;
 }
 
 #menu ul {
