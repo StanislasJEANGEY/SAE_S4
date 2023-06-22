@@ -43,55 +43,74 @@ class _ArticleListPageState extends State<ArticleListPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Liste des articles'),
-        centerTitle: true,
-        actions: [
-          Expanded(
-            child: Container(
-              width: 200.0, // Set the desired width for the search bar
-              margin: const EdgeInsets.symmetric(horizontal: 16.0),
-              padding: const EdgeInsets.only(left: 35.0),
-              child: TextField(
-                onChanged: (value) {
-                  setState(() {
-                    searchKeyword = value;
-                  });
-                },
-                decoration: const InputDecoration(
-                  hintText: 'Rechercher par mot clé',
-                  hintStyle: TextStyle(color: Colors.white),
-                ),
+      appBar: PreferredSize(
+        preferredSize: const Size.fromHeight(56.0), // Spécifiez la hauteur souhaitée pour l'app bar
+        child: AppBar(
+          title: null, // Supprimer le titre de l'app bar
+          centerTitle: true,
+          actions: [
+            Flexible(
+              child: Row(
+                children: [
+                  Flexible(
+                    child: Container(
+                      margin: const EdgeInsets.symmetric(horizontal: 16.0),
+                      padding: const EdgeInsets.only(left: 50.0),
+                      width: 250.0,
+                      child: TextField(
+                        onChanged: (value) {
+                          setState(() {
+                            searchKeyword = value;
+                          });
+                        },
+                        decoration: const InputDecoration(
+                          hintText: 'Rechercher par mot clé',
+                          hintStyle: TextStyle(color: Colors.white),
+                        ),
+                      ),
+                    ),
+                  ),
+                  const SizedBox(width: 16.0), // Ajouter un espacement entre le champ de recherche et le titre
+                  const Expanded(
+                    child: Center(
+                      child: Text(
+                        "Liste des articles",
+                        style: TextStyle(fontSize: 20.0, fontWeight: FontWeight.bold),
+                      ),
+                    ),
+                  ),
+                  const SizedBox(width: 16.0), // Ajouter un espacement entre le titre et le bouton Dropdown
+                  DropdownButton<String>(
+                    value: selectedValue,
+                    items: const [
+                      DropdownMenuItem<String>(
+                        value: '0',
+                        child: Text('Aucun'),
+                      ),
+                      DropdownMenuItem<String>(
+                        value: '1',
+                        child: Text('Croissant'),
+                      ),
+                      DropdownMenuItem<String>(
+                        value: '2',
+                        child: Text('Décroissant'),
+                      ),
+                    ],
+                    onChanged: (String? value) {
+                      setState(() {
+                        selectedValue = value;
+                      });
+                      sortArticles(value!, context);
+                    },
+                    hint: const Text(
+                      'Trier par ordre',
+                    ),
+                  ),
+                ],
               ),
             ),
-          ),
-          DropdownButton<String>(
-            value: selectedValue,
-            items: const [
-              DropdownMenuItem<String>(
-                value: '0',
-                child: Text('Aucun'),
-              ),
-              DropdownMenuItem<String>(
-                value: '1',
-                child: Text('Croissant'),
-              ),
-              DropdownMenuItem<String>(
-                value: '2',
-                child: Text('Décroissant'),
-              ),
-            ],
-            onChanged: (String? value) {
-              setState(() {
-                selectedValue = value;
-              });
-              sortArticles(value!, context);
-            },
-            hint: const Text(
-              'Trier par ordre',
-            ),
-          ),
-        ], 
+          ],
+        ),
       ),
       body: Consumer<MinipressProvider>(
         builder: (context, minipressProvider, child) {
