@@ -24,7 +24,7 @@ class ArticleDetailsPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          title: Text(article.titre),
+          title: Text(utf8.decode(article.titre.codeUnits)),
         ),
         body: Consumer<MinipressProvider>(
             builder: (context, minipressProvider, child) {
@@ -47,7 +47,7 @@ class ArticleDetailsPage extends StatelessWidget {
                       ),
                       child: ListTile(
                         title: Text(
-                          snapshot.data!.titre,
+                          utf8.decode(snapshot.data!.titre.codeUnits),
                           style: const TextStyle(fontWeight: FontWeight.bold),
                         ),
                         subtitle: Column(
