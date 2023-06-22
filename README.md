@@ -14,7 +14,8 @@ URL dépôt git : https://github.com/StanislasJEANGEY/SAE_S4.git
 
 Identifiants et mots de passe pour se connecter sur MiniPress:
 -   admin : admin
--   user : user
+-   Jean : jean
+- Nicolas : nicolas
 
 Liens utiles :
 
