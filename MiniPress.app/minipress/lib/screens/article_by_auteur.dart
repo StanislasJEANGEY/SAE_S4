@@ -155,7 +155,7 @@ class _ArticleByAuteurPageState extends State<ArticleByAuteurPage> {
                       ),
                       child: ListTile(
                         title: Text(
-                          articles[index].titre,
+                          utf8.decode(articles[index].titre.codeUnits),
                           style: const TextStyle(fontWeight: FontWeight.bold),
                         ),
                         subtitle: Column(

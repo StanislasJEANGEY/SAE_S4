@@ -154,7 +154,7 @@ class _ArticleListPageState extends State<ArticleListPage> {
                       ),
                       child: ListTile(
                         title: Text(
-                          article.titre,
+                          utf8.decode(article.titre.codeUnits),
                           style: const TextStyle(fontWeight: FontWeight.bold),
                         ),
                         subtitle: Column(
