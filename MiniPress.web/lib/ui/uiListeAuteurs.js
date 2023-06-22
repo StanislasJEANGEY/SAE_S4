@@ -14,9 +14,11 @@ export function getUi(listeAuteurs) {
     const auteurs = document.querySelectorAll("#liste_auth_categ");
     auteurs.forEach(auteur => {
         auteur.addEventListener("click", (elem) => {
-            document.getElementById("articleDetails").innerHTML ="";
-            document.getElementById("listeArticles").innerHTML ="";
-            getListeArticlesByAuteur(elem.target.id)
+            if (elem.target.parentNode.id.includes("liste_auth_catege")) {
+                document.getElementById("articleDetails").innerHTML ="";
+                document.getElementById("listeArticles").innerHTML ="";
+                getListeArticlesByAuteur(elem.target.id)
+            }
         })
     })
 }

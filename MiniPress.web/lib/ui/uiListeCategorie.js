@@ -1,5 +1,6 @@
-import {getListeArticlesByCategorie}  from "../../index.js";
-export function getUi(listeCategories){
+import {getListeArticlesByCategorie} from "../../index.js";
+
+export function getUi(listeCategories) {
     let data = listeCategories.getTabCategories;
     let div = document.getElementById("liste_auth_categ");
     let html = "<div id='liste_auth_catege'>";
@@ -14,9 +15,11 @@ export function getUi(listeCategories){
     const categs = document.querySelectorAll("#liste_auth_categ");
     categs.forEach(categ => {
         categ.addEventListener("click", (elem) => {
-            document.getElementById("articleDetails").innerHTML ="";
-            document.getElementById("listeArticles").innerHTML ="";
-            getListeArticlesByCategorie(elem.target.id)
+            if (elem.target.parentNode.id.includes("liste_auth_catege")) {
+                document.getElementById("articleDetails").innerHTML = "";
+                document.getElementById("listeArticles").innerHTML = "";
+                getListeArticlesByCategorie(elem.target.id)
+            }
         })
     })
 }
