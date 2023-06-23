@@ -22,7 +22,7 @@ Liens utiles :
 
 -   appli (http://docketu.iutnc.univ-lorraine.fr:18095)
 -   api (http://docketu.iutnc.univ-lorraine.fr:18096)
--   webjd (http://docketu.iutnc.univ-lorraine.fr:18099)
+-   webjs (http://docketu.iutnc.univ-lorraine.fr:18099)
 -   phpmyadmin (http://docketu.iutnc.univ-lorraine.fr:18097)
 -   sql (http://docketu.iutnc.univ-lorraine.fr:18098) network : sql.db
 
