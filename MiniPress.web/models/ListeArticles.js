@@ -1,15 +1,11 @@
 export default class ListeArticles {
     tabArticles = [];
     count = 0;
-    cat_id = 0;
-    author_id = 0;
 
 
     constructor(data) {
         this._tabArticles = data['articles'];
         this.count = data['count'];
-        this.cat_id = data['articles'][0]['categorie_id'];
-        this.author_id = data['articles'][0]['auteur_id'];
     }
 
     filtreArticlesByMotCleTitre(motCle) {
