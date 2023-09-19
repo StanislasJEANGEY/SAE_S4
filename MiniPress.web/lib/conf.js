@@ -1,1 +1,1 @@
-export let url ='http://docketu.iutnc.univ-lorraine.fr:18096';
+export let url ='http://saeApi';
